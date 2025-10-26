@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTek - FAQ e Trabalhe Conosco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/LOGO  ABA/c.jpeg">
+    <style>
+        :root {
+            /* Cores da paleta NovaTek */
+            --azul-escuro: #0A4B9A;
+            --azul: #126DFF;
+            --ciano: #00C7FF;
+            --roxo: #7A3BFF;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F7FA;
+            --cinza-medio: #E4E7EB;
+            --cinza-escuro: #4A5568;
+            --preto: #1A202C;
+            
+            /* Gradientes */
+            --gradiente-principal: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 35%, var(--ciano) 65%, var(--roxo) 100%);
+            --gradiente-suave: linear-gradient(135deg, var(--azul) 0%, var(--ciano) 100%);
+            --gradiente-card: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            
+            /* Sombras */
+            --sombra-suave: 0 4px 20px rgba(10, 75, 154, 0.1);
+            --sombra-media: 0 8px 30px rgba(10, 75, 154, 0.15);
+            --sombra-intensa: 0 15px 40px rgba(10, 75, 154, 0.2);
+            --glow-azul: 0 0 15px rgba(18, 109, 255, 0.5);
+            --glow-ciano: 0 0 15px rgba(0, 199, 255, 0.5);
+            
+            /* Tipografia */
+            --fonte-titulo: 'Readex Pro', sans-serif;
+            --fonte-texto: 'Inter', sans-serif;
+            
+            /* Espaçamentos */
+            --espaco-xs: 0.5rem;
+            --espaco-sm: 1rem;
+            --espaco-md: 2rem;
+            --espaco-lg: 3rem;
+            --espaco-xl: 5rem;
+            
+            /* Bordas */
+            --borda-arredondada: 16px;
+            --borda-arredondada-sm: 8px;
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-texto);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--preto);
+            background-color: var(--branco);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--fonte-titulo);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--espaco-sm);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--espaco-md);
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--espaco-sm);
+        }
+
+        section {
+            padding: var(--espaco-xl) 0;
+            position: relative;
+        }
+
+        /* Utilitários */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .mb-xs {
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .mb-sm {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .mb-md {
+            margin-bottom: var(--espaco-md);
+        }
+
+        .mb-lg {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .mt-xs {
+            margin-top: var(--espaco-xs);
+        }
+
+        .mt-sm {
+            margin-top: var(--espaco-sm);
+        }
+
+        .mt-md {
+            margin-top: var(--espaco-md);
+        }
+
+        .mt-lg {
+            margin-top: var(--espaco-lg);
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: var(--borda-arredondada-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            font-family: var(--fonte-texto);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradiente-suave);
+            color: var(--branco);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .btn-primary:hover {
+            box-shadow: var(--sombra-media), var(--glow-azul);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--azul);
+            border: 2px solid var(--azul);
+        }
+
+        .btn-secondary:hover {
+            background: var(--azul);
+            color: var(--branco);
+            box-shadow: var(--sombra-suave);
+        }
+
+        /* Header e Navegação */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--espaco-sm) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradiente-principal);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: var(--gradiente-principal);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--espaco-md);
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--cinza-escuro);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradiente-suave);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--azul-escuro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section para páginas internas */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradiente-principal);
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--espaco-sm);
+            line-height: 1.2;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--espaco-md);
+            opacity: 0.9;
+        }
+
+        /* Seção FAQ */
+        .faq {
+            background: var(--cinza-claro);
+        }
+
+        .faq h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .faq-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--espaco-xl);
+            color: var(--cinza-escuro);
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .faq-category {
+            background: var(--branco);
+            border: 2px solid var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            padding: var(--espaco-sm) var(--espaco-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-category.active,
+        .faq-category:hover {
+            background: var(--gradiente-suave);
+            color: var(--branco);
+            border-color: var(--azul);
+        }
+
+        .faq-items {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            margin-bottom: var(--espaco-sm);
+            box-shadow: var(--sombra-suave);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            box-shadow: var(--sombra-media);
+        }
+
+        .faq-question {
+            padding: var(--espaco-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--azul-escuro);
+        }
+
+        .faq-question:hover {
+            background: var(--cinza-claro);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 var(--espaco-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--cinza-escuro);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 var(--espaco-md) var(--espaco-md);
+            max-height: 500px;
+        }
+
+        /* Seção Trabalhe Conosco */
+        .trabalhe-conosco {
+            background: var(--branco);
+        }
+
+        .trabalhe-conosco h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .trabalhe-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--espaco-xl);
+            color: var(--cinza-escuro);
+        }
+
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--espaco-lg);
+            margin-bottom: var(--espaco-xl);
+        }
+
+        .beneficio-card {
+            background: var(--cinza-claro);
+            border-radius: var(--borda-arredondada);
+            padding: var(--espaco-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .beneficio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .beneficio-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradiente-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--espaco-md);
+            color: var(--branco);
+            font-size: 2rem;
+        }
+
+        .beneficio-card h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .formulario-vagas {
+            background: var(--cinza-claro);
+            border-radius: var(--borda-arredondada);
+            padding: var(--espaco-xl);
+            box-shadow: var(--sombra-suave);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: var(--espaco-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--espaco-xs);
+            font-weight: 500;
+            color: var(--azul-escuro);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            font-family: var(--fonte-texto);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--azul);
+            box-shadow: 0 0 0 3px rgba(18, 109, 255, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 16px;
+            border: 2px dashed var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            background: var(--branco);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--azul);
+            background: var(--cinza-claro);
+        }
+
+        .file-upload-label i {
+            margin-right: var(--espaco-xs);
+            color: var(--azul);
+        }
+
+        .file-name {
+            margin-top: var(--espaco-xs);
+            font-size: 0.9rem;
+            color: var(--cinza-escuro);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espaco-xs);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 5px;
+            accent-color: var(--azul);
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group a {
+            color: var(--azul);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul-escuro);
+            color: var(--branco);
+            padding: var(--espaco-xl) 0 var(--espaco-md);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--espaco-lg);
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: var(--espaco-sm);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo .logo-icon {
+            margin-right: 10px;
+        }
+
+        .footer-descricao {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: var(--espaco-sm);
+        }
+
+        .rede-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .rede-social:hover {
+            background: var(--azul);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: var(--branco);
+            margin-bottom: var(--espaco-md);
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--branco);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--espaco-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--espaco-md);
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--branco);
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: var(--espaco-lg) 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--branco);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: var(--espaco-lg) 0;
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .page-hero {
+                min-height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .formulario-vagas {
+                padding: var(--espaco-lg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .beneficios {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .faq-category {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">NT</div>
+                    NovaTek
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="#faq-page" class="active">FAQ</a></li>
+                    <li><a href="#trabalhe-page">Trabalhe Conosco</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Página FAQ -->
+    <section id="faq-page" class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Perguntas Frequentes</h1>
+                <p>Encontre respostas para as dúvidas mais comuns sobre nossos serviços, processos e políticas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>FAQ</h2>
+            <p class="faq-intro">Selecione uma categoria ou navegue pelas perguntas mais frequentes para encontrar a informação que precisa.</p>
+            
+            <div class="faq-categories">
+                <div class="faq-category active" data-category="all">Todas as Categorias</div>
+                <div class="faq-category" data-category="servicos">Nossos Serviços</div>
+                <div class="faq-category" data-category="pagamentos">Pagamentos</div>
+                <div class="faq-category" data-category="suporte">Suporte</div>
+                <div class="faq-category" data-category="empresa">Sobre a Empresa</div>
+            </div>
+            
+            <div class="faq-items">
+                <!-- Perguntas sobre Serviços -->
+                <div class="faq-item" data-category="servicos">
+                    <div class="faq-question">
+                        <span>Quais tipos de sistemas web a NovaTek desenvolve?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Desenvolvemos sistemas web completos personalizados para atender necessidades específicas do seu negócio, incluindo sistemas de gestão, CRMs, ERPs, plataformas educacionais, marketplaces, entre outros. Utilizamos tecnologias modernas como React, Node.js, Python e bancos de dados relacionais e não-relacionais.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="servicos">
+                    <div class="faq-question">
+                        <span>O que são Light Pages e quando devo contratar esse serviço?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Light Pages são páginas web otimizadas e de carregamento rápido, ideais para campanhas de marketing, lançamentos de produtos ou páginas de captura. Recomendamos esse serviço quando você precisa de uma presença online rápida e eficaz sem a complexidade de um site completo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="servicos">
+                    <div class="faq-question">
+                        <span>Vocês desenvolvem aplicativos para iOS e Android?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, desenvolvemos aplicativos nativos para ambas as plataformas (iOS e Android) e também aplicativos híbridos usando tecnologias como React Native e Flutter. Avaliamos cada projeto para recomendar a melhor abordagem técnica considerando performance, custo e prazo de desenvolvimento.</p>
+                    </div>
+                </div>
+                
+                <!-- Perguntas sobre Pagamentos -->
+                <div class="faq-item" data-category="pagamentos">
+                    <div class="faq-question">
+                        <span>Quais formas de pagamento vocês aceitam?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos PIX, cartão de crédito (até 24x com taxas), boleto bancário e transferência. Para projetos de maior valor, oferecemos condições especiais de parcelamento. Todas as transações são processadas de forma segura através de nosso banco parceiro Infinity Bank.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="pagamentos">
+                    <div class="faq-question">
+                        <span>Como funciona o pagamento por projeto?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O pagamento é dividido em etapas: 30% na assinatura do contrato, 40% na entrega da versão de testes e 30% na entrega final. Para projetos de menor valor, podemos ajustar essas condições. Todo o processo é formalizado em contrato com especificação detalhada do escopo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="pagamentos">
+                    <div class="faq-question">
+                        <span>Há custos adicionais após a entrega do projeto?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O valor do projeto inclui desenvolvimento, implantação e garantia de 30 dias para correções. Após esse período, oferecemos planos de suporte mensal opcionais que incluem manutenção, atualizações de segurança e suporte técnico. Esses valores são acordados previamente.</p>
+                    </div>
+                </div>
+                
+                <!-- Perguntas sobre Suporte -->
+                <div class="faq-item" data-category="suporte">
+                    <div class="faq-question">
+                        <span>Como funciona o suporte pós-entrega?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oferecemos 30 dias de garantia incluída no projeto para correção de bugs. Após esse período, temos planos de suporte que variam conforme a complexidade do sistema. O suporte é realizado via ticket system, com prazos de resposta definidos conforme a criticidade do problema.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="suporte">
+                    <div class="faq-question">
+                        <span>Vocês oferecem treinamento para uso dos sistemas?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, incluímos documentação completa e 1 hora de treinamento via videoconferência na entrega de cada projeto. Para treinamentos mais extensivos ou presenciais, oferecemos pacotes adicionais com valores específicos.</p>
+                    </div>
+                </div>
+                
+                <!-- Perguntas sobre a Empresa -->
+                <div class="faq-item" data-category="empresa">
+                    <div class="faq-question">
+                        <span>Qual o tempo médio para desenvolvimento de um projeto?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O prazo varia conforme a complexidade do projeto. Sites institucionais simples: 2-4 semanas; Sistemas web personalizados: 1-4 meses; Aplicativos móveis: 2-5 meses. Após análise detalhada do projeto, fornecemos um cronograma realista com marcos de entrega.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="empresa">
+                    <div class="faq-question">
+                        <span>Como funciona o processo de desenvolvimento?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nosso processo inclui: 1) Reunião de entendimento do projeto; 2) Proposta comercial e contrato; 3) Prototipagem e validação; 4) Desenvolvimento em sprints com entregas parciais; 5) Testes e validação; 6) Implantação e treinamento; 7) Suporte pós-entrega.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="empresa">
+                    <div class="faq-question">
+                        <span>Vocês trabalham com tecnologias específicas?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Utilizamos um stack tecnológico moderno e diversificado: Frontend (React, Vue.js, Angular), Backend (Node.js, Python, PHP), Mobile (React Native, Flutter), Bancos de Dados (PostgreSQL, MongoDB, MySQL) e Cloud (AWS, Google Cloud, Azure). Escolhemos a melhor tecnologia para cada projeto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Página Trabalhe Conosco -->
+    <section id="trabalhe-page" class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Trabalhe Conosco</h1>
+                <p>Junte-se à nossa equipe de inovação e faça parte do futuro da tecnologia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trabalhe-conosco">
+        <div class="container">
+            <h2>Faça Parte do Nosso Time</h2>
+            <p class="trabalhe-intro">Na NovaTek, valorizamos talento, inovação e paixão por tecnologia. Oferecemos um ambiente dinâmico onde suas ideias podem florescer e fazer a diferença.</p>
+            
+            <div class="beneficios">
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Desenvolvimento Contínuo</h3>
+                    <p>Oferecemos cursos e certificações para seu crescimento profissional, com investimento da empresa em sua educação.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Horário Flexível</h3>
+                    <p>Trabalhe no horário que mais produz, desde que entregue resultados. Foco na produtividade, não no controle de horas.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Acesso às ferramentas e tecnologias mais modernas do mercado, com liberdade para experimentar e inovar.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Ambiente Colaborativo</h3>
+                    <p>Trabalhe em equipe com profissionais talentosos em um ambiente descontraído e com forte espírito de colaboração.</p>
+                </div>
+            </div>
+            
+            <div class="formulario-vagas">
+                <h3 class="text-center mb-lg">Candidate-se a uma Vaga</h3>
+                <form id="form-trabalhe-conosco">
+                    <div class="form-group">
+                        <label for="nome-completo">Nome Completo *</label>
+                        <input type="text" id="nome-completo" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone/WhatsApp *</label>
+                        <input type="tel" id="telefone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargo-interesse">Cargo de Interesse *</label>
+                        <select id="cargo-interesse" class="form-control" required>
+                            <option value="">Selecione um cargo</option>
+                            <option value="desenvolvedor-frontend">Desenvolvedor Front-end</option>
+                            <option value="desenvolvedor-backend">Desenvolvedor Back-end</option>
+                            <option value="desenvolvedor-fullstack">Desenvolvedor Full Stack</option>
+                            <option value="ui-ux-designer">UI/UX Designer</option>
+                            <option value="analista-qa">Analista de QA</option>
+                            <option value="devops">Engenheiro DevOps</option>
+                            <option value="estagio">Estágio em Desenvolvimento</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experiencia">Nível de Experiência *</label>
+                        <select id="experiencia" class="form-control" required>
+                            <option value="">Selecione sua experiência</option>
+                            <option value="estagio">Estágio</option>
+                            <option value="junior">Júnior (0-2 anos)</option>
+                            <option value="pleno">Pleno (2-5 anos)</option>
+                            <option value="senior">Sênior (5+ anos)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="portfolio">Portfólio ou GitHub (opcional)</label>
+                        <input type="url" id="portfolio" class="form-control" placeholder="https://">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Por que você quer trabalhar na NovaTek? *</label>
+                        <textarea id="mensagem" class="form-control" required placeholder="Conte-nos sobre suas motivações, experiências e como você pode contribuir para nossa equipe..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Currículo (PDF) *</label>
+                        <div class="file-upload">
+                            <input type="file" id="curriculo" class="file-upload-input" accept=".pdf,.doc,.docx" required>
+                            <label for="curriculo" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Clique para anexar seu currículo</span>
+                            </label>
+                        </div>
+                        <div class="file-name" id="curriculo-name"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Outros Anexos (opcional)</label>
+                        <div class="file-upload">
+                            <input type="file" id="outros-anexos" class="file-upload-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
+                            <label for="outros-anexos" class="file-upload-label">
+                                <i class="fas fa-paperclip"></i>
+                                <span>Clique para anexar outros documentos</span>
+                            </label>
+                        </div>
+                        <div class="file-name" id="outros-anexos-name"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="termos" required>
+                            <label for="termos">Li e concordo com a <a href="politica-privacidade.html">Política de Privacidade</a> e <a href="termos-uso.html">Termos de Uso</a> da NovaTek *</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Enviar Candidatura</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">NT</div>
+                        NovaTek
+                    </div>
+                    <p class="footer-descricao">Transformando ideias em realidade através de tecnologia inovadora e soluções personalizadas para o crescimento do seu negócio.</p>
+                    <div class="redes-sociais">
+                        <a href="#" class="rede-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Empresa</h3>
+                    <ul>
+                        <li><a href="index.html#sobre">Sobre Nós</a></li>
+                        <li><a href="index.html#ceos">Nossa Equipe</a></li>
+                        <li><a href="index.html#servicos">Serviços</a></li>
+                        <li><a href="index.html#projetos">Portfólio</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#faq-page">FAQ</a></li>
+                        <li><a href="documentacao.html">Documentação</a></li>
+                        <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos-uso.html">Termos de Uso</a></li>
+                        <li><a href="#trabalhe-page">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="index.html#contato">Contato</a></li>
+                        <li><a href="suporte.html">Central de Ajuda</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="status.html">Status do Sistema</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NovaTek. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="politica-privacidade.html">Política de Privacidade</a>
+                    <a href="termos-uso.html">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburger para mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQ - Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // FAQ - Category filtering
+        document.querySelectorAll('.faq-category').forEach(category => {
+            category.addEventListener('click', () => {
+                // Remove active class from all categories
+                document.querySelectorAll('.faq-category').forEach(cat => {
+                    cat.classList.remove('active');
+                });
+                
+                // Add active class to clicked category
+                category.classList.add('active');
+                
+                const selectedCategory = category.getAttribute('data-category');
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // File upload name display
+        document.getElementById('curriculo').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Nenhum arquivo selecionado';
+            document.getElementById('curriculo-name').textContent = fileName;
+        });
+        
+        document.getElementById('outros-anexos').addEventListener('change', function(e) {
+            const files = e.target.files;
+            let fileNames = '';
+            
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    fileNames += files[i].name;
+                    if (i < files.length - 1) fileNames += ', ';
+                }
+            } else {
+                fileNames = 'Nenhum arquivo selecionado';
+            }
+            
+            document.getElementById('outros-anexos-name').textContent = fileNames;
+        });
+        
+        // Formulário Trabalhe Conosco - Envio para WhatsApp
+        document.getElementById('form-trabalhe-conosco').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const nome = document.getElementById('nome-completo').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const cargo = document.getElementById('cargo-interesse').value;
+            const experiencia = document.getElementById('experiencia').value;
+            const portfolio = document.getElementById('portfolio').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            // Mapear cargos para nomes legíveis
+            const cargoNomes = {
+                'desenvolvedor-frontend': 'Desenvolvedor Front-end',
+                'desenvolvedor-backend': 'Desenvolvedor Back-end',
+                'desenvolvedor-fullstack': 'Desenvolvedor Full Stack',
+                'ui-ux-designer': 'UI/UX Designer',
+                'analista-qa': 'Analista de QA',
+                'devops': 'Engenheiro DevOps',
+                'estagio': 'Estágio em Desenvolvimento',
+                'outro': 'Outro'
+            };
+            
+            // Mapear experiência para nomes legíveis
+            const experienciaNomes = {
+                'estagio': 'Estágio',
+                'junior': 'Júnior (0-2 anos)',
+                'pleno': 'Pleno (2-5 anos)',
+                'senior': 'Sênior (5+ anos)'
+            };
+            
+            // Criar mensagem para WhatsApp
+            let whatsappMessage = `*NOVA CANDIDATURA - NovaTek*\n\n`;
+            whatsappMessage += `*Nome:* ${nome}\n`;
+            whatsappMessage += `*E-mail:* ${email}\n`;
+            whatsappMessage += `*Telefone:* ${telefone}\n`;
+            whatsappMessage += `*Cargo de Interesse:* ${cargoNomes[cargo]}\n`;
+            whatsappMessage += `*Nível de Experiência:* ${experienciaNomes[experiencia]}\n`;
+            
+            if (portfolio) {
+                whatsappMessage += `*Portfólio/GitHub:* ${portfolio}\n`;
+            }
+            
+            whatsappMessage += `\n*Mensagem do Candidato:*\n${mensagem}\n\n`;
+            whatsappMessage += `_Currículo e anexos enviados pelo formulário_`;
+            
+            // Codificar mensagem para URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Número de WhatsApp do RH (substitua pelo número real)
+            const whatsappNumber = "5511999999999";
+            
+            // Redirecionar para WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+            
+            // Feedback para o usuário
+            alert('Obrigado por se candidatar! Suas informações foram enviadas para nosso RH. Entraremos em contato em breve.');
+            
+            // Limpar formulário
+            this.reset();
+            document.getElementById('curriculo-name').textContent = '';
+            document.getElementById('outros-anexos-name').textContent = '';
+        });
+    </script>
+</body>
+</html>

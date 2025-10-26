@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTek - Soluções Tecnológicas Inovadoras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Adicione isso dentro do <head> do seu HTML -->
+<link rel="icon" href="/LOGO  ABA/c.jpeg">
+    <style>
+        :root {
+            /* Cores da paleta NovaTek */
+            --azul-escuro: #0A4B9A;
+            --azul: #126DFF;
+            --ciano: #00C7FF;
+            --roxo: #7A3BFF;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F7FA;
+            --cinza-medio: #E4E7EB;
+            --cinza-escuro: #4A5568;
+            --preto: #1A202C;
+            
+            /* Gradientes */
+            --gradiente-principal: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 35%, var(--ciano) 65%, var(--roxo) 100%);
+            --gradiente-suave: linear-gradient(135deg, var(--azul) 0%, var(--ciano) 100%);
+            --gradiente-card: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            
+            /* Sombras */
+            --sombra-suave: 0 4px 20px rgba(10, 75, 154, 0.1);
+            --sombra-media: 0 8px 30px rgba(10, 75, 154, 0.15);
+            --sombra-intensa: 0 15px 40px rgba(10, 75, 154, 0.2);
+            --glow-azul: 0 0 15px rgba(18, 109, 255, 0.5);
+            --glow-ciano: 0 0 15px rgba(0, 199, 255, 0.5);
+            
+            /* Tipografia */
+            --fonte-titulo: 'Readex Pro', sans-serif;
+            --fonte-texto: 'Inter', sans-serif;
+            
+            /* Espaçamentos */
+            --espaco-xs: 0.5rem;
+            --espaco-sm: 1rem;
+            --espaco-md: 2rem;
+            --espaco-lg: 3rem;
+            --espaco-xl: 5rem;
+            
+            /* Bordas */
+            --borda-arredondada: 16px;
+            --borda-arredondada-sm: 8px;
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-texto);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--preto);
+            background-color: var(--branco);
+            overflow-x: hidden;
+        }
+
+        /* MELHORIA: Otimização de performance para animações */
+        .animate-element {
+            will-change: transform, opacity;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--fonte-titulo);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--espaco-sm);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--espaco-md);
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--espaco-sm);
+        }
+
+        section {
+            padding: var(--espaco-xl) 0;
+            position: relative;
+        }
+
+        /* Utilitários */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .mb-xs {
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .mb-sm {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .mb-md {
+            margin-bottom: var(--espaco-md);
+        }
+
+        .mb-lg {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .mt-xs {
+            margin-top: var(--espaco-xs);
+        }
+
+        .mt-sm {
+            margin-top: var(--espaco-sm);
+        }
+
+        .mt-md {
+            margin-top: var(--espaco-md);
+        }
+
+        .mt-lg {
+            margin-top: var(--espaco-lg);
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animações personalizadas - MELHORIA: Otimizadas para performance */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(18, 109, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(18, 109, 255, 0.8); }
+        }
+
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--ciano); }
+        }
+
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Partículas de fundo */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--ciano);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: var(--borda-arredondada-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            font-family: var(--fonte-texto);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradiente-suave);
+            color: var(--branco);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .btn-primary:hover {
+            box-shadow: var(--sombra-media), var(--glow-azul);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--azul);
+            border: 2px solid var(--azul);
+        }
+
+        .btn-secondary:hover {
+            background: var(--azul);
+            color: var(--branco);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--cinza-medio);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--azul);
+            color: var(--azul);
+        }
+
+        /* MELHORIA: Novo botão para área do funcionário */
+        .btn-employee {
+            background: var(--gradiente-principal);
+            color: var(--branco);
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-employee:hover {
+            box-shadow: var(--sombra-media), var(--glow-ciano);
+            transform: translateY(-2px);
+        }
+
+        /* Header e Navegação - MELHORIA: Melhor responsividade */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--espaco-sm) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradiente-principal);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: var(--gradiente-principal);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--espaco-md);
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--cinza-escuro);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradiente-suave);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--azul-escuro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section - MELHORIA: Melhor responsividade */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradiente-principal);
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--espaco-sm);
+            line-height: 1.2;
+            overflow: hidden;
+            border-right: 3px solid var(--ciano);
+            white-space: nowrap;
+            animation: typewriter 3.5s steps(40, end), blink 0.75s step-end infinite;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--espaco-md);
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--espaco-sm);
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn-secondary {
+            color: var(--branco);
+            border-color: var(--branco);
+        }
+
+        .hero-buttons .btn-secondary:hover {
+            background: var(--branco);
+            color: var(--azul-escuro);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+        }
+
+        .floating-elements {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .element-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-2 {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            left: 20%;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        .element-3 {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 20%;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+
+        /* Seção Sobre */
+        .sobre {
+            background: var(--cinza-claro);
+        }
+
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--espaco-xl);
+            align-items: center;
+        }
+
+        .sobre-texto h2 {
+            color: var(--azul-escuro);
+        }
+
+        .sobre-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sobre-card {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            padding: var(--espaco-lg);
+            box-shadow: var(--sombra-media);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .sobre-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .sobre-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradiente-principal);
+        }
+
+        /* Seção CEOs */
+        .ceos {
+            background: var(--branco);
+        }
+
+        .ceos h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .ceos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--espaco-lg);
+        }
+
+        .ceo-card {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .ceo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-intensa);
+        }
+
+        .ceo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradiente-principal);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .ceo-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .ceo-imagem {
+            height: 300px;
+            background: var(--cinza-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ceo-imagem::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradiente-principal);
+        }
+
+        .ceo-info {
+            padding: var(--espaco-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ceo-info h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .ceo-cargo {
+            color: var(--azul);
+            font-weight: 500;
+            margin-bottom: var(--espaco-sm);
+        }
+
+        /* Seção Serviços */
+        .servicos {
+            background: var(--cinza-claro);
+        }
+
+        .servicos h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--espaco-lg);
+        }
+
+        .servico-card {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            padding: var(--espaco-lg);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradiente-suave);
+        }
+
+        .servico-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--cinza-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--espaco-sm);
+            color: var(--azul);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .servico-card:hover .servico-icon {
+            background: var(--gradiente-suave);
+            color: var(--branco);
+            transform: scale(1.1);
+        }
+
+        .servico-card h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .servico-descricao {
+            color: var(--cinza-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .servico-beneficios {
+            margin-top: auto;
+        }
+
+        .servico-beneficios li {
+            position: relative;
+            padding-left: var(--espaco-md);
+            margin-bottom: var(--espaco-xs);
+            color: var(--cinza-escuro);
+        }
+
+        .servico-beneficios li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--ciano);
+            font-weight: bold;
+        }
+
+        /* Seção Projetos */
+        .projetos {
+            background: var(--branco);
+        }
+
+        .projetos h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--espaco-lg);
+        }
+
+        .projeto-card {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .projeto-imagem {
+            height: 200px;
+            background: var(--cinza-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projeto-imagem::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradiente-principal);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .projeto-card:hover .projeto-imagem::after {
+            opacity: 0.2;
+        }
+
+        .projeto-info {
+            padding: var(--espaco-md);
+        }
+
+        .projeto-info h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .projeto-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espaco-xs);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .projeto-tag {
+            background: var(--cinza-claro);
+            color: var(--azul);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .projeto-descricao {
+            color: var(--cinza-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        /* Seção Depoimentos */
+        .depoimentos {
+            background: var(--cinza-claro);
+        }
+
+        .depoimentos h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--espaco-lg);
+        }
+
+        .depoimento-card {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            padding: var(--espaco-lg);
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .depoimento-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--cinza-medio);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .depoimento-texto {
+            font-style: italic;
+            margin-bottom: var(--espaco-md);
+            color: var(--cinza-escuro);
+            position: relative;
+            z-index: 1;
+        }
+
+        .depoimento-autor {
+            display: flex;
+            align-items: center;
+        }
+
+        .depoimento-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--cinza-medio);
+            margin-right: var(--espaco-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+        }
+
+        .depoimento-info h4 {
+            margin-bottom: 0;
+            color: var(--azul-escuro);
+        }
+
+        .depoimento-cargo {
+            color: var(--cinza-escuro);
+            font-size: 0.9rem;
+        }
+
+        .clientes {
+            margin-top: var(--espaco-xl);
+        }
+
+        .clientes h3 {
+            text-align: center;
+            margin-bottom: var(--espaco-md);
+            color: var(--azul-escuro);
+        }
+
+        .clientes-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--espaco-lg);
+        }
+
+        .cliente-logo {
+            width: 150px;
+            height: 80px;
+            background: var(--cinza-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+            border-radius: var(--borda-arredondada-sm);
+            transition: all 0.3s ease;
+        }
+
+        .cliente-logo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--sombra-suave);
+        }
+
+        /* Seção Contato - MELHORIA: Formulário para WhatsApp */
+        .contato {
+            background: var(--branco);
+        }
+
+        .contato h2 {
+            text-align: center;
+            color: var(--azul-escuro);
+        }
+
+        .contato-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--espaco-xl);
+        }
+
+        .contato-form {
+            background: var(--cinza-claro);
+            padding: var(--espaco-lg);
+            border-radius: var(--borda-arredondada);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .form-group {
+            margin-bottom: var(--espaco-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--espaco-xs);
+            font-weight: 500;
+            color: var(--azul-escuro);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            font-family: var(--fonte-texto);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--azul);
+            box-shadow: 0 0 0 3px rgba(18, 109, 255, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+            margin-top: var(--espaco-xs);
+        }
+
+        .form-radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-radio-option input[type="radio"] {
+            accent-color: var(--azul);
+        }
+
+        .contato-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--espaco-md);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espaco-sm);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradiente-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .info-content p {
+            color: var(--cinza-escuro);
+            margin-bottom: 0;
+        }
+
+        .mapa {
+            height: 200px;
+            background: var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            margin-top: var(--espaco-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+            overflow: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul-escuro);
+            color: var(--branco);
+            padding: var(--espaco-xl) 0 var(--espaco-md);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--espaco-lg);
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: var(--espaco-sm);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo .logo-icon {
+            margin-right: 10px;
+        }
+
+        .footer-descricao {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: var(--espaco-sm);
+        }
+
+        .rede-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .rede-social:hover {
+            background: var(--azul);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: var(--branco);
+            margin-bottom: var(--espaco-md);
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--branco);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--espaco-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--espaco-md);
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--branco);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--cinza-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--cinza-medio);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: var(--espaco-xl);
+        }
+
+        .modal-header {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .modal-header h2 {
+            color: var(--azul-escuro);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--espaco-lg);
+        }
+
+        .modal-imagem {
+            height: 300px;
+            background: var(--cinza-medio);
+            border-radius: var(--borda-arredondada-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-escuro);
+        }
+
+        .modal-info h3 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .modal-descricao {
+            color: var(--cinza-escuro);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .modal-detalhes h4 {
+            color: var(--azul-escuro);
+            margin-bottom: var(--espaco-sm);
+        }
+
+        .modal-detalhes ul {
+            list-style: disc;
+            padding-left: var(--espaco-md);
+            color: var(--cinza-escuro);
+        }
+
+        .modal-detalhes li {
+            margin-bottom: var(--espaco-xs);
+        }
+
+        /* Loading Spinner */
+        .loader {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+
+        .loader:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid var(--azul);
+            border-color: var(--azul) transparent var(--azul) transparent;
+            animation: loader 1.2s linear infinite;
+        }
+
+        @keyframes loader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradiente-suave);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--sombra-media);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsividade - MELHORIA: Melhorias significativas para mobile */
+        @media (max-width: 1200px) {
+            .hero-visual {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .sobre-content,
+            .contato-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: var(--espaco-lg) 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--branco);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: var(--espaco-lg) 0;
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            /* MELHORIA: Melhor espaçamento para mobile */
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .servicos-grid,
+            .projetos-grid,
+            .depoimentos-grid,
+            .ceos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .ceos-grid,
+            .servicos-grid,
+            .projetos-grid,
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: var(--espaco-lg) var(--espaco-md);
+            }
+            
+            .hero h1 {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+            }
+            
+            /* MELHORIA: Ajustes finos para telas muito pequenas */
+            .container {
+                padding: 0 var(--espaco-xs);
+            }
+            
+            .contato-form {
+                padding: var(--espaco-md);
+            }
+            
+            .form-radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="d-flex justify-center align-center" style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--gradiente-principal); z-index:9999; transition:opacity 0.5s ease;">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header - MELHORIA: Adicionado botão para área do funcionário -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">NT</div>
+                    NovaTek
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#ceos">CEOs</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <!-- MELHORIA: Botão para área do funcionário -->
+                    <li><a href="https://script.google.com/macros/s/SEU_SCRIPT_ID/exec" class="btn btn-employee" target="_blank" style="padding: 8px 16px; font-size: 0.9rem;">Área do Funcionário</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <div class="hero-content fade-up">
+                <h1>Soluções Tecnológicas</h1>
+                <h1>para um Futuro Inovador</h1>
+                <p>Na NovaTek, transformamos ideias em realidade através de tecnologia de ponta, desenvolvimento ágil e soluções personalizadas que impulsionam o crescimento do seu negócio.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
+                    <a href="#projetos" class="btn btn-secondary">Ver Portfólio</a>
+                    <!-- MELHORIA: Botão para área do funcionário também no hero -->
+                    <a href="https://script.google.com/macros/s/SEU_SCRIPT_ID/exec" class="btn btn-employee" target="_blank">Área do Funcionário</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-elements">
+                <div class="floating-element element-1">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="floating-element element-2">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="floating-element element-3">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="sobre">
+        <div class="particles" id="particles-sobre"></div>
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-texto slide-left">
+                    <h2>Sobre a NovaTek</h2>
+                    <p>Fundada em 2015, a NovaTek é uma empresa de tecnologia com foco em inovação e excelência. Nossa missão é desenvolver soluções tecnológicas que transformem negócios e criem valor sustentável para nossos clientes.</p>
+                    <p>Com uma equipe multidisciplinar de especialistas, oferecemos serviços de ponta em desenvolvimento de software, sistemas embarcados, IoT e consultoria em transformação digital.</p>
+                    <p>Nossos valores incluem transparência, qualidade, inovação contínua e parceria de longo prazo com nossos clientes, sempre buscando superar expectativas e entregar resultados excepcionais.</p>
+                </div>
+                <div class="sobre-visual slide-right">
+                    <div class="sobre-card">
+                        <h3>Nossa Visão</h3>
+                        <p>Ser referência em soluções tecnológicas inovadoras na América Latina até 2030, contribuindo para a transformação digital de empresas e instituições.</p>
+                        
+                        <h3>Nossa Missão</h3>
+                        <p>Desenvolver e implementar tecnologias de ponta que resolvam problemas complexos, impulsionem a eficiência e criem vantagens competitivas para nossos clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEOs Section - MELHORIA: Informações atualizadas com dados reais -->
+    <section id="ceos" class="ceos">
+        <div class="container">
+            <h2 class="fade-up">Nossa Liderança</h2>
+            <div class="ceos-grid">
+                <div class="ceo-card fade-up">
+                    <div class="ceo-imagem"><span>Foto Caio</span></div>
+                    <div class="ceo-info">
+                        <h3>Caio Felipe</h3>
+                        <div class="ceo-cargo">CEO & Fundador</div>
+                        <p>Me chamo Caio Felipe, tenho 22 anos, sou desenvolvedor de software a 6 anos. Sou formado em Engenharia do software, e professor de T.I em escola de curso profissionalizante e CEO da NovaTek.</p>
+                    </div>
+                </div>
+                <div class="ceo-card fade-up">
+                    <div class="ceo-imagem"><span>Foto Matheus</span></div>
+                    <div class="ceo-info">
+                        <h3>Matheus</h3>
+                        <div class="ceo-cargo">CEO & Desenvolvedor</div>
+                        <p>Me chamo Matheus Longen, tenho 21 anos, sou desenvolvedor de software a 3 anos. Sou formado em análise de sistema e CEO da NovaTek.</p>
+                    </div>
+                </div>
+                <div class="ceo-card fade-up">
+                    <div class="ceo-imagem"><span>Foto Murilo</span></div>
+                    <div class="ceo-info">
+                        <h3>Murilo</h3>
+                        <div class="ceo-cargo">CEO & Desenvolvedor</div>
+                        <p>Me chamo Murilo Christófoli, tenho 19 anos, sou desenvolvedor de software. Estudo programação e CEO da NovaTek.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section - MELHORIA: Serviços atualizados com base nas informações fornecidas -->
+    <section id="servicos" class="servicos">
+        <div class="particles" id="particles-servicos"></div>
+        <div class="container">
+            <h2 class="fade-up">Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Sistemas Web Completos</h3>
+                    <p class="servico-descricao">Desenvolvemos sistemas web personalizados para atender às necessidades específicas do seu negócio.</p>
+                    <ul class="servico-beneficios">
+                        <li>Design responsivo e moderno</li>
+                        <li>Performance otimizada</li>
+                        <li>Segurança de dados</li>
+                        <li>Integração com APIs</li>
+                    </ul>
+                </div>
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Light Pages</h3>
+                    <p class="servico-descricao">Criamos páginas web leves e otimizadas para campanhas específicas ou produtos.</p>
+                    <ul class="servico-beneficios">
+                        <li>Carregamento ultrarrápido</li>
+                        <li>Otimização para conversão</li>
+                        <li>Design minimalista e eficiente</li>
+                        <li>Integração com analytics</li>
+                    </ul>
+                </div>
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Apps em Geral</h3>
+                    <p class="servico-descricao">Desenvolvemos aplicativos móveis para iOS e Android, com design intuitivo e funcional.</p>
+                    <ul class="servico-beneficios">
+                        <li>Desenvolvimento nativo e híbrido</li>
+                        <li>Interface intuitiva</li>
+                        <li>Performance otimizada</li>
+                        <li>Publicação nas lojas</li>
+                    </ul>
+                </div>
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-commerce</h3>
+                    <p class="servico-descricao">Montamos lojas virtuais completas com sistemas de pagamento e gestão de produtos.</p>
+                    <ul class="servico-beneficios">
+                        <li>Catálogo de produtos</li>
+                        <li>Múltiplas formas de pagamento</li>
+                        <li>Gestão de estoque</li>
+                        <li>Relatórios de vendas</li>
+                    </ul>
+                </div>
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Suporte Web</h3>
+                    <p class="servico-descricao">Oferecemos suporte técnico especializado para manter seus sistemas sempre funcionando.</p>
+                    <ul class="servico-beneficios">
+                        <li>Monitoramento 24/7</li>
+                        <li>Resposta rápida a incidentes</li>
+                        <li>Manutenção preventiva</li>
+                        <li>Atualizações de segurança</li>
+                    </ul>
+                </div>
+                <div class="servico-card fade-up">
+                    <div class="servico-icon"><i class="fas fa-search"></i></div>
+                    <h3>Consultoria de Sistema</h3>
+                    <p class="servico-descricao">Analisamos sistemas existentes e resolvemos problemas como bugs e otimizações.</p>
+                    <ul class="servico-beneficios">
+                        <li>Análise de performance</li>
+                        <li>Identificação de problemas</li>
+                        <li>Otimização de código</li>
+                        <li>Recomendações de melhorias</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Section -->
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2 class="fade-up">Nossos Projetos</h2>
+            <div class="projetos-grid">
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">IMAGEM PROJETO 1</div>
+                    <div class="projeto-info">
+                        <h3>Sistema de Gestão Empresarial</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">Web App</span>
+                            <span class="projeto-tag">React</span>
+                            <span class="projeto-tag">Node.js</span>
+                        </div>
+                        <p class="projeto-descricao">Plataforma de gestão empresarial com dashboard interativo e relatórios personalizados.</p>
+                        <button class="btn btn-primary btn-ver-case" data-project="1">Ver Case</button>
+                    </div>
+                </div>
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">IMAGEM PROJETO 2</div>
+                    <div class="projeto-info">
+                        <h3>E-commerce Personalizado</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">E-commerce</span>
+                            <span class="projeto-tag">WordPress</span>
+                            <span class="projeto-tag">WooCommerce</span>
+                        </div>
+                        <p class="projeto-descricao">Loja virtual com catálogo personalizado, sistema de fretes e integração com marketplaces.</p>
+                        <button class="btn btn-primary btn-ver-case" data-project="2">Ver Case</button>
+                    </div>
+                </div>
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">IMAGEM PROJETO 3</div>
+                    <div class="projeto-info">
+                        <h3>Aplicativo de Delivery</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">Mobile</span>
+                            <span class="projeto-tag">Flutter</span>
+                            <span class="projeto-tag">Firebase</span>
+                        </div>
+                        <p class="projeto-descricao">Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliações.</p>
+                        <button class="btn btn-primary btn-ver-case" data-project="3">Ver Case</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="depoimentos">
+        <div class="container">
+            <h2 class="fade-up">O que dizem nossos clientes</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card fade-up">
+                    <p class="depoimento-texto">A NovaTek transformou completamente nossa operação com um sistema customizado que aumentou nossa eficiência em 40%. A equipe foi extremamente profissional e o projeto foi entregue antes do prazo.</p>
+                    <div class="depoimento-autor">
+                        <div class="depoimento-avatar">CL1</div>
+                        <div class="depoimento-info">
+                            <h4>João Silva</h4>
+                            <div class="depoimento-cargo">Diretor de Operações, TechSolutions</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card fade-up">
+                    <p class="depoimento-texto">Trabalhamos com a NovaTek no desenvolvimento do nosso aplicativo móvel e ficamos impressionados com a qualidade do código e a atenção aos detalhes de UX. Superou todas as nossas expectativas.</p>
+                    <div class="depoimento-autor">
+                        <div class="depoimento-avatar">CL2</div>
+                        <div class="depoimento-info">
+                            <h4>Maria Santos</h4>
+                            <div class="depoimento-cargo">CEO, InovaCommerce</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card fade-up">
+                    <p class="depoimento-texto">A migração para a nuvem conduzida pela NovaTek não apenas reduziu nossos custos em 30%, como também melhorou significativamente a performance de nossos sistemas. Recomendo sem reservas.</p>
+                    <div class="depoimento-autor">
+                        <div class="depoimento-avatar">CL3</div>
+                        <div class="depoimento-info">
+                            <h4>Carlos Oliveira</h4>
+                            <div class="depoimento-cargo">CTO, DataSystems</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clientes">
+                <h3 class="fade-up">Alguns de nossos clientes</h3>
+                <div class="clientes-logos">
+                    <div class="cliente-logo">LOGO AQUI</div>
+                    <div class="cliente-logo">LOGO AQUI</div>
+                    <div class="cliente-logo">LOGO AQUI</div>
+                    <div class="cliente-logo">LOGO AQUI</div>
+                    <div class="cliente-logo">LOGO AQUI</div>
+                    <div class="cliente-logo">LOGO AQUI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section - MELHORIA: Formulário para WhatsApp com campos adicionais -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2 class="fade-up">Entre em Contato</h2>
+            <div class="contato-content">
+                <div class="contato-form fade-up">
+                    <form id="form-contato">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone/WhatsApp</label>
+                            <input type="tel" id="telefone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Serviço de Interesse</label>
+                            <select id="servico" class="form-control" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="sistema-web">Sistema Web Completo</option>
+                                <option value="light-page">Light Page</option>
+                                <option value="app">Aplicativo</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="suporte">Suporte Web</option>
+                                <option value="consultoria">Consultoria de Sistema</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Como nos conheceu?</label>
+                            <div class="form-radio-group">
+                                <div class="form-radio-option">
+                                    <input type="radio" id="indicacao" name="conheceu" value="indicacao" required>
+                                    <label for="indicacao">Indicação</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="google" name="conheceu" value="google">
+                                    <label for="google">Google</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="redes-sociais" name="conheceu" value="redes-sociais">
+                                    <label for="redes-sociais">Redes Sociais</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="outro" name="conheceu" value="outro">
+                                    <label for="outro">Outro</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar para WhatsApp</button>
+                    </form>
+                </div>
+                <div class="contato-info fade-up">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h3>E-mail</h3>
+                            <p>contato@novatek.com.br</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div class="info-content">
+                            <h3>Telefone</h3>
+                            <p>+55 (11) 3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <h3>Endereço</h3>
+                            <p>Av. Paulista, 1000 - São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="info-content">
+                            <h3>Agendar Reunião</h3>
+                            <p>Clique no botão abaixo para agendar uma reunião com nossa equipe</p>
+                            <a href="#" class="btn btn-secondary mt-sm">Agendar Reunião</a>
+                        </div>
+                    </div>
+                    <div class="mapa">
+                        MAPA EMBED AQUI
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">NT</div>
+                        NovaTek
+                    </div>
+                    <p class="footer-descricao">Transformando ideias em realidade através de tecnologia inovadora e soluções personalizadas para o crescimento do seu negócio.</p>
+                    <div class="redes-sociais">
+                        <a href="#" class="rede-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="rede-social"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Empresa</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#ceos">Nossa Equipe</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#projetos">Portfólio</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Sistemas Web</a></li>
+                        <li><a href="#">Light Pages</a></li>
+                        <li><a href="#">Aplicativos</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">Consultoria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="faq.html#trabalhe-page">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NovaTek. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Modal de Projeto -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-close" id="modal-close">×</div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-titulo">Título do Projeto</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-imagem" id="modal-imagem">IMAGEM DO PROJETO</div>
+                    <div class="modal-info">
+                        <h3 id="modal-subtitulo">Sobre o Projeto</h3>
+                        <p class="modal-descricao" id="modal-descricao">Descrição detalhada do projeto...</p>
+                        <div class="modal-detalhes">
+                            <h4>Detalhes Técnicos</h4>
+                            <ul id="modal-detalhes">
+                                <li>Tecnologia 1</li>
+                                <li>Tecnologia 2</li>
+                                <li>Tecnologia 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos projetos para o modal
+        const projetos = {
+            1: {
+                titulo: "Sistema de Gestão Empresarial",
+                subtitulo: "Plataforma de Gestão Empresarial",
+                descricao: "Desenvolvemos uma plataforma completa de gestão empresarial que integra todos os departamentos da empresa em um único sistema. A solução inclui módulos financeiro, de recursos humanos, vendas e estoque, com dashboard interativo e relatórios personalizados em tempo real.",
+                detalhes: [
+                    "Frontend desenvolvido em React com Hooks e Context API",
+                    "Backend em Node.js com Express e MongoDB",
+                    "Autenticação JWT e autorização por roles",
+                    "Integração com APIs de pagamento e notificação",
+                    "Deploy em AWS com Docker e CI/CD"
+                ]
+            },
+            2: {
+                titulo: "E-commerce Personalizado",
+                subtitulo: "Loja Virtual Completa",
+                descricao: "Desenvolvemos uma loja virtual completa com catálogo de produtos, sistema de carrinho, múltiplas formas de pagamento e gestão de pedidos. A solução inclui também integração com sistemas de entrega e marketplaces.",
+                detalhes: [
+                    "WordPress com tema customizado e WooCommerce",
+                    "Integração com APIs de correios e transportadoras",
+                    "Sistema de cupons e programas de fidelidade",
+                    "Otimização SEO e performance",
+                    "Integração com ERP legado do cliente"
+                ]
+            },
+            3: {
+                titulo: "Aplicativo de Delivery",
+                subtitulo: "App de Entrega com Geolocalização",
+                descricao: "Aplicativo móvel desenvolvido em Flutter para plataformas iOS e Android que conecta restaurantes, entregadores e clients finais. O sistema inclui geolocalização em tempo real, múltiplas opções de pagamento e sistema de avaliações.",
+                detalhes: [
+                    "Desenvolvido em Flutter para iOS e Android",
+                    "Backend em Firebase com Cloud Functions",
+                    "Integração com APIs de pagamento e mapas",
+                    "Sistema de notificações push",
+                    "Analytics e relatórios de performance"
+                ]
+            }
+        };
+
+        // Inicialização quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remover tela de loading
+            setTimeout(() => {
+                const loading = document.getElementById('loading');
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1000);
+            
+            // Criar partículas de fundo
+            function createParticles(containerId, count) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Tamanho aleatório entre 2px e 6px
+                    const size = Math.random() * 4 + 2;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Posição aleatória
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Cor aleatória baseada na paleta
+                    const colors = ['var(--azul)', 'var(--ciano)', 'var(--roxo)'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Opacidade aleatória
+                    particle.style.opacity = Math.random() * 0.5 + 0.1;
+                    
+                    // Duração da animação aleatória
+                    particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            // Criar partículas para diferentes seções
+            createParticles('particles', 30);
+            createParticles('particles-sobre', 20);
+            createParticles('particles-servicos', 25);
+            
+            // Menu hamburger para mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Animação de entrada com Intersection Observer - MELHORIA: Otimizado
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todos os elementos com classe de animação
+            document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Modal de projetos
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalClose = document.getElementById('modal-close');
+            const modalTitulo = document.getElementById('modal-titulo');
+            const modalSubtitulo = document.getElementById('modal-subtitulo');
+            const modalDescricao = document.getElementById('modal-descricao');
+            const modalDetalhes = document.getElementById('modal-detalhes');
+            
+            document.querySelectorAll('.btn-ver-case').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const projeto = projetos[projectId];
+                    
+                    if (projeto) {
+                        modalTitulo.textContent = projeto.titulo;
+                        modalSubtitulo.textContent = projeto.subtitulo;
+                        modalDescricao.textContent = projeto.descricao;
+                        
+                        // Limpar detalhes anteriores
+                        modalDetalhes.innerHTML = '';
+                        
+                        // Adicionar novos detalhes
+                        projeto.detalhes.forEach(detalhe => {
+                            const li = document.createElement('li');
+                            li.textContent = detalhe;
+                            modalDetalhes.appendChild(li);
+                        });
+                        
+                        // Mostrar modal
+                        modalOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Fechar modal
+            modalClose.addEventListener('click', function() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // MELHORIA: Formulário para WhatsApp
+            const formContato = document.getElementById('form-contato');
+            formContato.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Coletar dados do formulário
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const telefone = document.getElementById('telefone').value;
+                const servico = document.getElementById('servico').value;
+                const conheceu = document.querySelector('input[name="conheceu"]:checked').value;
+                const mensagem = document.getElementById('mensagem').value;
+                
+                // Mapear serviços para nomes legíveis
+                const servicoNomes = {
+                    'sistema-web': 'Sistema Web Completo',
+                    'light-page': 'Light Page',
+                    'app': 'Aplicativo',
+                    'ecommerce': 'E-commerce',
+                    'suporte': 'Suporte Web',
+                    'consultoria': 'Consultoria de Sistema'
+                };
+                
+                // Mapear fontes para nomes legíveis
+                const conheceuNomes = {
+                    'indicacao': 'Indicação',
+                    'google': 'Google',
+                    'redes-sociais': 'Redes Sociais',
+                    'outro': 'Outro'
+                };
+                
+                // Criar mensagem para WhatsApp
+                let whatsappMessage = `Olá, NovaTek! Gostaria de solicitar um orçamento.\n\n`;
+                whatsappMessage += `*Nome:* ${nome}\n`;
+                whatsappMessage += `*E-mail:* ${email}\n`;
+                whatsappMessage += `*Telefone:* ${telefone}\n`;
+                whatsappMessage += `*Serviço de Interesse:* ${servicoNomes[servico]}\n`;
+                whatsappMessage += `*Como nos conheceu:* ${conheceuNomes[conheceu]}\n`;
+                whatsappMessage += `*Mensagem:* ${mensagem}\n`;
+                
+                // Codificar mensagem para URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                
+                // Número de WhatsApp da empresa (substitua pelo número real)
+                const whatsappNumber = "5511999999999";
+                
+                // Redirecionar para WhatsApp
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Limpar formulário
+                formContato.reset();
+            });
+            
+            // Scroll suave para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Efeito de digitação no título do hero
+            const heroTitle = document.querySelector('.hero h1');
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    // Manter o cursor piscando após a digitação
+                    heroTitle.style.borderRight = '3px solid var(--ciano)';
+                    setInterval(() => {
+                        heroTitle.style.borderRightColor = heroTitle.style.borderRightColor === 'transparent' ? 'var(--ciano)' : 'transparent';
+                    }, 500);
+                }
+            }
+            
+            // Iniciar efeito de digitação após um pequeno delay
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
