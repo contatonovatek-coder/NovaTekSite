@@ -1,0 +1,3430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVATEK - Sistema Financeiro Avançado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%);
+            color: #e0e7ff;
+            overflow-x: hidden;
+            min-height: 100%;
+            position: relative;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+
+        /* Login Screen */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .login-box {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 32px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 
+                0 0 80px rgba(59, 130, 246, 0.4), 
+                0 0 120px rgba(147, 51, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            animation: glow 3s ease-in-out infinite alternate;
+            letter-spacing: -2px;
+        }
+
+        .logo p {
+            color: #06b6d4;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            letter-spacing: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            color: #e0e7ff;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem 0;
+            overflow-y: auto;
+            z-index: 100;
+            animation: slideRight 0.5s ease-out;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-logo {
+            padding: 0 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .sidebar-logo h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-item {
+            padding: 1.25rem 2rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+            margin: 0.25rem 1rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            transform: translateX(8px);
+        }
+
+        .nav-item:hover::before, .nav-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+        }
+
+        .main-content {
+            margin-left: 300px;
+            padding: 2rem;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            animation: slideDown 0.6s ease-out;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e0e7ff;
+            background: linear-gradient(135deg, #e0e7ff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .user-profile:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            animation: slideUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #e0e7ff;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-change {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-change.positive {
+            color: #06b6d4;
+        }
+
+        .card-change.negative {
+            color: #f43f5e;
+        }
+
+        .chart-container {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+        }
+
+        .chart-header {
+            margin-bottom: 2rem;
+        }
+
+        .chart-header h3 {
+            font-size: 1.5rem;
+            color: #e0e7ff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .chart {
+            height: 350px;
+            display: flex;
+            align-items: flex-end;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #3b82f6, #8b5cf6, #06b6d4);
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: growUp 1.5s ease-out;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+            transform: scaleY(1.05) scaleX(1.1);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .chart-label {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .table-header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .table-header h3 {
+            font-size: 1.5rem;
+            color: #e0e7ff;
+            font-weight: 700;
+        }
+
+        .btn-secondary {
+            padding: 0.875rem 1.5rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            color: #3b82f6;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        th {
+            padding: 1.5rem 2rem;
+            text-align: left;
+            font-weight: 700;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: #e0e7ff;
+            font-weight: 500;
+        }
+
+        tr:hover {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-badge.success {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .status-badge.warning {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .status-badge.danger {
+            background: rgba(244, 63, 94, 0.2);
+            color: #f43f5e;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        /* Kanban Board */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .kanban-column {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kanban-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+        }
+
+        .kanban-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .kanban-title {
+            font-weight: 700;
+            color: #e0e7ff;
+            font-size: 1.1rem;
+        }
+
+        .kanban-count {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .kanban-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: move;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .kanban-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .kanban-card-title {
+            font-weight: 700;
+            color: #e0e7ff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .kanban-card-meta {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(59, 130, 246, 0.8), 0 0 0 10px rgba(59, 130, 246, 0.1); }
+            100% { box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4); }
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 90px;
+            right: 0;
+            width: 400px;
+            height: 600px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            padding: 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-header h3 {
+            color: #e0e7ff;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .online-users {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .online-user {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+
+        .online-user::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 12px;
+            height: 12px;
+            background: #06b6d4;
+            border-radius: 50%;
+            border: 2px solid rgba(15, 23, 42, 0.95);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.75rem;
+            animation: messageSlide 0.3s ease-out;
+        }
+
+        .message.own {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            max-width: 70%;
+        }
+
+        .message-bubble {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 0.875rem 1.25rem;
+            border-radius: 18px;
+            color: #e0e7ff;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .message.own .message-bubble {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .message.own .message-time {
+            text-align: left;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+
+        .chat-input-field {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            color: #e0e7ff;
+            font-size: 0.875rem;
+            resize: none;
+            max-height: 100px;
+            min-height: 40px;
+        }
+
+        .chat-input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .chat-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .chat-action-btn:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: scale(1.1);
+        }
+
+        .chat-send-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+        }
+
+        .emoji-picker {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 1rem;
+            display: none;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 0.5rem;
+            max-width: 300px;
+        }
+
+        .emoji-picker.active {
+            display: grid;
+        }
+
+        .emoji-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .emoji-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: scale(1.2);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .modal-header h3 {
+            font-size: 1.75rem;
+            color: #e0e7ff;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: #f43f5e;
+            background: rgba(244, 63, 94, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            color: #e0e7ff;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-icon {
+            padding: 0.75rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            color: #3b82f6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-icon:hover {
+            background: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon.danger {
+            color: #f43f5e;
+            border-color: rgba(244, 63, 94, 0.3);
+            background: rgba(244, 63, 94, 0.2);
+        }
+
+        .btn-icon.danger:hover {
+            background: rgba(244, 63, 94, 0.3);
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 280px;
+            }
+            
+            .main-content {
+                margin-left: 280px;
+            }
+            
+            .chat-window {
+                width: 350px;
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .kanban-board {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .chat-window {
+                width: 320px;
+                height: 450px;
+                right: -10px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            }
+            to {
+                text-shadow: 0 0 50px rgba(59, 130, 246, 0.9), 0 0 80px rgba(147, 51, 234, 0.7);
+            }
+        }
+
+        @keyframes growUp {
+            from {
+                transform: scaleY(0);
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar, .header, .btn-secondary, .action-buttons, .chat-widget {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .table-container, .card, .chart-container {
+                border: 1px solid #333;
+                box-shadow: none;
+                background: white;
+                color: black;
+            }
+            
+            .card-value, .chart-header h3, th, td {
+                color: black;
+            }
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+            max-width: 400px;
+        }
+
+        .notification.success {
+            background: rgba(6, 182, 212, 0.9);
+            color: white;
+        }
+
+        .notification.error {
+            background: rgba(244, 63, 94, 0.9);
+            color: white;
+        }
+
+        .notification.info {
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <div class="logo">
+                <h1>NOVATEK</h1>
+                <p>Sistema Financeiro Avançado</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="admin@novatek.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="123456" required>
+                </div>
+                <button type="submit" class="btn-primary" id="loginBtn">
+                    <span id="loginText">Entrar no Sistema</span>
+                    <div class="loading-spinner" id="loginSpinner" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h2>NOVATEK</h2>
+            </div>
+            <nav>
+                <div class="nav-item active" data-section="dashboard">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </div>
+                <div class="nav-item" data-section="clientes">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Clientes
+                </div>
+                <div class="nav-item" data-section="propostas">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Propostas
+                </div>
+                <div class="nav-item" data-section="leads">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Pipeline de Leads
+                </div>
+                <div class="nav-item" data-section="financeiro">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Financeiro
+                </div>
+                <div class="nav-item" data-section="contratos">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Contratos
+                </div>
+                <div class="nav-item" data-section="usuarios">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Usuários
+                </div>
+                <div class="nav-item" data-section="relatorios">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Relatórios
+                </div>
+                <div class="nav-item" data-section="configuracoes">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Configurações
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="user-profile" id="userProfile">
+                    <div class="user-avatar" id="userAvatar">AD</div>
+                    <div>
+                        <div style="font-weight: 700;" id="userName">Admin Sistema</div>
+                        <div style="font-size: 0.75rem; color: #94a3b8;" id="userRole">Administrador</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="section-dashboard">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Receitas do Mês</span>
+                            <span style="font-size: 1.5rem;">💰</span>
+                        </div>
+                        <div class="card-value" id="receitasMes">R$ 127.450</div>
+                        <div class="card-change positive">
+                            ↗️ 12.5% vs mês anterior
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Despesas do Mês</span>
+                            <span style="font-size: 1.5rem;">📊</span>
+                        </div>
+                        <div class="card-value" id="despesasMes">R$ 45.230</div>
+                        <div class="card-change positive">
+                            ↘️ 3.2% vs mês anterior
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Lucro Líquido</span>
+                            <span style="font-size: 1.5rem;">📈</span>
+                        </div>
+                        <div class="card-value" id="lucroLiquido">R$ 82.220</div>
+                        <div class="card-change positive">
+                            ↗️ 18.7% vs mês anterior
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Clientes Ativos</span>
+                            <span style="font-size: 1.5rem;">👥</span>
+                        </div>
+                        <div class="card-value" id="clientesAtivos">248</div>
+                        <div class="card-change positive">
+                            ↗️ 24 novos clientes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>📊 Receitas vs Despesas (Últimos 6 Meses)</h3>
+                        <p style="color: #94a3b8; font-size: 0.875rem;">Análise comparativa mensal</p>
+                    </div>
+                    <div class="chart" id="revenueChart">
+                        <!-- Chart will be generated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clientes Section -->
+            <div class="content-section" id="section-clientes">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="🔍 Buscar clientes por nome, email ou telefone..." id="clienteSearch">
+                    <button class="btn-secondary" onclick="openModal('clienteModal')">➕ Novo Cliente</button>
+                </div>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>👥 Lista de Clientes</h3>
+                        <button class="btn-secondary" onclick="exportData('clientes')">📊 Exportar Dados</button>
+                    </div>
+                    <table id="clientesTable">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Empresa</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientesTableBody">
+                            <!-- Clientes will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Propostas Section -->
+            <div class="content-section" id="section-propostas">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="🔍 Buscar propostas por número, cliente ou valor..." id="propostaSearch">
+                    <button class="btn-secondary" onclick="openModal('propostaModal')">📝 Nova Proposta</button>
+                </div>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>📋 Propostas Comerciais</h3>
+                        <button class="btn-secondary" onclick="window.print()">🖨️ Imprimir Relatório</button>
+                    </div>
+                    <table id="propostasTable">
+                        <thead>
+                            <tr>
+                                <th>Nº Proposta</th>
+                                <th>Cliente</th>
+                                <th>Valor</th>
+                                <th>Data</th>
+                                <th>Validade</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="propostasTableBody">
+                            <!-- Propostas will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Leads Section -->
+            <div class="content-section" id="section-leads">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="🔍 Buscar leads por empresa ou valor..." id="leadSearch">
+                    <button class="btn-secondary" onclick="openModal('leadModal')">🎯 Novo Lead</button>
+                </div>
+                <div class="kanban-board" id="kanbanBoard">
+                    <!-- Kanban board will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Financeiro Section -->
+            <div class="content-section" id="section-financeiro">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Contas a Receber</span>
+                            <span style="font-size: 1.5rem;">💳</span>
+                        </div>
+                        <div class="card-value" id="contasReceber">R$ 87.450</div>
+                        <div class="card-change warning">⏰ <span id="faturasPendentes">15</span> faturas pendentes</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Contas a Pagar</span>
+                            <span style="font-size: 1.5rem;">💸</span>
+                        </div>
+                        <div class="card-value" id="contasPagar">R$ 32.180</div>
+                        <div class="card-change negative">⚠️ <span id="contasVencendo">8</span> contas vencendo</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Fluxo de Caixa</span>
+                            <span style="font-size: 1.5rem;">💰</span>
+                        </div>
+                        <div class="card-value" id="fluxoCaixa">R$ 55.270</div>
+                        <div class="card-change positive">📈 Saldo positivo</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Investimentos</span>
+                            <span style="font-size: 1.5rem;">📊</span>
+                        </div>
+                        <div class="card-value" id="investimentos">R$ 125.000</div>
+                        <div class="card-change positive">📈 +8.5% este mês</div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>💼 Movimentações Financeiras</h3>
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="btn-secondary" onclick="exportData('financeiro')">📊 Exportar</button>
+                            <button class="btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </div>
+                    <table id="movimentacoesTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="movimentacoesTableBody">
+                            <!-- Movimentações will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contratos Section -->
+            <div class="content-section" id="section-contratos">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="🔍 Buscar contratos por número, cliente ou valor..." id="contratoSearch">
+                    <button class="btn-secondary" onclick="openModal('contratoModal')">📄 Novo Contrato</button>
+                </div>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>📋 Contratos Ativos</h3>
+                        <button class="btn-secondary" onclick="exportData('contratos')">📊 Exportar Dados</button>
+                    </div>
+                    <table id="contratosTable">
+                        <thead>
+                            <tr>
+                                <th>Nº Contrato</th>
+                                <th>Cliente</th>
+                                <th>Valor Total</th>
+                                <th>Data Início</th>
+                                <th>Vigência</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contratosTableBody">
+                            <!-- Contratos will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Usuários Section -->
+            <div class="content-section" id="section-usuarios">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="🔍 Buscar usuários por nome, email ou cargo..." id="usuarioSearch">
+                    <button class="btn-secondary" onclick="openModal('usuarioModal')">👤 Novo Usuário</button>
+                </div>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>👥 Usuários do Sistema</h3>
+                        <button class="btn-secondary" onclick="exportData('usuarios')">📊 Exportar Dados</button>
+                    </div>
+                    <table id="usuariosTable">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Cargo</th>
+                                <th>Permissão</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTableBody">
+                            <!-- Usuários will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Relatórios Section -->
+            <div class="content-section" id="section-relatorios">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Relatório Mensal</span>
+                            <span style="font-size: 1.5rem;">📊</span>
+                        </div>
+                        <div class="card-value" id="relatorioMensal">Janeiro 2024</div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn-secondary" style="flex: 1;" onclick="generateReport('mensal')">📄 PDF</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Relatório Anual</span>
+                            <span style="font-size: 1.5rem;">📈</span>
+                        </div>
+                        <div class="card-value" id="relatorioAnual">2024</div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn-secondary" style="flex: 1;" onclick="generateReport('anual')">📄 PDF</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Relatório Clientes</span>
+                            <span style="font-size: 1.5rem;">👥</span>
+                        </div>
+                        <div class="card-value" id="relatorioClientes">248 Ativos</div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn-secondary" style="flex: 1;" onclick="generateReport('clientes')">📄 PDF</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Relatório Financeiro</span>
+                            <span style="font-size: 1.5rem;">💰</span>
+                        </div>
+                        <div class="card-value" id="relatorioFinanceiro">Completo</div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn-secondary" style="flex: 1;" onclick="generateReport('financeiro')">📄 PDF</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="window.print()">🖨️ Imprimir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações Section -->
+            <div class="content-section" id="section-configuracoes">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>⚙️ Configurações do Sistema</h3>
+                        <p style="color: #94a3b8; font-size: 0.875rem;">Personalize as configurações da sua empresa</p>
+                    </div>
+                    <div style="padding: 1rem;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome da Empresa</label>
+                                <input type="text" id="empresaNome" value="NOVATEK" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail Corporativo</label>
+                                <input type="email" id="empresaEmail" value="contato@novatek.com" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="tel" id="empresaTelefone" value="(11) 3000-0000" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            </div>
+                            <div class="form-group">
+                                <label>CNPJ</label>
+                                <input type="text" id="empresaCNPJ" value="00.000.000/0001-00" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Endereço Completo</label>
+                            <textarea id="empresaEndereco" rows="3" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;">Rua das Tecnologias, 123 - Sala 456
+Bairro Inovação - São Paulo/SP
+CEP: 01234-567</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Logotipo da Empresa</label>
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                                <div id="logoPreview" style="width: 100px; height: 100px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: white; border: 2px solid rgba(59, 130, 246, 0.3);">NT</div>
+                                <div>
+                                    <input type="file" id="logoInput" accept="image/*" style="display: none;" onchange="handleLogoUpload(event)">
+                                    <button type="button" class="btn-secondary" onclick="document.getElementById('logoInput').click()">📁 Alterar Logo</button>
+                                    <p style="font-size: 0.75rem; color: #94a3b8;">Formatos aceitos: PNG, JPG, SVG<br>Tamanho máximo: 2MB</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-primary" style="margin-top: 2rem;" onclick="saveConfiguracoes()">💾 Salvar Configurações</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle" id="chatToggle">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>💬 Chat da Equipe</h3>
+                <div class="online-users" id="onlineUsers">
+                    <!-- Online users will be loaded dynamically -->
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be loaded dynamically -->
+            </div>
+            <div class="chat-input">
+                <div class="chat-input-container">
+                    <textarea class="chat-input-field" id="chatInput" placeholder="Digite sua mensagem..." rows="1"></textarea>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" id="emojiBtn" title="Emojis">😊</button>
+                        <button class="chat-action-btn" title="Anexar arquivo">📎</button>
+                        <button class="chat-action-btn" title="Áudio">🎤</button>
+                        <button class="chat-action-btn chat-send-btn" id="sendBtn" title="Enviar">📤</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="emoji-picker" id="emojiPicker">
+            <button class="emoji-btn">😊</button>
+            <button class="emoji-btn">😂</button>
+            <button class="emoji-btn">❤️</button>
+            <button class="emoji-btn">👍</button>
+            <button class="emoji-btn">👎</button>
+            <button class="emoji-btn">🎉</button>
+            <button class="emoji-btn">🚀</button>
+            <button class="emoji-btn">💰</button>
+            <button class="emoji-btn">📊</button>
+            <button class="emoji-btn">✅</button>
+            <button class="emoji-btn">❌</button>
+            <button class="emoji-btn">⚡</button>
+            <button class="emoji-btn">🔥</button>
+            <button class="emoji-btn">💡</button>
+            <button class="emoji-btn">🎯</button>
+            <button class="emoji-btn">📈</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Modal Cliente -->
+    <div class="modal" id="clienteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="clienteModalTitle">👤 Novo Cliente</h3>
+                <button class="close-modal" onclick="closeModal('clienteModal')">×</button>
+            </div>
+            <form id="clienteForm" onsubmit="saveCliente(event)">
+                <input type="hidden" id="clienteId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" id="clienteNome" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" id="clienteEmail" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" id="clienteTelefone" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Empresa</label>
+                        <input type="text" id="clienteEmpresa" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea id="clienteObservacoes" rows="3" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">💾 Salvar Cliente</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Proposta -->
+    <div class="modal" id="propostaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="propostaModalTitle">📝 Nova Proposta</h3>
+                <button class="close-modal" onclick="closeModal('propostaModal')">×</button>
+            </div>
+            <form id="propostaForm" onsubmit="saveProposta(event)">
+                <input type="hidden" id="propostaId">
+                <div class="form-group">
+                    <label>Cliente</label>
+                    <select id="propostaCliente" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor (R$)</label>
+                        <input type="number" id="propostaValor" step="0.01" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Validade</label>
+                        <input type="date" id="propostaValidade" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição dos Serviços</label>
+                    <textarea id="propostaDescricao" rows="4" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">💾 Salvar Proposta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Lead -->
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="leadModalTitle">🎯 Novo Lead</h3>
+                <button class="close-modal" onclick="closeModal('leadModal')">×</button>
+            </div>
+            <form id="leadForm" onsubmit="saveLead(event)">
+                <input type="hidden" id="leadId">
+                <div class="form-group">
+                    <label>Nome da Empresa</label>
+                    <input type="text" id="leadEmpresa" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor Estimado (R$)</label>
+                        <input type="number" id="leadValor" step="0.01" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Estágio</label>
+                        <select id="leadEstagio" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            <option value="">Selecione o estágio</option>
+                            <option value="novos">Novos Leads</option>
+                            <option value="contato">Em Contato</option>
+                            <option value="proposta">Proposta Enviada</option>
+                            <option value="fechado">Fechado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contato Principal</label>
+                        <input type="text" id="leadContato" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" id="leadTelefone" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea id="leadObservacoes" rows="3" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">💾 Salvar Lead</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Contrato -->
+    <div class="modal" id="contratoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="contratoModalTitle">📄 Novo Contrato</h3>
+                <button class="close-modal" onclick="closeModal('contratoModal')">×</button>
+            </div>
+            <form id="contratoForm" onsubmit="saveContrato(event)">
+                <input type="hidden" id="contratoId">
+                <div class="form-group">
+                    <label>Cliente</label>
+                    <select id="contratoCliente" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor Total (R$)</label>
+                        <input type="number" id="contratoValor" step="0.01" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Vigência (meses)</label>
+                        <input type="number" id="contratoVigencia" min="1" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Objeto do Contrato</label>
+                    <textarea id="contratoObjeto" rows="3" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Cláusulas Especiais</label>
+                    <textarea id="contratoClausulas" rows="6" style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff; resize: vertical;">CLÁUSULA 1ª - DO OBJETO
+O presente contrato tem como objeto a prestação de serviços conforme especificado.
+
+CLÁUSULA 2ª - DO PRAZO
+O prazo de vigência será conforme especificado acima.
+
+CLÁUSULA 3ª - DO PAGAMENTO
+O pagamento será realizado conforme acordado entre as partes.</textarea>
+                </div>
+                <button type="submit" class="btn-primary">💾 Salvar Contrato</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Usuário -->
+    <div class="modal" id="usuarioModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="usuarioModalTitle">👤 Novo Usuário</h3>
+                <button class="close-modal" onclick="closeModal('usuarioModal')">×</button>
+            </div>
+            <form id="usuarioForm" onsubmit="saveUsuario(event)">
+                <input type="hidden" id="usuarioId">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <div id="profilePreview" style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 700; border: 3px solid rgba(59, 130, 246, 0.5); overflow: hidden;">
+                        <span id="profileInitials">US</span>
+                    </div>
+                    <input type="file" id="profileInput" accept="image/*" style="display: none;" onchange="handleProfileUpload(event)">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('profileInput').click()">📁 Escolher Foto</button>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" id="usuarioNome" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;" oninput="updateProfileInitials()">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" id="usuarioEmail" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cargo</label>
+                        <input type="text" id="usuarioCargo" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Permissão</label>
+                        <select id="usuarioPermissao" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                            <option value="">Selecione a permissão</option>
+                            <option value="usuario">Usuário</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row" id="senhaFields">
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" id="usuarioSenha" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirmar Senha</label>
+                        <input type="password" id="usuarioConfirmarSenha" required style="width: 100%; padding: 0.875rem 1rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; color: #e0e7ff;">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">💾 Salvar Usuário</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Data Storage System
+        class DataStorage {
+            constructor() {
+                this.storageKey = 'novatek_data';
+                this.init();
+            }
+
+            init() {
+                if (!localStorage.getItem(this.storageKey)) {
+                    this.setDefaultData();
+                }
+            }
+
+            setDefaultData() {
+                const defaultData = {
+                    usuarios: [
+                        {
+                            id: 1,
+                            nome: 'Admin Sistema',
+                            email: 'admin@novatek.com',
+                            senha: '123456',
+                            cargo: 'Administrador',
+                            permissao: 'admin',
+                            avatar: '',
+                            status: 'ativo',
+                            dataCriacao: new Date().toISOString()
+                        }
+                    ],
+                    clientes: [
+                        {
+                            id: 1,
+                            nome: 'João Silva Santos',
+                            email: 'joao.silva@techcorp.com',
+                            telefone: '(11) 98765-4321',
+                            empresa: 'TechCorp Solutions',
+                            observacoes: '',
+                            status: 'ativo',
+                            dataCriacao: new Date().toISOString()
+                        },
+                        {
+                            id: 2,
+                            nome: 'Maria Santos Oliveira',
+                            email: 'maria.santos@innovate.com',
+                            telefone: '(11) 91234-5678',
+                            empresa: 'Innovate Digital',
+                            observacoes: '',
+                            status: 'ativo',
+                            dataCriacao: new Date().toISOString()
+                        }
+                    ],
+                    propostas: [
+                        {
+                            id: 1,
+                            numero: '2024-001',
+                            clienteId: 1,
+                            valor: 15000,
+                            descricao: 'Desenvolvimento de sistema financeiro',
+                            validade: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                            status: 'aprovada',
+                            dataCriacao: new Date().toISOString()
+                        }
+                    ],
+                    leads: [
+                        {
+                            id: 1,
+                            empresa: 'Tech Solutions LTDA',
+                            valor: 45000,
+                            contato: 'Carlos Mendes',
+                            telefone: '(11) 99876-5432',
+                            estagio: 'novos',
+                            observacoes: 'Interessado em consultoria',
+                            dataCriacao: new Date().toISOString()
+                        }
+                    ],
+                    contratos: [
+                        {
+                            id: 1,
+                            numero: 'CT-2024-001',
+                            clienteId: 1,
+                            valor: 45000,
+                            objeto: 'Prestação de serviços de consultoria em TI',
+                            clausulas: 'CLÁUSULA 1ª - DO OBJETO...',
+                            vigencia: 12,
+                            dataInicio: new Date().toISOString().split('T')[0],
+                            status: 'ativo',
+                            dataCriacao: new Date().toISOString()
+                        }
+                    ],
+                    movimentacoes: [
+                        {
+                            id: 1,
+                            data: new Date().toISOString().split('T')[0],
+                            descricao: 'Pagamento Cliente - João Silva',
+                            categoria: 'Serviços',
+                            tipo: 'receita',
+                            valor: 15000,
+                            status: 'recebido'
+                        }
+                    ],
+                    configuracoes: {
+                        empresaNome: 'NOVATEK',
+                        empresaEmail: 'contato@novatek.com',
+                        empresaTelefone: '(11) 3000-0000',
+                        empresaCNPJ: '00.000.000/0001-00',
+                        empresaEndereco: 'Rua das Tecnologias, 123 - Sala 456\nBairro Inovação - São Paulo/SP\nCEP: 01234-567'
+                    }
+                };
+
+                this.saveData(defaultData);
+            }
+
+            getData() {
+                return JSON.parse(localStorage.getItem(this.storageKey)) || {};
+            }
+
+            saveData(data) {
+                localStorage.setItem(this.storageKey, JSON.stringify(data));
+            }
+
+            // CRUD Operations
+            getAll(table) {
+                const data = this.getData();
+                return data[table] || [];
+            }
+
+            getById(table, id) {
+                const items = this.getAll(table);
+                return items.find(item => item.id === parseInt(id));
+            }
+
+            create(table, item) {
+                const data = this.getData();
+                const items = data[table] || [];
+                const newId = items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1;
+                const newItem = {
+                    ...item,
+                    id: newId,
+                    dataCriacao: new Date().toISOString()
+                };
+                items.push(newItem);
+                data[table] = items;
+                this.saveData(data);
+                return newItem;
+            }
+
+            update(table, id, updates) {
+                const data = this.getData();
+                const items = data[table] || [];
+                const index = items.findIndex(item => item.id === parseInt(id));
+                if (index !== -1) {
+                    items[index] = { ...items[index], ...updates };
+                    data[table] = items;
+                    this.saveData(data);
+                    return items[index];
+                }
+                return null;
+            }
+
+            delete(table, id) {
+                const data = this.getData();
+                const items = data[table] || [];
+                const filteredItems = items.filter(item => item.id !== parseInt(id));
+                data[table] = filteredItems;
+                this.saveData(data);
+                return true;
+            }
+        }
+
+        // Initialize Data Storage
+        const db = new DataStorage();
+
+        // Global Variables
+        let currentUser = null;
+        let onlineUsers = ['AD', 'CM', 'AS'];
+
+        // Authentication System
+        function authenticateUser(email, password) {
+            const users = db.getAll('usuarios');
+            const user = users.find(u => u.email === email && u.senha === password);
+            return user;
+        }
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Show loading state
+            const loginBtn = document.getElementById('loginBtn');
+            const loginText = document.getElementById('loginText');
+            const loginSpinner = document.getElementById('loginSpinner');
+            
+            loginText.style.display = 'none';
+            loginSpinner.style.display = 'inline-block';
+            loginBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                const user = authenticateUser(email, password);
+                
+                if (user) {
+                    currentUser = user;
+                    
+                    // Update user profile
+                    document.getElementById('userName').textContent = user.nome;
+                    document.getElementById('userRole').textContent = user.cargo;
+                    document.getElementById('userAvatar').textContent = getInitials(user.nome);
+                    
+                    // Animate login
+                    const loginBox = document.querySelector('.login-box');
+                    loginBox.style.transform = 'scale(0.95)';
+                    loginBox.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        document.getElementById('loginScreen').style.display = 'none';
+                        document.getElementById('dashboard').classList.add('active');
+                        loadDashboardData();
+                        showNotification('✅ Login realizado com sucesso!', 'success');
+                    }, 500);
+                } else {
+                    showNotification('❌ E-mail ou senha incorretos!', 'error');
+                    
+                    // Reset loading state
+                    loginText.style.display = 'inline-block';
+                    loginSpinner.style.display = 'none';
+                    loginBtn.disabled = false;
+                }
+            }, 1500);
+        });
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const section = this.getAttribute('data-section');
+                
+                // Update active nav
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active content
+                document.querySelectorAll('.content-section').forEach(content => content.classList.remove('active'));
+                document.getElementById('section-' + section).classList.add('active');
+                
+                // Update page title
+                const titles = {
+                    'dashboard': 'Dashboard',
+                    'clientes': 'Clientes',
+                    'propostas': 'Propostas',
+                    'leads': 'Pipeline de Leads',
+                    'financeiro': 'Financeiro',
+                    'contratos': 'Contratos',
+                    'usuarios': 'Usuários',
+                    'relatorios': 'Relatórios',
+                    'configuracoes': 'Configurações'
+                };
+                
+                document.getElementById('pageTitle').textContent = titles[section];
+                
+                // Load section data
+                if (section === 'clientes') loadClientes();
+                if (section === 'propostas') loadPropostas();
+                if (section === 'leads') loadLeads();
+                if (section === 'financeiro') loadFinanceiro();
+                if (section === 'contratos') loadContratos();
+                if (section === 'usuarios') loadUsuarios();
+                if (section === 'configuracoes') loadConfiguracoes();
+            });
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            // Reset form
+            const form = document.querySelector(`#${modalId} form`);
+            if (form) {
+                form.reset();
+                // Clear hidden ID fields
+                const idField = form.querySelector('input[type="hidden"]');
+                if (idField) idField.value = '';
+                
+                // Reset modal titles
+                const modalTitle = document.getElementById(`${modalId}Title`);
+                if (modalTitle) {
+                    modalTitle.textContent = modalTitle.textContent.replace('Editar', 'Novo');
+                }
+            }
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Data Loading Functions
+        function loadDashboardData() {
+            // Load clientes count
+            const clientes = db.getAll('clientes');
+            document.getElementById('clientesAtivos').textContent = clientes.length;
+            
+            // Load financial data
+            const movimentacoes = db.getAll('movimentacoes');
+            const receitas = movimentacoes.filter(m => m.tipo === 'receita').reduce((sum, m) => sum + m.valor, 0);
+            const despesas = movimentacoes.filter(m => m.tipo === 'despesa').reduce((sum, m) => sum + m.valor, 0);
+            
+            document.getElementById('receitasMes').textContent = `R$ ${receitas.toLocaleString('pt-BR')}`;
+            document.getElementById('despesasMes').textContent = `R$ ${despesas.toLocaleString('pt-BR')}`;
+            document.getElementById('lucroLiquido').textContent = `R$ ${(receitas - despesas).toLocaleString('pt-BR')}`;
+            
+            // Load chart data
+            loadRevenueChart();
+        }
+
+        function loadClientes() {
+            const clientes = db.getAll('clientes');
+            const tbody = document.getElementById('clientesTableBody');
+            tbody.innerHTML = '';
+            
+            clientes.forEach(cliente => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${cliente.nome}</td>
+                    <td>${cliente.email}</td>
+                    <td>${cliente.telefone}</td>
+                    <td>${cliente.empresa}</td>
+                    <td><span class="status-badge ${cliente.status === 'ativo' ? 'success' : 'warning'}">${cliente.status === 'ativo' ? 'Ativo' : 'Inativo'}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon" onclick="editCliente(${cliente.id})" title="Editar">✏️</button>
+                            <button class="btn-icon" onclick="viewCliente(${cliente.id})" title="Visualizar">👁️</button>
+                            <button class="btn-icon danger" onclick="deleteCliente(${cliente.id})" title="Excluir">🗑️</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadPropostas() {
+            const propostas = db.getAll('propostas');
+            const clientes = db.getAll('clientes');
+            const tbody = document.getElementById('propostasTableBody');
+            tbody.innerHTML = '';
+            
+            // Populate client select in modal
+            const clienteSelect = document.getElementById('propostaCliente');
+            clienteSelect.innerHTML = '<option value="">Selecione um cliente</option>';
+            clientes.forEach(cliente => {
+                clienteSelect.innerHTML += `<option value="${cliente.id}">${cliente.nome}</option>`;
+            });
+            
+            propostas.forEach(proposta => {
+                const cliente = clientes.find(c => c.id === proposta.clienteId);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>#${proposta.numero}</strong></td>
+                    <td>${cliente ? cliente.nome : 'Cliente não encontrado'}</td>
+                    <td style="color: #06b6d4; font-weight: 700;">R$ ${proposta.valor.toLocaleString('pt-BR')}</td>
+                    <td>${new Date(proposta.dataCriacao).toLocaleDateString('pt-BR')}</td>
+                    <td>${new Date(proposta.validade).toLocaleDateString('pt-BR')}</td>
+                    <td><span class="status-badge ${proposta.status === 'aprovada' ? 'success' : proposta.status === 'rejeitada' ? 'danger' : 'warning'}">${proposta.status === 'aprovada' ? 'Aprovada' : proposta.status === 'rejeitada' ? 'Rejeitada' : 'Em Análise'}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon" onclick="generatePDF('proposta', ${proposta.id})" title="Gerar PDF">📄</button>
+                            <button class="btn-icon" onclick="editProposta(${proposta.id})" title="Editar">✏️</button>
+                            <button class="btn-icon" onclick="sendEmail('proposta', ${proposta.id})" title="Enviar por Email">📧</button>
+                            <button class="btn-icon danger" onclick="deleteProposta(${proposta.id})" title="Excluir">🗑️</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadLeads() {
+            const leads = db.getAll('leads');
+            const kanbanBoard = document.getElementById('kanbanBoard');
+            
+            const stages = {
+                'novos': { title: '🆕 Novos Leads', leads: [] },
+                'contato': { title: '📞 Em Contato', leads: [] },
+                'proposta': { title: '📋 Proposta Enviada', leads: [] },
+                'fechado': { title: '✅ Fechado', leads: [] }
+            };
+            
+            // Group leads by stage
+            leads.forEach(lead => {
+                if (stages[lead.estagio]) {
+                    stages[lead.estagio].leads.push(lead);
+                }
+            });
+            
+            // Generate kanban columns
+            kanbanBoard.innerHTML = '';
+            
+            Object.entries(stages).forEach(([stageKey, stageData]) => {
+                const column = document.createElement('div');
+                column.className = 'kanban-column';
+                column.innerHTML = `
+                    <div class="kanban-header">
+                        <span class="kanban-title">${stageData.title}</span>
+                        <span class="kanban-count">${stageData.leads.length}</span>
+                    </div>
+                `;
+                
+                stageData.leads.forEach(lead => {
+                    const card = document.createElement('div');
+                    card.className = 'kanban-card';
+                    card.draggable = true;
+                    card.setAttribute('data-lead-id', lead.id);
+                    card.innerHTML = `
+                        <div class="kanban-card-title">${lead.empresa}</div>
+                        <div class="kanban-card-meta">
+                            <span style="color: #06b6d4; font-weight: 700;">R$ ${lead.valor.toLocaleString('pt-BR')}</span>
+                            <span>📅 ${new Date(lead.dataCriacao).toLocaleDateString('pt-BR')}</span>
+                        </div>
+                    `;
+                    
+                    // Add drag events
+                    card.addEventListener('dragstart', handleDragStart);
+                    card.addEventListener('dragend', handleDragEnd);
+                    
+                    column.appendChild(card);
+                });
+                
+                // Add drop events
+                column.addEventListener('dragover', handleDragOver);
+                column.addEventListener('drop', handleDrop);
+                
+                kanbanBoard.appendChild(column);
+            });
+        }
+
+        function loadFinanceiro() {
+            const movimentacoes = db.getAll('movimentacoes');
+            const tbody = document.getElementById('movimentacoesTableBody');
+            tbody.innerHTML = '';
+            
+            // Update financial cards
+            const contasReceber = movimentacoes.filter(m => m.tipo === 'receita' && m.status !== 'recebido').reduce((sum, m) => sum + m.valor, 0);
+            const contasPagar = movimentacoes.filter(m => m.tipo === 'despesa' && m.status !== 'pago').reduce((sum, m) => sum + m.valor, 0);
+            const faturasPendentes = movimentacoes.filter(m => m.tipo === 'receita' && m.status !== 'recebido').length;
+            const contasVencendo = movimentacoes.filter(m => m.tipo === 'despesa' && m.status !== 'pago').length;
+            
+            document.getElementById('contasReceber').textContent = `R$ ${contasReceber.toLocaleString('pt-BR')}`;
+            document.getElementById('contasPagar').textContent = `R$ ${contasPagar.toLocaleString('pt-BR')}`;
+            document.getElementById('faturasPendentes').textContent = faturasPendentes;
+            document.getElementById('contasVencendo').textContent = contasVencendo;
+            
+            movimentacoes.forEach(mov => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${new Date(mov.data).toLocaleDateString('pt-BR')}</td>
+                    <td>${mov.descricao}</td>
+                    <td>${mov.categoria}</td>
+                    <td><span style="color: ${mov.tipo === 'receita' ? '#06b6d4' : '#f43f5e'};">${mov.tipo === 'receita' ? '💰 Receita' : '💸 Despesa'}</span></td>
+                    <td style="color: ${mov.tipo === 'receita' ? '#06b6d4' : '#f43f5e'}; font-weight: 700;">${mov.tipo === 'receita' ? '+' : '-'} R$ ${mov.valor.toLocaleString('pt-BR')}</td>
+                    <td><span class="status-badge ${mov.status === 'recebido' || mov.status === 'pago' ? 'success' : 'warning'}">${mov.status === 'recebido' ? 'Recebido' : mov.status === 'pago' ? 'Pago' : 'Pendente'}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadContratos() {
+            const contratos = db.getAll('contratos');
+            const clientes = db.getAll('clientes');
+            const tbody = document.getElementById('contratosTableBody');
+            tbody.innerHTML = '';
+            
+            // Populate client select in modal
+            const clienteSelect = document.getElementById('contratoCliente');
+            clienteSelect.innerHTML = '<option value="">Selecione um cliente</option>';
+            clientes.forEach(cliente => {
+                clienteSelect.innerHTML += `<option value="${cliente.id}">${cliente.nome}</option>`;
+            });
+            
+            contratos.forEach(contrato => {
+                const cliente = clientes.find(c => c.id === contrato.clienteId);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${contrato.numero}</strong></td>
+                    <td>${cliente ? cliente.nome : 'Cliente não encontrado'}</td>
+                    <td style="color: #06b6d4; font-weight: 700;">R$ ${contrato.valor.toLocaleString('pt-BR')}</td>
+                    <td>${new Date(contrato.dataInicio).toLocaleDateString('pt-BR')}</td>
+                    <td>${contrato.vigencia} meses</td>
+                    <td><span class="status-badge ${contrato.status === 'ativo' ? 'success' : 'warning'}">${contrato.status === 'ativo' ? 'Ativo' : 'Vencendo'}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon" onclick="generatePDF('contrato', ${contrato.id})" title="Gerar PDF">📄</button>
+                            <button class="btn-icon" onclick="editContrato(${contrato.id})" title="Editar">✏️</button>
+                            <button class="btn-icon" onclick="renewContrato(${contrato.id})" title="Renovar">🔄</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadUsuarios() {
+            const usuarios = db.getAll('usuarios');
+            const tbody = document.getElementById('usuariosTableBody');
+            tbody.innerHTML = '';
+            
+            usuarios.forEach(usuario => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.875rem;">${getInitials(usuario.nome)}</div>
+                    </td>
+                    <td><strong>${usuario.nome}</strong></td>
+                    <td>${usuario.email}</td>
+                    <td>${usuario.cargo}</td>
+                    <td><span class="status-badge ${usuario.permissao === 'admin' ? 'danger' : usuario.permissao === 'gerente' ? 'warning' : 'success'}">${usuario.permissao}</span></td>
+                    <td><span class="status-badge success">Ativo</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon" onclick="editUsuario(${usuario.id})" title="Editar">✏️</button>
+                            <button class="btn-icon" onclick="viewUsuario(${usuario.id})" title="Visualizar">👁️</button>
+                            ${usuario.id !== 1 ? `<button class="btn-icon danger" onclick="deleteUsuario(${usuario.id})" title="Excluir">🗑️</button>` : ''}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function loadConfiguracoes() {
+            const configuracoes = db.getAll('configuracoes')[0] || {};
+            
+            document.getElementById('empresaNome').value = configuracoes.empresaNome || 'NOVATEK';
+            document.getElementById('empresaEmail').value = configuracoes.empresaEmail || 'contato@novatek.com';
+            document.getElementById('empresaTelefone').value = configuracoes.empresaTelefone || '(11) 3000-0000';
+            document.getElementById('empresaCNPJ').value = configuracoes.empresaCNPJ || '00.000.000/0001-00';
+            document.getElementById('empresaEndereco').value = configuracoes.empresaEndereco || 'Rua das Tecnologias, 123 - Sala 456\nBairro Inovação - São Paulo/SP\nCEP: 01234-567';
+        }
+
+        function loadRevenueChart() {
+            const chartContainer = document.getElementById('revenueChart');
+            chartContainer.innerHTML = '';
+            
+            const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'];
+            const revenues = [65, 78, 85, 72, 92, 100];
+            
+            months.forEach((month, index) => {
+                const column = document.createElement('div');
+                column.style.cssText = 'flex-direction: column; flex: 1;';
+                
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = `${revenues[index]}%`;
+                
+                const label = document.createElement('div');
+                label.className = 'chart-label';
+                label.textContent = month;
+                
+                column.appendChild(bar);
+                column.appendChild(label);
+                chartContainer.appendChild(column);
+            });
+        }
+
+        // Form Handlers
+        function saveCliente(event) {
+            event.preventDefault();
+            
+            const clienteId = document.getElementById('clienteId').value;
+            const clienteData = {
+                nome: document.getElementById('clienteNome').value,
+                email: document.getElementById('clienteEmail').value,
+                telefone: document.getElementById('clienteTelefone').value,
+                empresa: document.getElementById('clienteEmpresa').value,
+                observacoes: document.getElementById('clienteObservacoes').value,
+                status: 'ativo'
+            };
+            
+            if (clienteId) {
+                db.update('clientes', clienteId, clienteData);
+                showNotification('✅ Cliente atualizado com sucesso!', 'success');
+            } else {
+                db.create('clientes', clienteData);
+                showNotification('✅ Cliente criado com sucesso!', 'success');
+            }
+            
+            closeModal('clienteModal');
+            loadClientes();
+            loadDashboardData();
+        }
+
+        function saveProposta(event) {
+            event.preventDefault();
+            
+            const propostaId = document.getElementById('propostaId').value;
+            const propostaData = {
+                numero: `2024-${String(db.getAll('propostas').length + 1).padStart(3, '0')}`,
+                clienteId: parseInt(document.getElementById('propostaCliente').value),
+                valor: parseFloat(document.getElementById('propostaValor').value),
+                descricao: document.getElementById('propostaDescricao').value,
+                validade: document.getElementById('propostaValidade').value,
+                status: 'em_analise'
+            };
+            
+            if (propostaId) {
+                db.update('propostas', propostaId, propostaData);
+                showNotification('✅ Proposta atualizada com sucesso!', 'success');
+            } else {
+                db.create('propostas', propostaData);
+                showNotification('✅ Proposta criada com sucesso!', 'success');
+            }
+            
+            closeModal('propostaModal');
+            loadPropostas();
+        }
+
+        function saveLead(event) {
+            event.preventDefault();
+            
+            const leadId = document.getElementById('leadId').value;
+            const leadData = {
+                empresa: document.getElementById('leadEmpresa').value,
+                valor: parseFloat(document.getElementById('leadValor').value),
+                contato: document.getElementById('leadContato').value,
+                telefone: document.getElementById('leadTelefone').value,
+                estagio: document.getElementById('leadEstagio').value,
+                observacoes: document.getElementById('leadObservacoes').value
+            };
+            
+            if (leadId) {
+                db.update('leads', leadId, leadData);
+                showNotification('✅ Lead atualizado com sucesso!', 'success');
+            } else {
+                db.create('leads', leadData);
+                showNotification('✅ Lead criado com sucesso!', 'success');
+            }
+            
+            closeModal('leadModal');
+            loadLeads();
+        }
+
+        function saveContrato(event) {
+            event.preventDefault();
+            
+            const contratoId = document.getElementById('contratoId').value;
+            const contratoData = {
+                numero: `CT-2024-${String(db.getAll('contratos').length + 1).padStart(3, '0')}`,
+                clienteId: parseInt(document.getElementById('contratoCliente').value),
+                valor: parseFloat(document.getElementById('contratoValor').value),
+                objeto: document.getElementById('contratoObjeto').value,
+                clausulas: document.getElementById('contratoClausulas').value,
+                vigencia: parseInt(document.getElementById('contratoVigencia').value),
+                dataInicio: new Date().toISOString().split('T')[0],
+                status: 'ativo'
+            };
+            
+            if (contratoId) {
+                db.update('contratos', contratoId, contratoData);
+                showNotification('✅ Contrato atualizado com sucesso!', 'success');
+            } else {
+                db.create('contratos', contratoData);
+                showNotification('✅ Contrato criado com sucesso!', 'success');
+            }
+            
+            closeModal('contratoModal');
+            loadContratos();
+        }
+
+        function saveUsuario(event) {
+            event.preventDefault();
+            
+            const usuarioId = document.getElementById('usuarioId').value;
+            const senha = document.getElementById('usuarioSenha').value;
+            const confirmarSenha = document.getElementById('usuarioConfirmarSenha').value;
+            
+            if (senha !== confirmarSenha) {
+                showNotification('❌ As senhas não coincidem!', 'error');
+                return;
+            }
+            
+            const usuarioData = {
+                nome: document.getElementById('usuarioNome').value,
+                email: document.getElementById('usuarioEmail').value,
+                senha: senha,
+                cargo: document.getElementById('usuarioCargo').value,
+                permissao: document.getElementById('usuarioPermissao').value,
+                status: 'ativo'
+            };
+            
+            if (usuarioId) {
+                // Don't update password if empty (for editing existing users)
+                if (!senha) {
+                    delete usuarioData.senha;
+                }
+                db.update('usuarios', usuarioId, usuarioData);
+                showNotification('✅ Usuário atualizado com sucesso!', 'success');
+            } else {
+                db.create('usuarios', usuarioData);
+                showNotification('✅ Usuário criado com sucesso!', 'success');
+            }
+            
+            closeModal('usuarioModal');
+            loadUsuarios();
+        }
+
+        function saveConfiguracoes() {
+            const configuracoes = {
+                empresaNome: document.getElementById('empresaNome').value,
+                empresaEmail: document.getElementById('empresaEmail').value,
+                empresaTelefone: document.getElementById('empresaTelefone').value,
+                empresaCNPJ: document.getElementById('empresaCNPJ').value,
+                empresaEndereco: document.getElementById('empresaEndereco').value
+            };
+            
+            // Since configuracoes is stored as an array with one object
+            const existingConfig = db.getAll('configuracoes')[0];
+            if (existingConfig) {
+                db.update('configuracoes', existingConfig.id, configuracoes);
+            } else {
+                db.create('configuracoes', configuracoes);
+            }
+            
+            showNotification('✅ Configurações salvas com sucesso!', 'success');
+        }
+
+        // Edit Functions
+        function editCliente(id) {
+            const cliente = db.getById('clientes', id);
+            if (cliente) {
+                document.getElementById('clienteId').value = cliente.id;
+                document.getElementById('clienteNome').value = cliente.nome;
+                document.getElementById('clienteEmail').value = cliente.email;
+                document.getElementById('clienteTelefone').value = cliente.telefone;
+                document.getElementById('clienteEmpresa').value = cliente.empresa;
+                document.getElementById('clienteObservacoes').value = cliente.observacoes;
+                
+                document.getElementById('clienteModalTitle').textContent = '✏️ Editar Cliente';
+                openModal('clienteModal');
+            }
+        }
+
+        function editProposta(id) {
+            const proposta = db.getById('propostas', id);
+            if (proposta) {
+                document.getElementById('propostaId').value = proposta.id;
+                document.getElementById('propostaCliente').value = proposta.clienteId;
+                document.getElementById('propostaValor').value = proposta.valor;
+                document.getElementById('propostaDescricao').value = proposta.descricao;
+                document.getElementById('propostaValidade').value = proposta.validade;
+                
+                document.getElementById('propostaModalTitle').textContent = '✏️ Editar Proposta';
+                openModal('propostaModal');
+            }
+        }
+
+        function editContrato(id) {
+            const contrato = db.getById('contratos', id);
+            if (contrato) {
+                document.getElementById('contratoId').value = contrato.id;
+                document.getElementById('contratoCliente').value = contrato.clienteId;
+                document.getElementById('contratoValor').value = contrato.valor;
+                document.getElementById('contratoObjeto').value = contrato.objeto;
+                document.getElementById('contratoClausulas').value = contrato.clausulas;
+                document.getElementById('contratoVigencia').value = contrato.vigencia;
+                
+                document.getElementById('contratoModalTitle').textContent = '✏️ Editar Contrato';
+                openModal('contratoModal');
+            }
+        }
+
+        function editUsuario(id) {
+            const usuario = db.getById('usuarios', id);
+            if (usuario) {
+                document.getElementById('usuarioId').value = usuario.id;
+                document.getElementById('usuarioNome').value = usuario.nome;
+                document.getElementById('usuarioEmail').value = usuario.email;
+                document.getElementById('usuarioCargo').value = usuario.cargo;
+                document.getElementById('usuarioPermissao').value = usuario.permissao;
+                
+                // Clear password fields for editing
+                document.getElementById('usuarioSenha').value = '';
+                document.getElementById('usuarioConfirmarSenha').value = '';
+                document.getElementById('usuarioSenha').required = false;
+                document.getElementById('usuarioConfirmarSenha').required = false;
+                
+                document.getElementById('profileInitials').textContent = getInitials(usuario.nome);
+                document.getElementById('usuarioModalTitle').textContent = '✏️ Editar Usuário';
+                openModal('usuarioModal');
+            }
+        }
+
+        // Delete Functions
+        function deleteCliente(id) {
+            if (confirm('Tem certeza que deseja excluir este cliente?')) {
+                db.delete('clientes', id);
+                showNotification('🗑️ Cliente excluído com sucesso!', 'success');
+                loadClientes();
+                loadDashboardData();
+            }
+        }
+
+        function deleteProposta(id) {
+            if (confirm('Tem certeza que deseja excluir esta proposta?')) {
+                db.delete('propostas', id);
+                showNotification('🗑️ Proposta excluída com sucesso!', 'success');
+                loadPropostas();
+            }
+        }
+
+        function deleteUsuario(id) {
+            if (id === 1) {
+                showNotification('❌ Não é possível excluir o usuário administrador principal!', 'error');
+                return;
+            }
+            
+            if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                db.delete('usuarios', id);
+                showNotification('🗑️ Usuário excluído com sucesso!', 'success');
+                loadUsuarios();
+            }
+        }
+
+        // View Functions
+        function viewCliente(id) {
+            const cliente = db.getById('clientes', id);
+            if (cliente) {
+                // In a real application, you would show a detailed view
+                showNotification(`👁️ Visualizando dados de ${cliente.nome}`, 'info');
+            }
+        }
+
+        function viewUsuario(id) {
+            const usuario = db.getById('usuarios', id);
+            if (usuario) {
+                // In a real application, you would show a detailed view
+                showNotification(`👁️ Visualizando dados de ${usuario.nome}`, 'info');
+            }
+        }
+
+        // Other Action Functions
+        function renewContrato(id) {
+            if (confirm('Deseja renovar este contrato?')) {
+                const contrato = db.getById('contratos', id);
+                if (contrato) {
+                    const newEndDate = new Date();
+                    newEndDate.setMonth(newEndDate.getMonth() + contrato.vigencia);
+                    
+                    db.update('contratos', id, {
+                        dataInicio: new Date().toISOString().split('T')[0],
+                        status: 'ativo'
+                    });
+                    
+                    showNotification('🔄 Contrato renovado com sucesso!', 'success');
+                    loadContratos();
+                }
+            }
+        }
+
+        // Utility Functions
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        }
+
+        function updateProfileInitials() {
+            const name = document.getElementById('usuarioNome').value;
+            document.getElementById('profileInitials').textContent = getInitials(name);
+        }
+
+        function handleProfileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('profilePreview');
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">';
+                };
+                reader.readAsDataURL(file);
+                showNotification('📁 Foto carregada com sucesso!', 'success');
+            }
+        }
+
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('logoPreview');
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">';
+                };
+                reader.readAsDataURL(file);
+                showNotification('📁 Logo carregada com sucesso!', 'success');
+            }
+        }
+
+        // Search Functions
+        document.getElementById('clienteSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#clientesTableBody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Drag and Drop for Kanban
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+        }
+
+        function handleDragEnd(e) {
+            this.style.opacity = '1';
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            this.style.background = 'rgba(59, 130, 246, 0.1)';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.style.background = '';
+            
+            if (draggedElement) {
+                // Get the stage from the column
+                const stage = this.querySelector('.kanban-title').textContent;
+                let stageKey = '';
+                
+                if (stage.includes('Novos')) stageKey = 'novos';
+                else if (stage.includes('Contato')) stageKey = 'contato';
+                else if (stage.includes('Proposta')) stageKey = 'proposta';
+                else if (stage.includes('Fechado')) stageKey = 'fechado';
+                
+                // Update the lead in the database
+                const leadId = draggedElement.getAttribute('data-lead-id');
+                if (leadId && stageKey) {
+                    db.update('leads', leadId, { estagio: stageKey });
+                }
+                
+                this.appendChild(draggedElement);
+                
+                // Update count
+                const count = this.querySelectorAll('.kanban-card').length;
+                this.querySelector('.kanban-count').textContent = count;
+                
+                showNotification('✅ Lead movido com sucesso!', 'success');
+            }
+        }
+
+        // Chat Functions
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const emojiBtn = document.getElementById('emojiBtn');
+        const emojiPicker = document.getElementById('emojiPicker');
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                chatInput.focus();
+            }
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Auto resize textarea
+                chatInput.style.height = 'auto';
+                
+                // Simulate response
+                setTimeout(() => {
+                    const responses = [
+                        'Perfeito! 👍',
+                        'Entendido! 📝',
+                        'Vou verificar isso 🔍',
+                        'Ótima ideia! 💡',
+                        'Já estou cuidando disso 🚀'
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    const randomUser = onlineUsers[Math.floor(Math.random() * onlineUsers.length)];
+                    if (randomUser !== currentUser) {
+                        addMessage(randomResponse, false, randomUser);
+                    }
+                }, 1000 + Math.random() * 2000);
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto resize textarea
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+        });
+
+        // Emoji picker
+        emojiBtn.addEventListener('click', () => {
+            emojiPicker.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.emoji-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                chatInput.value += btn.textContent;
+                emojiPicker.classList.remove('active');
+                chatInput.focus();
+            });
+        });
+
+        // Close emoji picker when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!emojiBtn.contains(e.target) && !emojiPicker.contains(e.target)) {
+                emojiPicker.classList.remove('active');
+            }
+        });
+
+        function addMessage(text, isOwn, user = currentUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isOwn ? 'own' : ''}`;
+            
+            const now = new Date();
+            const time = now.getHours().toString().padStart(2, '0') + ':' + 
+                        now.getMinutes().toString().padStart(2, '0');
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${user}</div>
+                <div class="message-content">
+                    <div class="message-bubble">${text}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // PDF Generation
+        function generatePDF(type, id) {
+            showNotification('📄 Gerando PDF...', 'info');
+            
+            setTimeout(() => {
+                const pdfWindow = window.open('', '_blank');
+                const content = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>NOVATEK - ${type === 'proposta' ? 'Proposta Comercial' : 'Contrato'}</title>
+                        <style>
+                            body {
+                                font-family: 'Arial', sans-serif;
+                                padding: 40px;
+                                max-width: 800px;
+                                margin: 0 auto;
+                                line-height: 1.6;
+                                color: #333;
+                            }
+                            .header {
+                                text-align: center;
+                                margin-bottom: 40px;
+                                border-bottom: 3px solid #3b82f6;
+                                padding-bottom: 20px;
+                            }
+                            .logo {
+                                font-size: 48px;
+                                font-weight: bold;
+                                color: #3b82f6;
+                                margin-bottom: 10px;
+                                letter-spacing: -2px;
+                            }
+                            .subtitle {
+                                color: #06b6d4;
+                                font-size: 14px;
+                                letter-spacing: 3px;
+                                text-transform: uppercase;
+                            }
+                            .content {
+                                line-height: 1.8;
+                            }
+                            .section {
+                                margin-bottom: 30px;
+                                padding: 20px;
+                                border-left: 4px solid #3b82f6;
+                                background: #f8fafc;
+                            }
+                            h2 {
+                                color: #3b82f6;
+                                border-bottom: 2px solid #e0e7ff;
+                                padding-bottom: 10px;
+                                margin-bottom: 20px;
+                            }
+                            .info-grid {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 20px;
+                                margin: 20px 0;
+                            }
+                            .info-item {
+                                padding: 15px;
+                                background: white;
+                                border-radius: 8px;
+                                border: 1px solid #e0e7ff;
+                            }
+                            .info-label {
+                                font-weight: bold;
+                                color: #64748b;
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                margin-bottom: 5px;
+                            }
+                            .info-value {
+                                font-size: 16px;
+                                color: #1e293b;
+                            }
+                            .footer {
+                                margin-top: 50px;
+                                text-align: center;
+                                padding-top: 20px;
+                                border-top: 1px solid #e0e7ff;
+                                color: #64748b;
+                                font-size: 12px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <div class="logo">NOVATEK</div>
+                            <div class="subtitle">Sistema Financeiro Avançado</div>
+                        </div>
+                        <div class="content">
+                            <div class="section">
+                                <h2>${type === 'proposta' ? '📝 Proposta Comercial' : '📄 Contrato de Prestação de Serviços'}</h2>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Data de Emissão</div>
+                                        <div class="info-value">${new Date().toLocaleDateString('pt-BR')}</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Número</div>
+                                        <div class="info-value">${type === 'proposta' ? `#2024-00${id}` : `CT-2024-00${id}`}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2>👤 Dados do Cliente</h2>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Nome</div>
+                                        <div class="info-value">João Silva Santos</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">E-mail</div>
+                                        <div class="info-value">joao.silva@techcorp.com</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Telefone</div>
+                                        <div class="info-value">(11) 98765-4321</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Empresa</div>
+                                        <div class="info-value">TechCorp Solutions</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2>💰 Detalhes Financeiros</h2>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Valor Total</div>
+                                        <div class="info-value" style="color: #06b6d4; font-weight: bold; font-size: 20px;">R$ 15.000,00</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">${type === 'proposta' ? 'Validade' : 'Vigência'}</div>
+                                        <div class="info-value">${type === 'proposta' ? '30 dias' : '12 meses'}</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px; border: 1px solid #e0e7ff;">
+                                    <div class="info-label">Descrição dos Serviços</div>
+                                    <div class="info-value">Prestação de serviços de consultoria em tecnologia da informação, incluindo análise de sistemas, desenvolvimento de soluções personalizadas e suporte técnico especializado.</div>
+                                </div>
+                            </div>
+                            ${type === 'contrato' ? `
+                            <div class="section">
+                                <h2>📋 Cláusulas Contratuais</h2>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e7ff;">
+                                    <p><strong>CLÁUSULA 1ª - DO OBJETO</strong><br>
+                                    O presente contrato tem como objeto a prestação de serviços de consultoria em tecnologia da informação conforme especificado acima.</p>
+                                    
+                                    <p><strong>CLÁUSULA 2ª - DO PRAZO</strong><br>
+                                    O prazo de vigência será de 12 (doze) meses, iniciando-se na data de assinatura do presente contrato.</p>
+                                    
+                                    <p><strong>CLÁUSULA 3ª - DO PAGAMENTO</strong><br>
+                                    O pagamento será realizado em parcelas mensais de R$ 1.250,00 (um mil duzentos e cinquenta reais), com vencimento todo dia 10 de cada mês.</p>
+                                    
+                                    <p><strong>CLÁUSULA 4ª - DAS RESPONSABILIDADES</strong><br>
+                                    A CONTRATADA se compromete a prestar os serviços com qualidade e dentro dos prazos estabelecidos, enquanto a CONTRATANTE se compromete com o pagamento pontual.</p>
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                        <div class="footer">
+                            <p>NOVATEK - Sistema Financeiro Avançado</p>
+                            <p>contato@novatek.com | (11) 3000-0000</p>
+                            <p>Documento gerado automaticamente em ${new Date().toLocaleString('pt-BR')}</p>
+                        </div>
+                    </body>
+                    </html>
+                `;
+                pdfWindow.document.write(content);
+                pdfWindow.document.close();
+                showNotification('✅ PDF gerado com sucesso!', 'success');
+            }, 1000);
+        }
+
+        // Email Functions
+        function sendEmail(type, id) {
+            showNotification('📧 Enviando por email...', 'info');
+            setTimeout(() => {
+                showNotification('✅ Email enviado com sucesso!', 'success');
+            }, 2000);
+        }
+
+        // Export Functions
+        function exportData(section) {
+            showNotification('📊 Exportando dados...', 'info');
+            setTimeout(() => {
+                // Create CSV content
+                let csvContent = '';
+                const table = document.querySelector(`#section-${section} table`);
+                
+                if (table) {
+                    const rows = table.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('th, td');
+                        const rowData = Array.from(cells).map(cell => {
+                            return '"' + cell.textContent.replace(/"/g, '""') + '"';
+                        });
+                        csvContent += rowData.join(',') + '\n';
+                    });
+                    
+                    // Download CSV
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `${section}_${new Date().toISOString().split('T')[0]}.csv`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+                
+                showNotification('✅ Dados exportados com sucesso!', 'success');
+            }, 1500);
+        }
+
+        // Report Generation
+        function generateReport(type) {
+            showNotification('📊 Gerando relatório...', 'info');
+            setTimeout(() => {
+                const reportWindow = window.open('', '_blank');
+                const content = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>NOVATEK - Relatório ${type.charAt(0).toUpperCase() + type.slice(1)}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 40px; max-width: 1000px; margin: 0 auto; }
+                            .header { text-align: center; margin-bottom: 40px; border-bottom: 3px solid #3b82f6; padding-bottom: 20px; }
+                            .logo { font-size: 36px; font-weight: bold; color: #3b82f6; margin-bottom: 10px; }
+                            .chart { height: 300px; background: #f8fafc; border: 1px solid #e0e7ff; border-radius: 8px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #64748b; }
+                            .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+                            .summary-card { padding: 20px; background: #f8fafc; border-radius: 8px; border: 1px solid #e0e7ff; text-align: center; }
+                            .summary-value { font-size: 24px; font-weight: bold; color: #3b82f6; }
+                            .summary-label { color: #64748b; font-size: 14px; margin-top: 5px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <div class="logo">NOVATEK</div>
+                            <h2>Relatório ${type.charAt(0).toUpperCase() + type.slice(1)} - ${new Date().toLocaleDateString('pt-BR')}</h2>
+                        </div>
+                        <div class="summary">
+                            <div class="summary-card">
+                                <div class="summary-value">R$ 127.450</div>
+                                <div class="summary-label">Receitas Totais</div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-value">R$ 45.230</div>
+                                <div class="summary-label">Despesas Totais</div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-value">R$ 82.220</div>
+                                <div class="summary-label">Lucro Líquido</div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-value">248</div>
+                                <div class="summary-label">Clientes Ativos</div>
+                            </div>
+                        </div>
+                        <div class="chart">📊 Gráfico de Performance - ${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                        <p style="text-align: center; color: #64748b; margin-top: 40px;">
+                            Relatório gerado automaticamente pelo Sistema NOVATEK em ${new Date().toLocaleString('pt-BR')}
+                        </p>
+                    </body>
+                    </html>
+                `;
+                reportWindow.document.write(content);
+                reportWindow.document.close();
+                showNotification('✅ Relatório gerado com sucesso!', 'success');
+            }, 1500);
+        }
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Auto-save functionality
+        let autoSaveTimeout;
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('input', function() {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    // Auto-save logic here
+                    console.log('Auto-saving...');
+                }, 2000);
+            });
+        });
+
+        // Initialize tooltips
+        document.querySelectorAll('[title]').forEach(element => {
+            element.addEventListener('mouseenter', function(e) {
+                const tooltip = document.createElement('div');
+                tooltip.textContent = this.getAttribute('title');
+                tooltip.style.cssText = `
+                    position: absolute;
+                    background: rgba(15, 23, 42, 0.95);
+                    color: white;
+                    padding: 0.5rem 0.75rem;
+                    border-radius: 8px;
+                    font-size: 0.75rem;
+                    z-index: 10000;
+                    pointer-events: none;
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                `;
+                
+                document.body.appendChild(tooltip);
+                
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+                tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + 'px';
+                
+                this._tooltip = tooltip;
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                if (this._tooltip) {
+                    document.body.removeChild(this._tooltip);
+                    this._tooltip = null;
+                }
+            });
+        });
+
+        // Welcome message
+        setTimeout(() => {
+            showNotification('🎉 Bem-vindo ao Sistema NOVATEK! Tudo funcionando perfeitamente.', 'success');
+        }, 1000);
+    </script>
+</body>
+</html>
