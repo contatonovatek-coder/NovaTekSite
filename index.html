@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTek - Soluções Tecnológicas Inovadoras</title>
+    <title>NovaTek LTDA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Adicione isso dentro do <head> do seu HTML -->
-<link rel="icon" href="/LOGO  ABA/c.jpeg">
+    <link rel="icon" href="/LOGO  ABA/c.jpeg">
     <style>
         :root {
             /* Cores da paleta NovaTek */
@@ -74,6 +73,7 @@
         /* MELHORIA: Otimização de performance para animações */
         .animate-element {
             will-change: transform, opacity;
+            transform: translateZ(0);
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -198,13 +198,13 @@
         }
 
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         /* Animações personalizadas - MELHORIA: Otimizadas para performance */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) translateZ(0); }
+            50% { transform: translateY(-10px) translateZ(0); }
         }
 
         @keyframes pulse {
@@ -218,18 +218,18 @@
         }
 
         @keyframes slideInFromLeft {
-            0% { transform: translateX(-100px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+            0% { transform: translateX(-100px) translateZ(0); opacity: 0; }
+            100% { transform: translateX(0) translateZ(0); opacity: 1; }
         }
 
         @keyframes slideInFromRight {
-            0% { transform: translateX(100px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+            0% { transform: translateX(100px) translateZ(0); opacity: 0; }
+            100% { transform: translateX(0) translateZ(0); opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            0% { transform: translateY(30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+            0% { transform: translateY(30px) translateZ(0); opacity: 0; }
+            100% { transform: translateY(0) translateZ(0); opacity: 1; }
         }
 
         @keyframes typewriter {
@@ -256,35 +256,35 @@
 
         .fade-up {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(30px) translateZ(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-up.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) translateZ(0);
         }
 
         .slide-left {
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(-50px) translateZ(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .slide-left.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) translateZ(0);
         }
 
         .slide-right {
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateX(50px) translateZ(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .slide-right.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) translateZ(0);
         }
 
         /* Partículas de fundo */
@@ -371,20 +371,6 @@
         .btn-ghost:hover {
             border-color: var(--azul);
             color: var(--azul);
-        }
-
-        /* MELHORIA: Novo botão para área do funcionário */
-        .btn-employee {
-            background: var(--gradiente-principal);
-            color: var(--branco);
-            box-shadow: var(--sombra-suave);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-employee:hover {
-            box-shadow: var(--sombra-media), var(--glow-ciano);
-            transform: translateY(-2px);
         }
 
         /* Header e Navegação - MELHORIA: Melhor responsividade */
@@ -527,10 +513,6 @@
             font-size: 3.5rem;
             margin-bottom: var(--espaco-sm);
             line-height: 1.2;
-            overflow: hidden;
-            border-right: 3px solid var(--ciano);
-            white-space: nowrap;
-            animation: typewriter 3.5s steps(40, end), blink 0.75s step-end infinite;
         }
 
         .hero p {
@@ -659,7 +641,7 @@
             background: var(--gradiente-principal);
         }
 
-        /* Seção CEOs */
+        /* Seção CEOs - MELHORIA: Sem fotos, layout melhorado */
         .ceos {
             background: var(--branco);
         }
@@ -682,6 +664,11 @@
             box-shadow: var(--sombra-suave);
             transition: all 0.3s ease;
             position: relative;
+            padding: var(--espaco-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .ceo-card:hover {
@@ -706,32 +693,25 @@
             opacity: 0.05;
         }
 
-        .ceo-imagem {
-            height: 300px;
-            background: var(--cinza-medio);
+        .ceo-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradiente-suave);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--cinza-escuro);
-            font-size: 1rem;
+            color: var(--branco);
+            font-size: 2.5rem;
+            margin-bottom: var(--espaco-md);
             position: relative;
-            overflow: hidden;
-        }
-
-        .ceo-imagem::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradiente-principal);
+            z-index: 2;
         }
 
         .ceo-info {
-            padding: var(--espaco-md);
             position: relative;
             z-index: 2;
+            width: 100%;
         }
 
         .ceo-info h3 {
@@ -743,6 +723,12 @@
             color: var(--azul);
             font-weight: 500;
             margin-bottom: var(--espaco-sm);
+            font-size: 1.1rem;
+        }
+
+        .ceo-descricao {
+            color: var(--cinza-escuro);
+            line-height: 1.6;
         }
 
         /* Seção Serviços */
@@ -838,7 +824,7 @@
             font-weight: bold;
         }
 
-        /* Seção Projetos */
+        /* Seção Projetos - MELHORIA: Com preview integrado */
         .projetos {
             background: var(--branco);
         }
@@ -861,6 +847,9 @@
             box-shadow: var(--sombra-suave);
             transition: all 0.3s ease;
             position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .projeto-card:hover {
@@ -877,6 +866,12 @@
             color: var(--cinza-escuro);
             position: relative;
             overflow: hidden;
+        }
+
+        .projeto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .projeto-imagem::after {
@@ -897,6 +892,9 @@
 
         .projeto-info {
             padding: var(--espaco-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .projeto-info h3 {
@@ -922,7 +920,108 @@
 
         .projeto-descricao {
             color: var(--cinza-escuro);
-            margin-bottom: var(--espaco-sm);
+            margin-bottom: var(--espaco-md);
+            flex-grow: 1;
+        }
+
+        .projeto-buttons {
+            display: flex;
+            gap: var(--espaco-sm);
+            margin-top: auto;
+        }
+
+        /* Modal de Preview - NOVO: Modal melhorado para preview */
+        .preview-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .preview-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .preview-container {
+            width: 95%;
+            height: 90vh;
+            max-width: 1200px;
+            background: var(--branco);
+            border-radius: var(--borda-arredondada);
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .preview-modal.active .preview-container {
+            transform: scale(1);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--espaco-md);
+            background: var(--cinza-claro);
+            border-bottom: 1px solid var(--cinza-medio);
+        }
+
+        .preview-header h3 {
+            color: var(--azul-escuro);
+            margin: 0;
+        }
+
+        .preview-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--cinza-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preview-close:hover {
+            background: var(--azul);
+            color: var(--branco);
+            transform: rotate(90deg);
+        }
+
+        .preview-content {
+            height: calc(100% - 70px);
+            position: relative;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .preview-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cinza-claro);
+            z-index: 1;
         }
 
         /* Seção Depoimentos */
@@ -1034,7 +1133,7 @@
             box-shadow: var(--sombra-suave);
         }
 
-        /* Seção Contato - MELHORIA: Formulário para WhatsApp */
+        /* Seção Contato */
         .contato {
             background: var(--branco);
         }
@@ -1255,119 +1354,6 @@
             color: var(--branco);
         }
 
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background: var(--branco);
-            border-radius: var(--borda-arredondada);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.9);
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--cinza-claro);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--cinza-medio);
-            transform: rotate(90deg);
-        }
-
-        .modal-content {
-            padding: var(--espaco-xl);
-        }
-
-        .modal-header {
-            margin-bottom: var(--espaco-lg);
-        }
-
-        .modal-header h2 {
-            color: var(--azul-escuro);
-        }
-
-        .modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--espaco-lg);
-        }
-
-        .modal-imagem {
-            height: 300px;
-            background: var(--cinza-medio);
-            border-radius: var(--borda-arredondada-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cinza-escuro);
-        }
-
-        .modal-info h3 {
-            color: var(--azul-escuro);
-            margin-bottom: var(--espaco-sm);
-        }
-
-        .modal-descricao {
-            color: var(--cinza-escuro);
-            margin-bottom: var(--espaco-md);
-        }
-
-        .modal-detalhes h4 {
-            color: var(--azul-escuro);
-            margin-bottom: var(--espaco-sm);
-        }
-
-        .modal-detalhes ul {
-            list-style: disc;
-            padding-left: var(--espaco-md);
-            color: var(--cinza-escuro);
-        }
-
-        .modal-detalhes li {
-            margin-bottom: var(--espaco-xs);
-        }
-
         /* Loading Spinner */
         .loader {
             display: inline-block;
@@ -1450,10 +1436,6 @@
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
-            
-            .modal-body {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1468,25 +1450,21 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                left: 0;
-                width: 100%;
+                right: -100%;
+                width: 280px;
                 height: 100vh;
                 background: var(--branco);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: var(--espaco-lg) 0;
-                transform: translateX(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 80px var(--espaco-md) var(--espaco-md);
+                transition: right 0.3s ease;
                 z-index: 999;
+                box-shadow: var(--sombra-intensa);
             }
             
             .nav-links.active {
-                transform: translateX(0);
-                opacity: 1;
-                visibility: visible;
+                right: 0;
             }
             
             .hamburger {
@@ -1527,6 +1505,12 @@
             .ceos-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .preview-container {
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1545,21 +1529,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .modal-content {
-                padding: var(--espaco-lg) var(--espaco-md);
-            }
-            
-            .hero h1 {
-                white-space: normal;
-                border-right: none;
-                animation: none;
-            }
-            
-            /* MELHORIA: Ajustes finos para telas muito pequenas */
-            .container {
-                padding: 0 var(--espaco-xs);
-            }
-            
             .contato-form {
                 padding: var(--espaco-md);
             }
@@ -1567,6 +1536,18 @@
             .form-radio-group {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            
+            .container {
+                padding: 0 var(--espaco-xs);
+            }
+            
+            .projeto-buttons {
+                flex-direction: column;
+            }
+            
+            .preview-header {
+                padding: var(--espaco-sm);
             }
         }
     </style>
@@ -1577,7 +1558,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header - MELHORIA: Adicionado botão para área do funcionário -->
+    <!-- Header -->
     <header id="header">
         <div class="container">
             <nav class="navbar">
@@ -1593,7 +1574,7 @@
                     <li><a href="#projetos">Projetos</a></li>
                     <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#contato">Contato</a></li>
-                
+                </ul>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -1613,9 +1594,7 @@
                 <p>Na NovaTek, transformamos ideias em realidade através de tecnologia de ponta, desenvolvimento ágil e soluções personalizadas que impulsionam o crescimento do seu negócio.</p>
                 <div class="hero-buttons">
                     <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
-                    <a href="#projetos" class="btn btn-secondary">Ver Portfólio</a>
-                    <!-- MELHORIA: Botão para área do funcionário também no hero -->
-                    <a href="https://script.google.com/macros/s/SEU_SCRIPT_ID/exec" class="btn btn-employee" target="_blank">Área do Funcionário</a>
+                    <a href="#projetos" class="btn btn-secondary">Ver Portfólio</a> 
                 </div>
             </div>
         </div>
@@ -1641,7 +1620,9 @@
             <div class="sobre-content">
                 <div class="sobre-texto slide-left">
                     <h2>Sobre a NovaTek</h2>
+                    <p><strong>Empresa 100% Remota</strong> - Atendemos clientes em todo o Brasil com tecnologia e inovação.</p>
                     <p>Fundada em 2015, a NovaTek é uma empresa de tecnologia com foco em inovação e excelência. Nossa missão é desenvolver soluções tecnológicas que transformem negócios e criem valor sustentável para nossos clientes.</p>
+                    <p><strong>CNPJ:</strong> 51.673.025/0001-97</p>
                     <p>Com uma equipe multidisciplinar de especialistas, oferecemos serviços de ponta em desenvolvimento de software, sistemas embarcados, IoT e consultoria em transformação digital.</p>
                     <p>Nossos valores incluem transparência, qualidade, inovação contínua e parceria de longo prazo com nossos clientes, sempre buscando superar expectativas e entregar resultados excepcionais.</p>
                 </div>
@@ -1652,46 +1633,49 @@
                         
                         <h3>Nossa Missão</h3>
                         <p>Desenvolver e implementar tecnologias de ponta que resolvam problemas complexos, impulsionem a eficiência e criem vantagens competitivas para nossos clientes.</p>
+                        
+                        <h3>Empresa 100% Remota</h3>
+                        <p>Trabalhamos de forma remota, garantindo agilidade, flexibilidade e redução de custos para nossos clientes, sem abrir mão da qualidade e excelência em nossos serviços.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CEOs Section - MELHORIA: Informações atualizadas com dados reais -->
+    <!-- CEOs Section - MELHORIA: Sem fotos, layout melhorado -->
     <section id="ceos" class="ceos">
         <div class="container">
             <h2 class="fade-up">Nossa Liderança</h2>
             <div class="ceos-grid">
                 <div class="ceo-card fade-up">
-                    <div class="ceo-imagem"><span>Foto Caio</span></div>
+                    <div class="ceo-avatar">C</div>
                     <div class="ceo-info">
                         <h3>Caio Felipe</h3>
                         <div class="ceo-cargo">CEO & Fundador</div>
-                        <p>Me chamo Caio Felipe, tenho 22 anos, sou desenvolvedor de software a 6 anos. Sou formado em Engenharia do software, e professor de T.I em escola de curso profissionalizante e CEO da NovaTek.</p>
+                        <p class="ceo-descricao">Me chamo Caio Felipe, tenho 22 anos, sou desenvolvedor de software há 6 anos. Sou formado em Engenharia de Software, e professor de T.I em escola de curso profissionalizante e CEO da NovaTek.</p>
                     </div>
                 </div>
                 <div class="ceo-card fade-up">
-                    <div class="ceo-imagem"><span>Foto Matheus</span></div>
+                    <div class="ceo-avatar">M</div>
                     <div class="ceo-info">
-                        <h3>Matheus</h3>
+                        <h3>Matheus Longen</h3>
                         <div class="ceo-cargo">CEO & Desenvolvedor</div>
-                        <p>Me chamo Matheus Longen, tenho 21 anos, sou desenvolvedor de software a 3 anos. Sou formado em análise de sistema e CEO da NovaTek.</p>
+                        <p class="ceo-descricao">Me chamo Matheus Longen, tenho 21 anos, sou desenvolvedor de software há 3 anos. Sou formado em Análise de Sistemas e CEO da NovaTek.</p>
                     </div>
                 </div>
                 <div class="ceo-card fade-up">
-                    <div class="ceo-imagem"><span>Foto Murilo</span></div>
+                    <div class="ceo-avatar">M</div>
                     <div class="ceo-info">
-                        <h3>Murilo</h3>
+                        <h3>Murilo Christófoli</h3>
                         <div class="ceo-cargo">CEO & Desenvolvedor</div>
-                        <p>Me chamo Murilo Christófoli, tenho 19 anos, sou desenvolvedor de software. Estudo programação e CEO da NovaTek.</p>
+                        <p class="ceo-descricao">Me chamo Murilo Christófoli, tenho 19 anos, sou desenvolvedor de software. Estudo programação e sou CEO da NovaTek.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Serviços Section - MELHORIA: Serviços atualizados com base nas informações fornecidas -->
+    <!-- Serviços Section -->
     <section id="servicos" class="servicos">
         <div class="particles" id="particles-servicos"></div>
         <div class="container">
@@ -1767,53 +1751,141 @@
         </div>
     </section>
 
-    <!-- Projetos Section -->
+    <!-- Projetos Section - MELHORIA: Com preview integrado -->
     <section id="projetos" class="projetos">
         <div class="container">
-            <h2 class="fade-up">Nossos Projetos</h2>
+            <h2 class="fade-up">Nossos Projetos em Demo</h2>
             <div class="projetos-grid">
+                <!-- Projeto 1: Catálogo Virtual de Bolachas -->
                 <div class="projeto-card fade-up">
-                    <div class="projeto-imagem">IMAGEM PROJETO 1</div>
+                    <div class="projeto-imagem">
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--gradiente-suave);color:white;font-size:1.2rem;font-weight:600;">
+                            🍪 Catálogo Virtual
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Catálogo Virtual de Bolachas</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">E-commerce</span>
+                            <span class="projeto-tag">Catálogo</span>
+                            <span class="projeto-tag">Responsivo</span>
+                        </div>
+                        <p class="projeto-descricao">Catálogo virtual completo para produtos alimentícios com filtros por categoria, busca e carrinho de compras.</p>
+                        <div class="projeto-buttons">
+                            <button class="btn btn-primary btn-preview" data-url="catalogo-virtual-bolacha" data-title="Catálogo Virtual de Bolachas">Ver Demo</button>
+                            <button class="btn btn-secondary btn-details" data-project="bolacha">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2: E-commerce de Auto Peças -->
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg, #2c3e50, #4ca1af);color:white;font-size:1.2rem;font-weight:600;">
+                            🚗 Auto Peças
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>E-commerce de Auto Peças</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">E-commerce</span>
+                            <span class="projeto-tag">Automotivo</span>
+                            <span class="projeto-tag">PHP</span>
+                        </div>
+                        <p class="projeto-descricao">Loja virtual especializada em peças automotivas com sistema de estoque e múltiplos pagamentos.</p>
+                        <div class="projeto-buttons">
+                            <button class="btn btn-primary btn-preview" data-url="ecommerce-auto-pecas" data-title="E-commerce de Auto Peças">Ver Demo</button>
+                            <button class="btn btn-secondary btn-details" data-project="pecas">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3: E-commerce de Roupas -->
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg, #ff6b6b, #ffd93d);color:white;font-size:1.2rem;font-weight:600;">
+                            👕 Moda Fashion
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>E-commerce de Roupas</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">Moda</span>
+                            <span class="projeto-tag">E-commerce</span>
+                            <span class="projeto-tag">React</span>
+                        </div>
+                        <p class="projeto-descricao">Plataforma de moda fashion com vitrine de produtos, filtros por tamanho/cor e sistema de avaliações.</p>
+                        <div class="projeto-buttons">
+                            <button class="btn btn-primary btn-preview" data-url="ecommerce-roupas" data-title="E-commerce de Roupas">Ver Demo</button>
+                            <button class="btn btn-secondary btn-details" data-project="roupas">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 4: Site Delivery -->
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg, #00b09b, #96c93d);color:white;font-size:1.2rem;font-weight:600;">
+                            🛵 Delivery App
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Site Delivery</h3>
+                        <div class="projeto-tags">
+                            <span class="projeto-tag">Delivery</span>
+                            <span class="projeto-tag">Food</span>
+                            <span class="projeto-tag">JavaScript</span>
+                        </div>
+                        <p class="projeto-descricao">Sistema de delivery com geolocalização, cardápio digital e acompanhamento de pedidos em tempo real.</p>
+                        <div class="projeto-buttons">
+                            <button class="btn btn-primary btn-preview" data-url="site-delivery" data-title="Site Delivery">Ver Demo</button>
+                            <button class="btn btn-secondary btn-details" data-project="delivery">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 5: Sistema de Gestão -->
+                <div class="projeto-card fade-up">
+                    <div class="projeto-imagem">
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg, #8e2de2, #4a00e0);color:white;font-size:1.2rem;font-weight:600;">
+                            📊 Dashboard
+                        </div>
+                    </div>
                     <div class="projeto-info">
                         <h3>Sistema de Gestão Empresarial</h3>
                         <div class="projeto-tags">
-                            <span class="projeto-tag">Web App</span>
-                            <span class="projeto-tag">React</span>
+                            <span class="projeto-tag">Dashboard</span>
+                            <span class="projeto-tag">Gestão</span>
                             <span class="projeto-tag">Node.js</span>
                         </div>
-                        <p class="projeto-descricao">Plataforma de gestão empresarial com dashboard interativo e relatórios personalizados.</p>
-                        <button class="btn btn-primary btn-ver-case" data-project="1">Ver Case</button>
-                    </div>
-                </div>
-                <div class="projeto-card fade-up">
-                    <div class="projeto-imagem">IMAGEM PROJETO 2</div>
-                    <div class="projeto-info">
-                        <h3>E-commerce Personalizado</h3>
-                        <div class="projeto-tags">
-                            <span class="projeto-tag">E-commerce</span>
-                            <span class="projeto-tag">WordPress</span>
-                            <span class="projeto-tag">WooCommerce</span>
+                        <p class="projeto-descricao">Dashboard completo para gestão empresarial com relatórios, gráficos e controle de múltiplos departamentos.</p>
+                        <div class="projeto-buttons">
+                            <button class="btn btn-primary btn-preview" data-url="sistema-gestao" data-title="Sistema de Gestão">Ver Demo</button>
+                            <button class="btn btn-secondary btn-details" data-project="gestao">Detalhes</button>
                         </div>
-                        <p class="projeto-descricao">Loja virtual com catálogo personalizado, sistema de fretes e integração com marketplaces.</p>
-                        <button class="btn btn-primary btn-ver-case" data-project="2">Ver Case</button>
-                    </div>
-                </div>
-                <div class="projeto-card fade-up">
-                    <div class="projeto-imagem">IMAGEM PROJETO 3</div>
-                    <div class="projeto-info">
-                        <h3>Aplicativo de Delivery</h3>
-                        <div class="projeto-tags">
-                            <span class="projeto-tag">Mobile</span>
-                            <span class="projeto-tag">Flutter</span>
-                            <span class="projeto-tag">Firebase</span>
-                        </div>
-                        <p class="projeto-descricao">Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliações.</p>
-                        <button class="btn btn-primary btn-ver-case" data-project="3">Ver Case</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal de Preview - NOVO: Para visualizar demos -->
+    <div class="preview-modal" id="previewModal">
+        <div class="preview-container">
+            <div class="preview-header">
+                <h3 id="previewTitle">Visualização do Projeto</h3>
+                <div class="preview-close" id="previewClose">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="preview-content">
+                <div class="preview-loading" id="previewLoading">
+                    <div class="loader"></div>
+                </div>
+                <iframe class="preview-iframe" id="previewIframe" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Depoimentos Section -->
     <section id="depoimentos" class="depoimentos">
@@ -1823,7 +1895,7 @@
                 <div class="depoimento-card fade-up">
                     <p class="depoimento-texto">A NovaTek transformou completamente nossa operação com um sistema customizado que aumentou nossa eficiência em 40%. A equipe foi extremamente profissional e o projeto foi entregue antes do prazo.</p>
                     <div class="depoimento-autor">
-                        <div class="depoimento-avatar">CL1</div>
+                        <div class="depoimento-avatar">JS</div>
                         <div class="depoimento-info">
                             <h4>João Silva</h4>
                             <div class="depoimento-cargo">Diretor de Operações, TechSolutions</div>
@@ -1833,7 +1905,7 @@
                 <div class="depoimento-card fade-up">
                     <p class="depoimento-texto">Trabalhamos com a NovaTek no desenvolvimento do nosso aplicativo móvel e ficamos impressionados com a qualidade do código e a atenção aos detalhes de UX. Superou todas as nossas expectativas.</p>
                     <div class="depoimento-autor">
-                        <div class="depoimento-avatar">CL2</div>
+                        <div class="depoimento-avatar">MS</div>
                         <div class="depoimento-info">
                             <h4>Maria Santos</h4>
                             <div class="depoimento-cargo">CEO, InovaCommerce</div>
@@ -1843,7 +1915,7 @@
                 <div class="depoimento-card fade-up">
                     <p class="depoimento-texto">A migração para a nuvem conduzida pela NovaTek não apenas reduziu nossos custos em 30%, como também melhorou significativamente a performance de nossos sistemas. Recomendo sem reservas.</p>
                     <div class="depoimento-autor">
-                        <div class="depoimento-avatar">CL3</div>
+                        <div class="depoimento-avatar">CO</div>
                         <div class="depoimento-info">
                             <h4>Carlos Oliveira</h4>
                             <div class="depoimento-cargo">CTO, DataSystems</div>
@@ -1851,10 +1923,10 @@
                     </div>
                 </div>
             </div>
-           
+        </div>
     </section>
 
-    <!-- Contato Section - MELHORIA: Formulário para WhatsApp com campos adicionais -->
+    <!-- Contato Section -->
     <section id="contato" class="contato">
         <div class="container">
             <h2 class="fade-up">Entre em Contato</h2>
@@ -1924,15 +1996,22 @@
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-phone"></i></div>
                         <div class="info-content">
-                            <h3>Telefone</h3>
-                            <p>+55 (11) 3456-7890</p>
+                            <h3>Telefone/WhatsApp</h3>
+                            <p>+55 (44) 9718-7016</p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-icon"><i class="fas fa-building"></i></div>
                         <div class="info-content">
-                            <h3>Endereço</h3>
-                            <p>Av. Paulista, 1000 - São Paulo, SP</p>
+                            <h3>CNPJ</h3>
+                            <p>51.673.025/0001-97</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-laptop-house"></i></div>
+                        <div class="info-content">
+                            <h3>Empresa 100% Remota</h3>
+                            <p>Atendemos todo o Brasil com agilidade e qualidade</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1940,11 +2019,17 @@
                         <div class="info-content">
                             <h3>Agendar Reunião</h3>
                             <p>Clique no botão abaixo para agendar uma reunião com nossa equipe</p>
-                            <a href="#" class="btn btn-secondary mt-sm">Agendar Reunião</a>
+                            <a href="https://wa.me/554497187016?text=Olá,%20gostaria%20de%20agendar%20uma%20reunião%20com%20a%20equipe%20NovaTek" target="_blank" class="btn btn-secondary mt-sm">Agendar Reunião</a>
                         </div>
                     </div>
                     <div class="mapa">
-                        MAPA EMBED AQUI
+                        <div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--cinza-medio);color:var(--cinza-escuro);padding:20px;text-align:center;">
+                            <div>
+                                <i class="fas fa-laptop-house" style="font-size:2rem;margin-bottom:10px;"></i>
+                                <h4 style="margin-bottom:5px;">Empresa 100% Remota</h4>
+                                <p>Atendemos clientes em todo o Brasil</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1960,12 +2045,12 @@
                         <div class="logo-icon">NT</div>
                         NovaTek
                     </div>
-                    <p class="footer-descricao">Transformando ideias em realidade através de tecnologia inovadora e soluções personalizadas para o crescimento do seu negócio.</p>
+                    <p class="footer-descricao">Transformando ideias em realidade através de tecnologia inovadora e soluções personalizadas para o crescimento do seu negócio. Empresa 100% remota atendendo todo o Brasil.</p>
                     <div class="redes-sociais">
-                        <a href="#" class="rede-social"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/novatek_ltda?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="rede-social"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/554497187016" target="_blank" class="rede-social"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" class="rede-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:contato@novatek.com.br" class="rede-social"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1981,11 +2066,11 @@
                 <div class="footer-links">
                     <h3>Serviços</h3>
                     <ul>
-                        <li><a href="#">Sistemas Web</a></li>
-                        <li><a href="#">Light Pages</a></li>
-                        <li><a href="#">Aplicativos</a></li>
-                        <li><a href="#">E-commerce</a></li>
-                        <li><a href="#">Consultoria</a></li>
+                        <li><a href="#servicos">Sistemas Web</a></li>
+                        <li><a href="#servicos">Light Pages</a></li>
+                        <li><a href="#servicos">Aplicativos</a></li>
+                        <li><a href="#servicos">E-commerce</a></li>
+                        <li><a href="#servicos">Consultoria</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -2000,7 +2085,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NovaTek. Todos os direitos reservados.</p>
+                <p>&copy; 2023 NovaTek LTDA - CNPJ: 51.673.025/0001-97 - Todos os direitos reservados.</p>
                 <div class="footer-legal">
                     <a href="#">Política de Privacidade</a>
                     <a href="#">Termos de Uso</a>
@@ -2014,75 +2099,64 @@
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- Modal de Projeto -->
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal">
-            <div class="modal-close" id="modal-close">×</div>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 id="modal-titulo">Título do Projeto</h2>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-imagem" id="modal-imagem">IMAGEM DO PROJETO</div>
-                    <div class="modal-info">
-                        <h3 id="modal-subtitulo">Sobre o Projeto</h3>
-                        <p class="modal-descricao" id="modal-descricao">Descrição detalhada do projeto...</p>
-                        <div class="modal-detalhes">
-                            <h4>Detalhes Técnicos</h4>
-                            <ul id="modal-detalhes">
-                                <li>Tecnologia 1</li>
-                                <li>Tecnologia 2</li>
-                                <li>Tecnologia 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Dados dos projetos para o modal
+        // Dados dos projetos
         const projetos = {
-            1: {
+            'bolacha': {
+                titulo: "Catálogo Virtual de Bolachas",
+                descricao: "Catálogo virtual completo para produtos alimentícios com sistema de busca avançada, filtros por categoria, carrinho de compras e checkout integrado. Desenvolvido com foco em performance e experiência do usuário.",
+                tecnologias: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "PHP"],
+                recursos: ["Catálogo de produtos", "Filtros por categoria", "Carrinho de compras", "Sistema de busca", "Design responsivo"]
+            },
+            'pecas': {
+                titulo: "E-commerce de Auto Peças",
+                descricao: "Loja virtual especializada em peças automotivas com sistema de estoque integrado, múltiplas formas de pagamento e gestão de pedidos. Plataforma completa com dashboard administrativo.",
+                tecnologias: ["PHP", "MySQL", "JavaScript", "jQuery", "Bootstrap"],
+                recursos: ["Catálogo de peças", "Sistema de estoque", "Múltiplos pagamentos", "Dashboard admin", "Relatórios de vendas"]
+            },
+            'roupas': {
+                titulo: "E-commerce de Roupas",
+                descricao: "Plataforma de moda fashion com vitrine de produtos, filtros avançados por tamanho/cor/material e sistema de avaliações. Interface moderna e intuitiva para melhor experiência de compra.",
+                tecnologias: ["React", "Node.js", "MongoDB", "Styled Components"],
+                recursos: ["Vitrine de produtos", "Filtros avançados", "Sistema de avaliações", "Carrinho persistente", "Checkout rápido"]
+            },
+            'delivery': {
+                titulo: "Site Delivery",
+                descricao: "Sistema de delivery completo com geolocalização, cardápio digital, acompanhamento de pedidos em tempo real e integração com APIs de pagamento. Ideal para restaurantes e estabelecimentos de comida.",
+                tecnologias: ["JavaScript", "Google Maps API", "Node.js", "Socket.io"],
+                recursos: ["Geolocalização", "Cardápio digital", "Acompanhamento em tempo real", "Múltiplos pagamentos", "App para entregadores"]
+            },
+            'gestao': {
                 titulo: "Sistema de Gestão Empresarial",
-                subtitulo: "Plataforma de Gestão Empresarial",
-                descricao: "Desenvolvemos uma plataforma completa de gestão empresarial que integra todos os departamentos da empresa em um único sistema. A solução inclui módulos financeiro, de recursos humanos, vendas e estoque, com dashboard interativo e relatórios personalizados em tempo real.",
-                detalhes: [
-                    "Frontend desenvolvido em React com Hooks e Context API",
-                    "Backend em Node.js com Express e MongoDB",
-                    "Autenticação JWT e autorização por roles",
-                    "Integração com APIs de pagamento e notificação",
-                    "Deploy em AWS com Docker e CI/CD"
-                ]
-            },
-            2: {
-                titulo: "E-commerce Personalizado",
-                subtitulo: "Loja Virtual Completa",
-                descricao: "Desenvolvemos uma loja virtual completa com catálogo de produtos, sistema de carrinho, múltiplas formas de pagamento e gestão de pedidos. A solução inclui também integração com sistemas de entrega e marketplaces.",
-                detalhes: [
-                    "WordPress com tema customizado e WooCommerce",
-                    "Integração com APIs de correios e transportadoras",
-                    "Sistema de cupons e programas de fidelidade",
-                    "Otimização SEO e performance",
-                    "Integração com ERP legado do cliente"
-                ]
-            },
-            3: {
-                titulo: "Aplicativo de Delivery",
-                subtitulo: "App de Entrega com Geolocalização",
-                descricao: "Aplicativo móvel desenvolvido em Flutter para plataformas iOS e Android que conecta restaurantes, entregadores e clients finais. O sistema inclui geolocalização em tempo real, múltiplas opções de pagamento e sistema de avaliações.",
-                detalhes: [
-                    "Desenvolvido em Flutter para iOS e Android",
-                    "Backend em Firebase com Cloud Functions",
-                    "Integração com APIs de pagamento e mapas",
-                    "Sistema de notificações push",
-                    "Analytics e relatórios de performance"
-                ]
+                descricao: "Dashboard completo para gestão empresarial com relatórios personalizados, gráficos interativos e controle de múltiplos departamentos. Solução integrada para otimização de processos.",
+                tecnologias: ["Node.js", "React", "PostgreSQL", "Chart.js"],
+                recursos: ["Dashboard interativo", "Relatórios personalizados", "Controle de departamentos", "Gráficos em tempo real", "Exportação de dados"]
             }
         };
 
-        // Inicialização quando o DOM estiver carregado
+        // URLs dos demos - Sistema flexível que tenta diferentes caminhos
+        const demoUrls = {
+            'catalogo-virtual-bolacha': './PROJETOS-DEMO/catalogo-virtual-bolacha/index.html',
+            'ecommerce-auto-pecas': './PROJETOS-DEMO/ecommerce-auto-pecas/index.html',
+            'ecommerce-roupas': './PROJETOS-DEMO/ecommerce-roupas/index.html',
+            'site-delivery': './PROJETOS-DEMO/site-delivery/index.html',
+            'sistema-gestao': './PROJETOS-DEMO/sistema-gestao/index.html'
+        };
+
+        // Função para tentar diferentes caminhos
+        function getProjectUrl(key) {
+            const pathsToTry = [
+                demoUrls[key],
+                `./projetos-demo/${key}/index.html`,
+                `./Projetos-Demo/${key}/index.html`,
+                `PROJETOS-DEMO/${key}/index.html`,
+                `projetos-demo/${key}/index.html`,
+                `./${key}/index.html`
+            ];
+            
+            return pathsToTry[0]; // Retorna o primeiro caminho configurado
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Remover tela de loading
             setTimeout(() => {
@@ -2091,7 +2165,354 @@
                 setTimeout(() => {
                     loading.style.display = 'none';
                 }, 500);
-            }, 1000);
+            }, 800);
+            
+            // Menu hamburger para mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+            });
+            
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Animação de entrada com Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todos os elementos com classe de animação
+            document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Sistema de Preview dos Projetos
+            const previewModal = document.getElementById('previewModal');
+            const previewClose = document.getElementById('previewClose');
+            const previewIframe = document.getElementById('previewIframe');
+            const previewLoading = document.getElementById('previewLoading');
+            const previewTitle = document.getElementById('previewTitle');
+            
+            // Abrir preview
+            document.querySelectorAll('.btn-preview').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const urlKey = this.getAttribute('data-url');
+                    const title = this.getAttribute('data-title');
+                    const url = getProjectUrl(urlKey);
+                    
+                    if (url) {
+                        previewTitle.textContent = title;
+                        previewModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Mostrar loading
+                        previewLoading.classList.remove('hidden');
+                        
+                        try {
+                            // Testar se o arquivo existe
+                            const response = await fetch(url, { method: 'HEAD' });
+                            
+                            if (response.ok) {
+                                previewIframe.src = url;
+                            } else {
+                                // Se não encontrar, mostrar mensagem amigável
+                                previewIframe.srcdoc = `
+                                    <!DOCTYPE html>
+                                    <html>
+                                    <head>
+                                        <style>
+                                            body { 
+                                                display: flex; 
+                                                align-items: center; 
+                                                justify-content: center; 
+                                                height: 100vh; 
+                                                background: #f5f7fa; 
+                                                font-family: Arial, sans-serif; 
+                                            }
+                                            .container { 
+                                                text-align: center; 
+                                                padding: 40px; 
+                                                max-width: 600px; 
+                                            }
+                                            .icon { 
+                                                font-size: 48px; 
+                                                margin-bottom: 20px; 
+                                                color: #126DFF; 
+                                            }
+                                            .instructions { 
+                                                text-align: left; 
+                                                margin: 20px 0; 
+                                                background: white;
+                                                padding: 20px;
+                                                border-radius: 10px;
+                                                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                                            }
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class="container">
+                                            <div class="icon">🚀</div>
+                                            <h2>Projeto Demo</h2>
+                                            <p><strong>${title}</strong></p>
+                                            <div class="instructions">
+                                                <h3>Para visualizar este projeto:</h3>
+                                                <ol>
+                                                    <li>Certifique-se de que a pasta "PROJETOS-DEMO" existe no diretório do site</li>
+                                                    <li>Use um servidor web local (Live Server, XAMPP, WAMP, etc.)</li>
+                                                    <li>Ou acesse diretamente: <code>${url}</code></li>
+                                                </ol>
+                                                <p><strong>Dica:</strong> No VS Code, instale a extensão "Live Server" e clique em "Go Live" para servir localmente.</p>
+                                            </div>
+                                            <button onclick="window.location.href='https://wa.me/554497187016?text=Olá%20NovaTek,%20gostaria%20de%20ver%20o%20projeto%20${encodeURIComponent(title)}'" style="background:#25D366;color:white;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;margin-top:20px;">
+                                                <i class="fab fa-whatsapp"></i> Solicitar demonstração via WhatsApp
+                                            </button>
+                                        </div>
+                                    </body>
+                                    </html>
+                                `;
+                                previewLoading.classList.add('hidden');
+                            }
+                        } catch (error) {
+                            // Em caso de erro, mostrar mensagem
+                            previewIframe.srcdoc = `
+                                <!DOCTYPE html>
+                                <html>
+                                <head>
+                                    <style>
+                                        body { display: flex; align-items: center; justify-content: center; height: 100vh; background: #f5f7fa; font-family: Arial, sans-serif; }
+                                        .container { text-align: center; padding: 40px; max-width: 600px; }
+                                    </style>
+                                </head>
+                                <body>
+                                    <div class="container">
+                                        <h2>Demo não disponível offline</h2>
+                                        <p>Este projeto requer um servidor web para funcionar corretamente.</p>
+                                        <p>Entre em contato para agendar uma demonstração:</p>
+                                        <p><strong>WhatsApp: (44) 9718-7016</strong></p>
+                                    </div>
+                                </body>
+                                </html>
+                            `;
+                            previewLoading.classList.add('hidden');
+                        }
+                        
+                        // Esconder loading quando o iframe carregar
+                        previewIframe.onload = function() {
+                            setTimeout(() => {
+                                previewLoading.classList.add('hidden');
+                            }, 500);
+                        };
+                    } else {
+                        alert('Demo não disponível no momento. Entre em contato para mais informações.');
+                    }
+                });
+            });
+            
+            // Fechar preview
+            previewClose.addEventListener('click', function() {
+                previewModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                previewIframe.src = '';
+                previewLoading.classList.remove('hidden');
+            });
+            
+            previewModal.addEventListener('click', function(e) {
+                if (e.target === previewModal) {
+                    previewModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    previewIframe.src = '';
+                    previewLoading.classList.remove('hidden');
+                }
+            });
+            
+            // Botão de detalhes dos projetos
+            document.querySelectorAll('.btn-details').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const projeto = projetos[projectId];
+                    
+                    if (projeto) {
+                        let detalhes = `${projeto.titulo}\n\n`;
+                        detalhes += `${projeto.descricao}\n\n`;
+                        detalhes += `Tecnologias: ${projeto.tecnologias.join(', ')}\n\n`;
+                        detalhes += `Recursos principais:\n`;
+                        projeto.recursos.forEach(recurso => {
+                            detalhes += `• ${recurso}\n`;
+                        });
+                        
+                        // Criar modal personalizado
+                        const modal = document.createElement('div');
+                        modal.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0,0,0,0.8);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 3000;
+                            padding: 20px;
+                        `;
+                        
+                        modal.innerHTML = `
+                            <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                    <h3 style="margin: 0; color: #0A4B9A;">${projeto.titulo}</h3>
+                                    <button style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">×</button>
+                                </div>
+                                <p>${projeto.descricao}</p>
+                                <p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(', ')}</p>
+                                <p><strong>Recursos:</strong></p>
+                                <ul style="padding-left: 20px;">
+                                    ${projeto.recursos.map(r => `<li>${r}</li>`).join('')}
+                                </ul>
+                                <button style="margin-top: 20px; padding: 10px 20px; background: #126DFF; color: white; border: none; border-radius: 8px; cursor: pointer;" onclick="window.open('https://wa.me/554497187016?text=Olá%20NovaTek,%20gostaria%20de%20saber%20mais%20sobre%20o%20projeto%20${encodeURIComponent(projeto.titulo)}', '_blank')">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </button>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(modal);
+                        
+                        // Fechar modal
+                        modal.querySelector('button').addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                        
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                document.body.removeChild(modal);
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Formulário para WhatsApp
+            const formContato = document.getElementById('form-contato');
+            formContato.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Coletar dados do formulário
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const telefone = document.getElementById('telefone').value;
+                const servico = document.getElementById('servico').value;
+                const conheceu = document.querySelector('input[name="conheceu"]:checked')?.value || 'Não informado';
+                const mensagem = document.getElementById('mensagem').value;
+                
+                // Mapear serviços para nomes legíveis
+                const servicoNomes = {
+                    'sistema-web': 'Sistema Web Completo',
+                    'light-page': 'Light Page',
+                    'app': 'Aplicativo',
+                    'ecommerce': 'E-commerce',
+                    'suporte': 'Suporte Web',
+                    'consultoria': 'Consultoria de Sistema'
+                };
+                
+                // Mapear fontes para nomes legíveis
+                const conheceuNomes = {
+                    'indicacao': 'Indicação',
+                    'google': 'Google',
+                    'redes-sociais': 'Redes Sociais',
+                    'outro': 'Outro',
+                    'Não informado': 'Não informado'
+                };
+                
+                // Criar mensagem para WhatsApp
+                let whatsappMessage = `*NOVO CONTATO - NOVATEK*\n\n`;
+                whatsappMessage += `*Nome:* ${nome}\n`;
+                whatsappMessage += `*E-mail:* ${email}\n`;
+                whatsappMessage += `*Telefone:* ${telefone}\n`;
+                whatsappMessage += `*Serviço de Interesse:* ${servicoNomes[servico] || servico}\n`;
+                whatsappMessage += `*Como nos conheceu:* ${conheceuNomes[conheceu]}\n`;
+                whatsappMessage += `*Mensagem:* ${mensagem}\n`;
+                whatsappMessage += `\n---\n`;
+                whatsappMessage += `*EMPRESA 100% REMOTA*\n`;
+                whatsappMessage += `*CNPJ:* 51.673.025/0001-97`;
+                
+                // Codificar mensagem para URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                
+                // Número de WhatsApp da empresa
+                const whatsappNumber = "554497187016";
+                
+                // Redirecionar para WhatsApp
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Limpar formulário
+                formContato.reset();
+            });
+            
+            // Scroll suave para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
             
             // Criar partículas de fundo
             function createParticles(containerId, count) {
@@ -2129,214 +2550,6 @@
             createParticles('particles', 30);
             createParticles('particles-sobre', 20);
             createParticles('particles-servicos', 25);
-            
-            // Menu hamburger para mobile
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-            
-            // Fechar menu ao clicar em um link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-            
-            // Header scroll effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Back to top button
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-            
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Animação de entrada com Intersection Observer - MELHORIA: Otimizado
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observar todos os elementos com classe de animação
-            document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Modal de projetos
-            const modalOverlay = document.getElementById('modal-overlay');
-            const modalClose = document.getElementById('modal-close');
-            const modalTitulo = document.getElementById('modal-titulo');
-            const modalSubtitulo = document.getElementById('modal-subtitulo');
-            const modalDescricao = document.getElementById('modal-descricao');
-            const modalDetalhes = document.getElementById('modal-detalhes');
-            
-            document.querySelectorAll('.btn-ver-case').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const projectId = this.getAttribute('data-project');
-                    const projeto = projetos[projectId];
-                    
-                    if (projeto) {
-                        modalTitulo.textContent = projeto.titulo;
-                        modalSubtitulo.textContent = projeto.subtitulo;
-                        modalDescricao.textContent = projeto.descricao;
-                        
-                        // Limpar detalhes anteriores
-                        modalDetalhes.innerHTML = '';
-                        
-                        // Adicionar novos detalhes
-                        projeto.detalhes.forEach(detalhe => {
-                            const li = document.createElement('li');
-                            li.textContent = detalhe;
-                            modalDetalhes.appendChild(li);
-                        });
-                        
-                        // Mostrar modal
-                        modalOverlay.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            });
-            
-            // Fechar modal
-            modalClose.addEventListener('click', function() {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-            
-            modalOverlay.addEventListener('click', function(e) {
-                if (e.target === modalOverlay) {
-                    modalOverlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // MELHORIA: Formulário para WhatsApp
-            const formContato = document.getElementById('form-contato');
-            formContato.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Coletar dados do formulário
-                const nome = document.getElementById('nome').value;
-                const email = document.getElementById('email').value;
-                const telefone = document.getElementById('telefone').value;
-                const servico = document.getElementById('servico').value;
-                const conheceu = document.querySelector('input[name="conheceu"]:checked').value;
-                const mensagem = document.getElementById('mensagem').value;
-                
-                // Mapear serviços para nomes legíveis
-                const servicoNomes = {
-                    'sistema-web': 'Sistema Web Completo',
-                    'light-page': 'Light Page',
-                    'app': 'Aplicativo',
-                    'ecommerce': 'E-commerce',
-                    'suporte': 'Suporte Web',
-                    'consultoria': 'Consultoria de Sistema'
-                };
-                
-                // Mapear fontes para nomes legíveis
-                const conheceuNomes = {
-                    'indicacao': 'Indicação',
-                    'google': 'Google',
-                    'redes-sociais': 'Redes Sociais',
-                    'outro': 'Outro'
-                };
-                
-                // Criar mensagem para WhatsApp
-                let whatsappMessage = `Olá, NovaTek! Gostaria de solicitar um orçamento.\n\n`;
-                whatsappMessage += `*Nome:* ${nome}\n`;
-                whatsappMessage += `*E-mail:* ${email}\n`;
-                whatsappMessage += `*Telefone:* ${telefone}\n`;
-                whatsappMessage += `*Serviço de Interesse:* ${servicoNomes[servico]}\n`;
-                whatsappMessage += `*Como nos conheceu:* ${conheceuNomes[conheceu]}\n`;
-                whatsappMessage += `*Mensagem:* ${mensagem}\n`;
-                
-                // Codificar mensagem para URL
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                
-                // Número de WhatsApp da empresa (substitua pelo número real)
-                const whatsappNumber = "5511999999999";
-                
-                // Redirecionar para WhatsApp
-                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
-                
-                // Limpar formulário
-                formContato.reset();
-            });
-            
-            // Scroll suave para âncoras
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerHeight = document.getElementById('header').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Efeito de digitação no título do hero
-            const heroTitle = document.querySelector('.hero h1');
-            const text = heroTitle.textContent;
-            heroTitle.textContent = '';
-            let i = 0;
-            
-            function typeWriter() {
-                if (i < text.length) {
-                    heroTitle.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                } else {
-                    // Manter o cursor piscando após a digitação
-                    heroTitle.style.borderRight = '3px solid var(--ciano)';
-                    setInterval(() => {
-                        heroTitle.style.borderRightColor = heroTitle.style.borderRightColor === 'transparent' ? 'var(--ciano)' : 'transparent';
-                    }, 500);
-                }
-            }
-            
-            // Iniciar efeito de digitação após um pequeno delay
-            setTimeout(typeWriter, 500);
         });
     </script>
 </body>
