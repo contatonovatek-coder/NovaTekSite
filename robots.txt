@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.novatek.com.br/sitemap.xml
+Sitemap: https://nova-tek-site.vercel.app/sitemap.xml
