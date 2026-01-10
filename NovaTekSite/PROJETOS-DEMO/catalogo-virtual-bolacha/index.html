@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolachinhas Mineiras Artesanais | Sabor Tradicional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #f8c8dc; /* Rosa claro */
+            --secondary-color: #8b4513; /* Marrom */
+            --accent-color: #d4a574; /* Marrom claro */
+            --dark-accent: #6b2c0f;
+            --text-color: #333;
+            --light-color: #fff9f5;
+            --white: #ffffff;
+            --light-brown: #f5e9dd;
+            --shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
+            --shadow-hover: 0 8px 30px rgba(139, 69, 19, 0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--secondary-color);
+            font-size: 2.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            margin: 15px auto 0;
+            border-radius: 5px;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-accent));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--primary-color), #f0b4d4);
+            color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(248, 200, 220, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(248, 200, 220, 0.4);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo:hover i {
+            transform: rotate(15deg);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icons i {
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-icons i:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .cart-count, .favorites-count {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .cart-icon, .favorites-icon {
+            position: relative;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 249, 245, 0.9), rgba(255, 249, 245, 0.95)), url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 180px;
+            padding-bottom: 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f8c8dc' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 45px;
+            color: #555;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary-color), #f0b4d4);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(248, 200, 220, 0.1);
+        }
+
+        .favorite-btn:hover {
+            background-color: rgba(248, 200, 220, 0.3);
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #ff4757;
+            background-color: rgba(255, 71, 87, 0.1);
+        }
+
+        /* Carrinho e Favoritos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: rgba(0,0,0,0.05);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-brown);
+        }
+
+        .cart-item, .favorite-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--light-brown);
+            gap: 20px;
+        }
+
+        .cart-item:last-child, .favorite-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info, .favorite-item-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            gap: 20px;
+        }
+
+        .cart-item-image, .favorite-item-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img, .favorite-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details h4, .favorite-item-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+            background-color: var(--light-brown);
+            border-radius: 50px;
+            padding: 5px;
+        }
+
+        .quantity-btn {
+            background-color: var(--white);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .quantity-value {
+            margin: 0 15px;
+            font-weight: 700;
+            min-width: 25px;
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .cart-item-subtotal {
+            font-weight: 700;
+            color: var(--secondary-color);
+            min-width: 120px;
+            text-align: right;
+            font-size: 1.2rem;
+        }
+
+        .cart-actions, .favorites-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid var(--light-brown);
+        }
+
+        .cart-total {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 60px 0;
+            color: #777;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .empty-message i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-accent));
+            color: var(--white);
+            padding: 80px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column {
+            padding-right: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-column p {
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .developer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .developer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .developer a:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1100px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header-container {
+                padding: 15px;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 85%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: var(--shadow-hover);
+                transition: var(--transition);
+                z-index: 999;
+                border-radius: 0 var(--border-radius) var(--border-radius) 0;
+                padding: 40px 30px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0 0 25px 0;
+                width: 100%;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 150px;
+                padding-bottom: 100px;
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 25px;
+            }
+
+            .cart-item, .favorite-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .cart-item-info, .favorite-item-info {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .cart-item-quantity {
+                margin: 10px 0;
+                align-self: flex-start;
+            }
+
+            .cart-item-subtotal {
+                text-align: left;
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+
+            .cart-actions, .favorites-actions {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cart-total {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-column {
+                padding-right: 0;
+            }
+            
+            .copyright {
+                text-align: center;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .logo i {
+                font-size: 1.7rem;
+            }
+            
+            .nav-icons {
+                gap: 15px;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cookie-bite"></i>
+                Bolachinhas Mineiras
+            </a>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="hero">Início</a></li>
+                    <li><a href="#" class="nav-link" data-section="products">Produtos</a></li>
+                    <li><a href="#" class="nav-link" data-section="favorites-modal">Favoritos</a></li>
+                    <li><a href="#" class="nav-link" data-section="cart-modal">Carrinho</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-icons">
+                <div class="favorites-icon" id="favorites-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="favorites-count cart-count">0</span>
+                </div>
+                
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                
+                <a href="https://wa.me/5531999999999?text=Olá! Gostaria de mais informações sobre as bolachinhas mineiras." class="btn btn-primary btn-small" target="_blank" id="contact-btn">
+                    <i class="fab fa-whatsapp"></i> Contato
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Bolachinhas Mineiras Artesanais</h1>
+                <p>Feitas à mão com receitas tradicionais mineiras, ingredientes selecionados e muito amor. Descubra o sabor autêntico que vem direto do forno à lenha para sua casa.</p>
+                <a href="#" class="btn btn-primary" id="view-products-btn">
+                    <i class="fas fa-cookie-bite"></i> Ver Produtos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title fade-in">Nossas Delícias</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Produtos serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Seu Carrinho</h2>
+            <div id="cart-items-container">
+                <!-- Itens do carrinho serão inseridos via JavaScript -->
+            </div>
+            <div class="cart-actions">
+                <div class="cart-total">
+                    Total: <span id="cart-total">R$ 0,00</span>
+                </div>
+                <button class="btn btn-primary" id="checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal dos Favoritos -->
+    <div class="modal" id="favorites-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="favorites-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Seus Favoritos</h2>
+            <div id="favorites-items-container">
+                <!-- Itens favoritos serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bolachinhas Mineiras</h3>
+                    <p>Preservando a tradição mineira em cada mordida. Nossas bolachas são feitas artesanalmente com ingredientes selecionados e muito carinho.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-section="hero"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#" class="nav-link" data-section="products"><i class="fas fa-cookie-bite"></i> Produtos</a></li>
+                        <li><a href="#" class="nav-link" data-section="favorites-modal"><i class="fas fa-heart"></i> Favoritos</a></li>
+                        <li><a href="#" class="nav-link" data-section="cart-modal"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="tel:+5531999999999"><i class="fas fa-phone"></i> (31) 99999-9999</a></li>
+                        <li><a href="mailto:contato@bolachinhasmineiras.com"><i class="fas fa-envelope"></i> contato@bolachinhasmineiras.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Belo Horizonte - MG</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Bolachinhas Mineiras Artesanais. Todos os direitos reservados.</p>
+                <div class="developer">
+                    <span>Desenvolvido por</span>
+                    <a href="https://nova-tek-site.vercel.app" target="_blank" rel="noopener">
+                        <i class="fas fa-code"></i> NovaTek
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dados dos produtos
+        const products = [
+            {
+                id: 1,
+                name: "Biscoito de Polvilho",
+                description: "Tradicional biscoito mineiro, crocante e saboroso, perfeito para acompanhar um café.",
+                price: 12.90,
+                image: "https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Mais Vendido"
+            },
+            {
+                id: 2,
+                name: "Rosquinha de Canela",
+                description: "Rosquinhas macias com toque de canela, feitas no forno à lenha.",
+                price: 14.50,
+                image: "https://images.unsplash.com/photo-1590080875515-6a49cc2dedc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Tradicional"
+            },
+            {
+                id: 3,
+                name: "Biscoito de Queijo",
+                description: "Feito com queijo mineiro de qualidade, ideal para lanches e encontros com amigos.",
+                price: 16.90,
+                image: "https://images.unsplash.com/photo-1612204104287-8e7f2c2c8c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Especial"
+            },
+            {
+                id: 4,
+                name: "Broinha de Fubá",
+                description: "Doce tradicional mineiro, macia e com o sabor inconfundível do fubá.",
+                price: 11.90,
+                image: "https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Clássico"
+            },
+            {
+                id: 5,
+                name: "Biscoito de Goiabada",
+                description: "Delicioso biscoito recheado com goiabada cascão, combinação perfeita de sabores.",
+                price: 18.50,
+                image: "https://images.unsplash.com/photo-1574085733277-851d6f7c8c6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Recheado"
+            },
+            {
+                id: 6,
+                name: "Sequilho de Coco",
+                description: "Biscoito sequinho e delicado com coco ralado, derrete na boca.",
+                price: 13.90,
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                badge: "Favorito"
+            }
+        ];
+
+        // Estado da aplicação
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // Elementos DOM
+        const productsGrid = document.getElementById('products-grid');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const cartClose = document.getElementById('cart-close');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalElement = document.getElementById('cart-total');
+        const cartCountElement = document.querySelector('.cart-icon .cart-count');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        
+        const favoritesIcon = document.getElementById('favorites-icon');
+        const favoritesModal = document.getElementById('favorites-modal');
+        const favoritesClose = document.getElementById('favorites-close');
+        const favoritesItemsContainer = document.getElementById('favorites-items-container');
+        const favoritesCountElement = document.querySelector('.favorites-count');
+        
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const viewProductsBtn = document.getElementById('view-products-btn');
+        const contactBtn = document.getElementById('contact-btn');
+        const header = document.getElementById('header');
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            updateFavoritesUI();
+            setupEventListeners();
+            initScrollEffects();
+        });
+
+        // Renderizar produtos
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const isFavorite = favorites.includes(product.id);
+                
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card fade-in';
+                productCard.innerHTML = `
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-small add-to-cart" data-id="${product.id}">
+                                <i class="fas fa-cart-plus"></i> Adicionar
+                            </button>
+                            <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${product.id}" title="${isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Atualizar interface do carrinho
+        function updateCartUI() {
+            // Atualizar contador do carrinho - CORREÇÃO AQUI
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+            
+            // Atualizar modal do carrinho
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-message">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Seu carrinho está vazio. Adicione alguns produtos!</p>
+                        <button class="btn btn-primary" id="browse-products-btn">
+                            <i class="fas fa-cookie-bite"></i> Ver Produtos
+                        </button>
+                    </div>
+                `;
+                
+                // Adicionar evento ao botão de ver produtos no carrinho vazio
+                const browseBtn = document.getElementById('browse-products-btn');
+                if (browseBtn) {
+                    browseBtn.addEventListener('click', () => {
+                        cartModal.classList.remove('active');
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    });
+                }
+                
+                cartTotalElement.textContent = 'R$ 0,00';
+                return;
+            }
+            
+            let cartHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                const subtotal = product.price * item.quantity;
+                total += subtotal;
+                
+                cartHTML += `
+                    <div class="cart-item" data-id="${product.id}">
+                        <div class="cart-item-info">
+                            <div class="cart-item-image">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <h4>${product.name}</h4>
+                                <div class="cart-item-price">R$ ${product.price.toFixed(2)}</div>
+                            </div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-quantity" data-id="${product.id}">-</button>
+                            <span class="quantity-value">${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-id="${product.id}">+</button>
+                        </div>
+                        <div class="cart-item-subtotal">
+                            R$ ${subtotal.toFixed(2)}
+                        </div>
+                        <button class="btn btn-secondary btn-small remove-item" data-id="${product.id}">Remover</button>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = cartHTML;
+            cartTotalElement.textContent = `R$ ${total.toFixed(2)}`;
+            
+            // Salvar carrinho no localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Atualizar interface de favoritos
+        function updateFavoritesUI() {
+            // Atualizar contador de favoritos
+            favoritesCountElement.textContent = favorites.length;
+            
+            // Atualizar modal de favoritos
+            if (favorites.length === 0) {
+                favoritesItemsContainer.innerHTML = `
+                    <div class="empty-message">
+                        <i class="fas fa-heart"></i>
+                        <p>Você ainda não favoritou nenhum produto.</p>
+                        <button class="btn btn-primary" id="browse-products-fav-btn">
+                            <i class="fas fa-cookie-bite"></i> Ver Produtos
+                        </button>
+                    </div>
+                `;
+                
+                // Adicionar evento ao botão de ver produtos nos favoritos vazios
+                const browseFavBtn = document.getElementById('browse-products-fav-btn');
+                if (browseFavBtn) {
+                    browseFavBtn.addEventListener('click', () => {
+                        favoritesModal.classList.remove('active');
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    });
+                }
+                
+                return;
+            }
+            
+            let favoritesHTML = '';
+            
+            favorites.forEach(favId => {
+                const product = products.find(p => p.id === favId);
+                
+                favoritesHTML += `
+                    <div class="favorite-item" data-id="${product.id}">
+                        <div class="favorite-item-info">
+                            <div class="favorite-item-image">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <div class="favorite-item-details">
+                                <h4>${product.name}</h4>
+                                <div class="cart-item-price">R$ ${product.price.toFixed(2)}</div>
+                            </div>
+                        </div>
+                        <div class="favorite-item-actions">
+                            <button class="btn btn-primary btn-small add-to-cart-from-fav" data-id="${product.id}">
+                                <i class="fas fa-cart-plus"></i> Adicionar
+                            </button>
+                            <button class="btn btn-secondary btn-small remove-favorite" data-id="${product.id}">Remover</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            favoritesItemsContainer.innerHTML = favoritesHTML;
+            
+            // Salvar favoritos no localStorage
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Efeitos de scroll
+        function initScrollEffects() {
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Animações ao scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar elementos para animação
+            document.querySelectorAll('.product-card, .section-title').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Configurar event listeners
+        function setupEventListeners() {
+            // Menu mobile
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Fechar menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.getAttribute('data-section');
+                    
+                    // Fechar menu mobile
+                    nav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    // Navegar para a seção
+                    if (section === 'hero' || section === 'products') {
+                        document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+                    } else if (section === 'cart-modal' || section === 'favorites-modal') {
+                        document.getElementById(section).classList.add('active');
+                    }
+                });
+            });
+
+            // Botão "Ver Produtos"
+            viewProductsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Abrir/fechar modal do carrinho
+            cartIcon.addEventListener('click', () => {
+                cartModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            cartClose.addEventListener('click', () => {
+                cartModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Abrir/fechar modal de favoritos
+            favoritesIcon.addEventListener('click', () => {
+                favoritesModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            favoritesClose.addEventListener('click', () => {
+                favoritesModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Fechar modais ao clicar fora
+            window.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    cartModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+                if (e.target === favoritesModal) {
+                    favoritesModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Fechar modais com tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    cartModal.classList.remove('active');
+                    favoritesModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Delegar eventos para elementos dinâmicos
+            document.addEventListener('click', (e) => {
+                // Adicionar ao carrinho
+                if (e.target.closest('.add-to-cart')) {
+                    const productId = parseInt(e.target.closest('.add-to-cart').getAttribute('data-id'));
+                    addToCart(productId);
+                }
+                
+                // Adicionar ao carrinho a partir dos favoritos
+                if (e.target.closest('.add-to-cart-from-fav')) {
+                    const productId = parseInt(e.target.closest('.add-to-cart-from-fav').getAttribute('data-id'));
+                    addToCart(productId);
+                    
+                    // Feedback visual
+                    const btn = e.target.closest('.add-to-cart-from-fav');
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+                    btn.style.background = '#28a745';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.style.background = '';
+                    }, 1500);
+                }
+                
+                // Favoritar/desfavoritar produto
+                if (e.target.closest('.favorite-btn')) {
+                    const productId = parseInt(e.target.closest('.favorite-btn').getAttribute('data-id'));
+                    toggleFavorite(productId);
+                }
+                
+                // Remover dos favoritos
+                if (e.target.closest('.remove-favorite')) {
+                    const productId = parseInt(e.target.closest('.remove-favorite').getAttribute('data-id'));
+                    removeFromFavorites(productId);
+                }
+                
+                // Aumentar quantidade no carrinho
+                if (e.target.closest('.increase-quantity')) {
+                    const productId = parseInt(e.target.closest('.increase-quantity').getAttribute('data-id'));
+                    changeQuantity(productId, 1);
+                }
+                
+                // Diminuir quantidade no carrinho
+                if (e.target.closest('.decrease-quantity')) {
+                    const productId = parseInt(e.target.closest('.decrease-quantity').getAttribute('data-id'));
+                    changeQuantity(productId, -1);
+                }
+                
+                // Remover item do carrinho
+                if (e.target.closest('.remove-item')) {
+                    const productId = parseInt(e.target.closest('.remove-item').getAttribute('data-id'));
+                    removeFromCart(productId);
+                }
+            });
+
+            // Finalizar compra via WhatsApp
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Seu carrinho está vazio!');
+                    return;
+                }
+                
+                let message = "Olá! Gostaria de fazer um pedido:\n\n";
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    const subtotal = product.price * item.quantity;
+                    total += subtotal;
+                    
+                    message += `- ${product.name} (Qtd: ${item.quantity}) – R$ ${subtotal.toFixed(2)}\n`;
+                });
+                
+                message += `\n*Total: R$ ${total.toFixed(2)}*`;
+                
+                // Codificar a mensagem para URL
+                const encodedMessage = encodeURIComponent(message);
+                const phoneNumber = "5531999999999"; // Substitua pelo número real
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                
+                // Abrir WhatsApp em nova aba
+                window.open(whatsappURL, '_blank');
+            });
+        }
+
+        // Funções de manipulação do carrinho
+        function addToCart(productId) {
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+            
+            updateCartUI();
+            
+            // Feedback visual
+            const addButton = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
+            if (addButton) {
+                const originalHTML = addButton.innerHTML;
+                addButton.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+                addButton.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    addButton.innerHTML = originalHTML;
+                    addButton.style.background = '';
+                }, 1500);
+            }
+            
+            // Atualizar contador do carrinho
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += delta;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+            }
+            
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Funções de manipulação de favoritos
+        function toggleFavorite(productId) {
+            const index = favorites.indexOf(productId);
+            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
+            
+            if (index === -1) {
+                // Adicionar aos favoritos
+                favorites.push(productId);
+                if (favoriteBtn) {
+                    favoriteBtn.classList.add('active');
+                    favoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                    favoriteBtn.title = 'Remover dos favoritos';
+                    
+                    // Feedback visual
+                    favoriteBtn.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        favoriteBtn.style.transform = '';
+                    }, 300);
+                }
+            } else {
+                // Remover dos favoritos
+                favorites.splice(index, 1);
+                if (favoriteBtn) {
+                    favoriteBtn.classList.remove('active');
+                    favoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                    favoriteBtn.title = 'Adicionar aos favoritos';
+                }
+            }
+            
+            updateFavoritesUI();
+        }
+
+        function removeFromFavorites(productId) {
+            favorites = favorites.filter(id => id !== productId);
+            
+            // Atualizar botão de favorito na lista de produtos
+            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
+            if (favoriteBtn) {
+                favoriteBtn.classList.remove('active');
+                favoriteBtn.title = 'Adicionar aos favoritos';
+            }
+            
+            updateFavoritesUI();
+        }
+    </script>
+</body>
+</html>

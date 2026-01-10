@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCenter Pro | Serviços e Peças Automotivas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap">
+    <style>
+        :root {
+            --primary-black: #121212;
+            --dark-gray: #1E1E1E;
+            --medium-gray: #2D2D2D;
+            --light-gray: #F5F5F5;
+            --accent-red: #E53935;
+            --accent-red-hover: #C62828;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--white);
+            background-color: var(--primary-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-black);
+            padding: 1rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .logo i {
+            color: var(--accent-red);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-red);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-red);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 5rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--accent-red);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services {
+            padding: 2rem 5% 5rem;
+            background-color: var(--dark-gray);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .service-card p {
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-add-to-cart {
+            background-color: var(--accent-red);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: var(--accent-red-hover);
+        }
+
+        /* Products */
+        .products {
+            padding: 2rem 5% 5rem;
+            background-color: var(--primary-black);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: var(--medium-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--light-gray);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .product-header h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .favorite-btn.active {
+            color: var(--accent-red);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-view, .btn-add-product {
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        .btn-view {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        .btn-view:hover {
+            background-color: var(--white);
+            color: var(--primary-black);
+        }
+
+        .btn-add-product {
+            background-color: var(--accent-red);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-add-product:hover {
+            background-color: var(--accent-red-hover);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .product-modal-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            height: 300px;
+            background-color: var(--medium-gray);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: var(--light-gray);
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            height: 60px;
+            width: 60px;
+            background-color: var(--medium-gray);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--light-gray);
+        }
+
+        .product-details h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .product-description {
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+        }
+
+        .product-price-large {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 2rem;
+        }
+
+        .variations {
+            margin-bottom: 2rem;
+        }
+
+        .variation-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .variation-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .variation-select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            background-color: var(--medium-gray);
+            color: var(--white);
+            border: 1px solid #555;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-btn {
+            background-color: var(--medium-gray);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            background-color: var(--primary-black);
+            color: var(--white);
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Cart Modal */
+        .cart-modal-body {
+            padding: 2rem;
+        }
+
+        .cart-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .cart-item-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .cart-item-info p {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--white);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 2rem;
+        }
+
+        /* Favorites Modal */
+        .favorites-modal-body {
+            padding: 2rem;
+        }
+
+        .favorites-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .favorites-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            padding: 3rem 5% 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--light-gray);
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-red);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-gray);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: var(--light-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .product-modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-gray);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .header-actions {
+                gap: 1rem;
+            }
+
+            .btn-whatsapp span {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 6rem 5% 3rem;
+                min-height: 80vh;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 1rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .cart-item-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-car"></i>
+            <span>AutoCenter Pro</span>
+        </div>
+        
+        <nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#products">Produtos</a></li>
+                <li><a href="#" id="favoritesLink">Favoritos</a></li>
+                <li><a href="#" id="cartLink">Carrinho</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="#" class="btn-whatsapp" id="whatsappBtn">
+                <i class="fab fa-whatsapp"></i>
+                <span>Solicitar Orçamento</span>
+            </a>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="cart-count" id="cartCount">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Auto Peças e <span>Serviços de Qualidade</span></h1>
+            <p>Oferecemos as melhores peças automotivas e serviços especializados para seu veículo. Qualidade garantida com profissionais experientes e equipamentos de última geração.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Ver Serviços</a>
+                <a href="#products" class="btn-secondary">Comprar Peças</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Serviços especializados realizados por profissionais qualificados com equipamentos de última geração.</p>
+        </div>
+        
+        <div class="services-container" id="servicesContainer">
+            <!-- Services will be added dynamically -->
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Produtos em Destaque</h2>
+            <p>Encontre as melhores peças automotivas para seu veículo com garantia de qualidade.</p>
+        </div>
+        
+        <div class="products-container" id="productsContainer">
+            <!-- Products will be added dynamically -->
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeProductModal">&times;</button>
+            <div class="product-modal-body" id="productModalBody">
+                <!-- Product details will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeCartModal">&times;</button>
+            <div class="cart-modal-body">
+                <h2 class="cart-title">Seu Carrinho</h2>
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be added dynamically -->
+                </div>
+                <div class="cart-total">
+                    Total: R$ <span id="cartTotal">0.00</span>
+                </div>
+                <button class="btn-primary" id="checkoutBtn" style="width: 100%; padding: 1.2rem;">
+                    Finalizar Compra no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="modal" id="favoritesModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeFavoritesModal">&times;</button>
+            <div class="favorites-modal-body">
+                <h2 class="favorites-title">Seus Favoritos</h2>
+                <div class="favorites-list" id="favoritesList">
+                    <!-- Favorite products will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>AutoCenter Pro</h3>
+                <p>Especialistas em serviços automotivos e venda de peças de alta qualidade. Atendimento personalizado e garantia em todos os serviços.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Automotiva, 1234 - Centro</p>
+                <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@autocenterpro.com</p>
+                <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
+            </div>
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <a href="#home">Home</a>
+                <a href="#services">Serviços</a>
+                <a href="#products">Produtos</a>
+                <a href="#" id="footerFavoritesLink">Favoritos</a>
+                <a href="#" id="footerCartLink">Carrinho</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AutoCenter Pro. Todos os direitos reservados.</p>
+            <p>Desenvolvido por NOVATEK</p>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Item adicionado ao carrinho!</span>
+    </div>
+
+    <script>
+        // Dados dos serviços
+        const servicesData = [
+            {
+                id: 1,
+                name: "Troca de Óleo",
+                description: "Troca de óleo do motor com filtro incluso. Utilizamos óleo de alta qualidade.",
+                price: 120.00,
+                icon: "fas fa-oil-can"
+            },
+            {
+                id: 2,
+                name: "Alinhamento",
+                description: "Alinhamento de direção 3D computadorizado para maior precisão.",
+                price: 80.00,
+                icon: "fas fa-compass"
+            },
+            {
+                id: 3,
+                name: "Balanceamento",
+                description: "Balanceamento de rodas para evitar vibrações no volante.",
+                price: 60.00,
+                icon: "fas fa-tachometer-alt"
+            },
+            {
+                id: 4,
+                name: "Revisão Completa",
+                description: "Revisão completa do veículo com verificação de mais de 50 itens.",
+                price: 250.00,
+                icon: "fas fa-car-alt"
+            },
+            {
+                id: 5,
+                name: "Troca de Pastilhas",
+                description: "Substituição das pastilhas de freio com verificação do sistema.",
+                price: 180.00,
+                icon: "fas fa-brake-warning"
+            },
+            {
+                id: 6,
+                name: "Higienização",
+                description: "Limpeza e higienização interna completa do veículo.",
+                price: 150.00,
+                icon: "fas fa-spray-can"
+            }
+        ];
+
+        // Dados dos produtos
+        const productsData = [
+            {
+                id: 101,
+                name: "Pastilha de Freio",
+                description: "Pastilha de freio de alta performance para diversos modelos de veículos. Material resistente ao desgaste e altas temperaturas.",
+                price: 89.90,
+                images: ["fas fa-brake-warning", "fas fa-car", "fas fa-tools"],
+                variations: {
+                    marca: ["Bosch", "Ferodo", "TRW"],
+                    modelo: ["Golf", "Civic", "Corolla", "Onix"],
+                    ano: ["2018-2020", "2021-2023"]
+                }
+            },
+            {
+                id: 102,
+                name: "Óleo de Motor 5W30",
+                description: "Óleo sintético 5W30 para motor, proporciona melhor desempenho e proteção. Ideal para motores modernos.",
+                price: 45.90,
+                images: ["fas fa-oil-can", "fas fa-tint", "fas fa-industry"],
+                variations: {
+                    marca: ["Mobil", "Castrol", "Shell"],
+                    modelo: ["Todos"],
+                    ano: ["Todos"]
+                }
+            },
+            {
+                id: 103,
+                name: "Filtro de Ar",
+                description: "Filtro de ar de alta qualidade, retém impurezas e protege o motor. Fácil instalação.",
+                price: 32.50,
+                images: ["fas fa-wind", "fas fa-filter", "fas fa-car"],
+                variations: {
+                    marca: ["Mann Filter", "Bosch", "Fram"],
+                    modelo: ["HB20", "Ka", "Uno", "Mobi"],
+                    ano: ["2015-2018", "2019-2022"]
+                }
+            },
+            {
+                id: 104,
+                name: "Bateria 60Ah",
+                description: "Bateria automotiva 60Ah com garantia de 24 meses. Alta performance em partidas frias.",
+                price: 349.90,
+                images: ["fas fa-battery-full", "fas fa-bolt", "fas fa-car-battery"],
+                variations: {
+                    marca: ["Moura", "Heliar", "ACDelco"],
+                    modelo: ["Todos"],
+                    ano: ["Todos"]
+                }
+            },
+            {
+                id: 105,
+                name: "Lâmpada LED",
+                description: "Kit de lâmpadas LED para farol, maior luminosidade e durabilidade. Fácil instalação.",
+                price: 129.90,
+                images: ["fas fa-lightbulb", "fas fa-car", "fas fa-sun"],
+                variations: {
+                    marca: ["Philips", "Osram", "Generic"],
+                    modelo: ["Todos"],
+                    ano: ["Todos"]
+                }
+            },
+            {
+                id: 106,
+                name: "Amortecedor Dianteiro",
+                description: "Amortecedor dianteiro para melhor estabilidade e conforto. Compatível com vários modelos.",
+                price: 189.90,
+                images: ["fas fa-car-crash", "fas fa-tools", "fas fa-cogs"],
+                variations: {
+                    marca: ["Sachs", "Monroe", "Cofap"],
+                    modelo: ["Gol", "Palio", "Celta", "Classic"],
+                    ano: ["2010-2015", "2016-2020"]
+                }
+            }
+        ];
+
+        // Estado da aplicação
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        let currentProduct = null;
+
+        // Elementos DOM
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartLink = document.getElementById('cartLink');
+        const cartCount = document.getElementById('cartCount');
+        const cartModal = document.getElementById('cartModal');
+        const closeCartModal = document.getElementById('closeCartModal');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const favoritesLink = document.getElementById('favoritesLink');
+        const footerFavoritesLink = document.getElementById('footerFavoritesLink');
+        const favoritesModal = document.getElementById('favoritesModal');
+        const closeFavoritesModal = document.getElementById('closeFavoritesModal');
+        const favoritesList = document.getElementById('favoritesList');
+        const productModal = document.getElementById('productModal');
+        const closeProductModal = document.getElementById('closeProductModal');
+        const productModalBody = document.getElementById('productModalBody');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            renderProducts();
+            updateCartCount();
+            renderFavorites();
+            
+            // Event Listeners
+            hamburger.addEventListener('click', toggleMobileMenu);
+            cartIcon.addEventListener('click', openCartModal);
+            cartLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                openCartModal();
+            });
+            
+            closeCartModal.addEventListener('click', closeCartModalFunc);
+            favoritesLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                openFavoritesModal();
+            });
+            footerFavoritesLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                openFavoritesModal();
+            });
+            
+            closeFavoritesModal.addEventListener('click', closeFavoritesModalFunc);
+            closeProductModal.addEventListener('click', closeProductModalFunc);
+            checkoutBtn.addEventListener('click', checkout);
+            whatsappBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openWhatsApp();
+            });
+            
+            // Fechar modais ao clicar fora
+            window.addEventListener('click', (e) => {
+                if (e.target === cartModal) closeCartModalFunc();
+                if (e.target === favoritesModal) closeFavoritesModalFunc();
+                if (e.target === productModal) closeProductModalFunc();
+            });
+            
+            // Fechar menu mobile ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Funções de renderização
+        function renderServices() {
+            const container = document.getElementById('servicesContainer');
+            container.innerHTML = '';
+            
+            servicesData.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card fade-in';
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="service-price">R$ ${service.price.toFixed(2)}</div>
+                    <button class="btn-add-to-cart" data-service-id="${service.id}">
+                        Adicionar ao Carrinho
+                    </button>
+                `;
+                
+                serviceCard.querySelector('.btn-add-to-cart').addEventListener('click', () => {
+                    addToCart(service, 'service');
+                });
+                
+                container.appendChild(serviceCard);
+            });
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+            
+            productsData.forEach(product => {
+                const isFavorite = favorites.includes(product.id);
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card fade-in';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <i class="${product.images[0]}"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>${product.name}</h3>
+                            <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-product-id="${product.id}">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn-view" data-product-id="${product.id}">Ver Produto</button>
+                            <button class="btn-add-product" data-product-id="${product.id}">Adicionar</button>
+                        </div>
+                    </div>
+                `;
+                
+                productCard.querySelector('.btn-view').addEventListener('click', () => {
+                    openProductModal(product.id);
+                });
+                
+                productCard.querySelector('.btn-add-product').addEventListener('click', () => {
+                    addToCart(product, 'product');
+                });
+                
+                productCard.querySelector('.favorite-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(product.id);
+                    const btn = e.currentTarget;
+                    btn.classList.toggle('active');
+                });
+                
+                container.appendChild(productCard);
+            });
+        }
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #aaa;">Seu carrinho está vazio</p>';
+                cartTotal.textContent = '0.00';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        ${item.type === 'product' && item.variations ? 
+                            `<p>${Object.entries(item.variations).map(([key, value]) => `${key}: ${value}`).join(' | ')}</p>` : 
+                            ''}
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-quantity" data-index="${index}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
+                        </div>
+                        <div class="cart-item-price">
+                            R$ ${itemTotal.toFixed(2)}
+                        </div>
+                        <button class="remove-item" data-index="${index}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+            
+            // Adicionar event listeners para os botões de quantidade
+            document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    updateQuantity(index, -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    updateQuantity(index, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    removeFromCart(index);
+                });
+            });
+        }
+
+        function renderFavorites() {
+            favoritesList.innerHTML = '';
+            
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<p style="text-align: center; color: #aaa; grid-column: 1 / -1;">Nenhum produto favoritado</p>';
+                return;
+            }
+            
+            favorites.forEach(favId => {
+                const product = productsData.find(p => p.id === favId);
+                if (!product) return;
+                
+                const favItem = document.createElement('div');
+                favItem.className = 'product-card';
+                favItem.innerHTML = `
+                    <div class="product-image">
+                        <i class="${product.images[0]}"></i>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>${product.name}</h3>
+                            <button class="favorite-btn active" data-product-id="${product.id}">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn-view" data-product-id="${product.id}">Ver Produto</button>
+                            <button class="btn-add-product" data-product-id="${product.id}">Adicionar</button>
+                        </div>
+                    </div>
+                `;
+                
+                favItem.querySelector('.btn-view').addEventListener('click', () => {
+                    openProductModal(product.id);
+                    closeFavoritesModalFunc();
+                });
+                
+                favItem.querySelector('.btn-add-product').addEventListener('click', () => {
+                    addToCart(product, 'product');
+                    closeFavoritesModalFunc();
+                });
+                
+                favItem.querySelector('.favorite-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(product.id);
+                    favItem.remove();
+                });
+                
+                favoritesList.appendChild(favItem);
+            });
+        }
+
+        // Funções do carrinho
+        function addToCart(item, type) {
+            // Para produtos, precisamos verificar se tem variações selecionadas
+            if (type === 'product' && currentProduct) {
+                const variations = getSelectedVariations();
+                
+                // Verificar se todas as variações foram selecionadas
+                const allSelected = Object.values(variations).every(v => v !== '');
+                
+                if (!allSelected) {
+                    showNotification('Selecione todas as opções antes de adicionar ao carrinho', 'warning');
+                    return;
+                }
+                
+                // Adicionar produto com variações
+                const cartItem = {
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    type: 'product',
+                    variations: variations,
+                    quantity: parseInt(document.getElementById('quantity').value) || 1
+                };
+                
+                cart.push(cartItem);
+                closeProductModalFunc();
+            } else if (type === 'service') {
+                // Adicionar serviço
+                const cartItem = {
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    type: 'service',
+                    quantity: 1
+                };
+                
+                cart.push(cartItem);
+            }
+            
+            // Salvar no localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Atualizar contador e mostrar notificação
+            updateCartCount();
+            showNotification(`${type === 'product' ? 'Produto' : 'Serviço'} adicionado ao carrinho!`);
+            
+            // Se o carrinho estiver aberto, atualizar
+            if (cartModal.style.display === 'flex') {
+                renderCart();
+            }
+        }
+
+        function updateQuantity(index, change) {
+            const newQuantity = cart[index].quantity + change;
+            
+            if (newQuantity < 1) {
+                removeFromCart(index);
+                return;
+            }
+            
+            cart[index].quantity = newQuantity;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+            
+            if (cart.length === 0) {
+                setTimeout(() => {
+                    closeCartModalFunc();
+                }, 500);
+            }
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        // Funções de favoritos
+        function toggleFavorite(productId) {
+            const index = favorites.indexOf(productId);
+            
+            if (index === -1) {
+                favorites.push(productId);
+                showNotification('Produto adicionado aos favoritos!');
+            } else {
+                favorites.splice(index, 1);
+                showNotification('Produto removido dos favoritos');
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            
+            // Se o modal de favoritos estiver aberto, atualizar
+            if (favoritesModal.style.display === 'flex') {
+                renderFavorites();
+            }
+        }
+
+        // Funções de modais
+        function openCartModal() {
+            renderCart();
+            cartModal.style.display = 'flex';
+            setTimeout(() => {
+                cartModal.classList.add('fade-in');
+            }, 10);
+        }
+
+        function closeCartModalFunc() {
+            cartModal.classList.remove('fade-in');
+            setTimeout(() => {
+                cartModal.style.display = 'none';
+            }, 300);
+        }
+
+        function openFavoritesModal() {
+            renderFavorites();
+            favoritesModal.style.display = 'flex';
+            setTimeout(() => {
+                favoritesModal.classList.add('fade-in');
+            }, 10);
+        }
+
+        function closeFavoritesModalFunc() {
+            favoritesModal.classList.remove('fade-in');
+            setTimeout(() => {
+                favoritesModal.style.display = 'none';
+            }, 300);
+        }
+
+        function openProductModal(productId) {
+            currentProduct = productsData.find(p => p.id === productId);
+            
+            if (!currentProduct) return;
+            
+            productModalBody.innerHTML = `
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <i class="${currentProduct.images[0]}"></i>
+                    </div>
+                    <div class="thumbnails">
+                        ${currentProduct.images.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}">
+                                <i class="${img}"></i>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2>${currentProduct.name}</h2>
+                    <p class="product-description">${currentProduct.description}</p>
+                    <div class="product-price-large">R$ ${currentProduct.price.toFixed(2)}</div>
+                    
+                    <div class="variations">
+                        ${Object.entries(currentProduct.variations).map(([key, options]) => `
+                            <div class="variation-group">
+                                <label for="${key}">${key.charAt(0).toUpperCase() + key.slice(1)}:</label>
+                                <select class="variation-select" id="${key}">
+                                    <option value="">Selecione...</option>
+                                    ${options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label style="margin-right: 1rem;">Quantidade:</label>
+                        <button class="quantity-btn" id="decreaseQty">-</button>
+                        <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+                        <button class="quantity-btn" id="increaseQty">+</button>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn-primary" id="addToCartFromModal" style="flex: 2;">
+                            Adicionar ao Carrinho
+                        </button>
+                        <button class="favorite-btn ${favorites.includes(currentProduct.id) ? 'active' : ''}" 
+                                id="favoriteProductModal" style="flex: 1;">
+                            <i class="fas fa-heart"></i> Favoritar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Event listeners para o modal do produto
+            document.getElementById('decreaseQty').addEventListener('click', () => {
+                const input = document.getElementById('quantity');
+                let value = parseInt(input.value) || 1;
+                if (value > 1) {
+                    input.value = value - 1;
+                }
+            });
+            
+            document.getElementById('increaseQty').addEventListener('click', () => {
+                const input = document.getElementById('quantity');
+                let value = parseInt(input.value) || 1;
+                input.value = value + 1;
+            });
+            
+            document.getElementById('addToCartFromModal').addEventListener('click', () => {
+                addToCart(currentProduct, 'product');
+            });
+            
+            document.getElementById('favoriteProductModal').addEventListener('click', () => {
+                toggleFavorite(currentProduct.id);
+                const btn = document.getElementById('favoriteProductModal');
+                btn.classList.toggle('active');
+            });
+            
+            // Event listeners para as miniaturas
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                thumb.addEventListener('click', () => {
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    document.querySelector('.main-image i').className = currentProduct.images[index];
+                });
+            });
+            
+            productModal.style.display = 'flex';
+            setTimeout(() => {
+                productModal.classList.add('fade-in');
+            }, 10);
+        }
+
+        function closeProductModalFunc() {
+            productModal.classList.remove('fade-in');
+            setTimeout(() => {
+                productModal.style.display = 'none';
+            }, 300);
+            currentProduct = null;
+        }
+
+        function getSelectedVariations() {
+            if (!currentProduct) return {};
+            
+            const variations = {};
+            Object.keys(currentProduct.variations).forEach(key => {
+                const select = document.getElementById(key);
+                variations[key] = select ? select.value : '';
+            });
+            
+            return variations;
+        }
+
+        // Função de checkout
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Adicione itens ao carrinho antes de finalizar', 'warning');
+                return;
+            }
+            
+            let message = "Olá! Gostaria de finalizar meu pedido:\n\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                if (item.type === 'service') {
+                    message += `- Serviço: ${item.name} – R$ ${itemTotal.toFixed(2)} (Qtd: ${item.quantity})\n`;
+                } else if (item.type === 'product') {
+                    let variationsText = '';
+                    if (item.variations) {
+                        variationsText = Object.entries(item.variations)
+                            .map(([key, value]) => `${key}: ${value}`)
+                            .join(' | ');
+                    }
+                    message += `- Produto: ${item.name} | ${variationsText} | Qtd: ${item.quantity} – R$ ${itemTotal.toFixed(2)}\n`;
+                }
+            });
+            
+            message += `\nTotal: R$ ${total.toFixed(2)}`;
+            
+            // Codificar a mensagem para URL
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "5511999999999"; // Número de exemplo
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp em uma nova aba
+            window.open(whatsappURL, '_blank');
+            
+            // Limpar carrinho após checkout
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            closeCartModalFunc();
+            showNotification('Pedido enviado para o WhatsApp!');
+        }
+
+        function openWhatsApp() {
+            const message = encodeURIComponent("Olá! Gostaria de solicitar um orçamento para serviços automotivos.");
+            const phoneNumber = "5511999999999"; // Número de exemplo
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Funções auxiliares
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+        }
+
+        function showNotification(text, type = 'success') {
+            notificationText.textContent = text;
+            
+            // Alterar cor baseada no tipo
+            if (type === 'warning') {
+                notification.style.backgroundColor = '#ff9800';
+            } else {
+                notification.style.backgroundColor = '#4caf50';
+            }
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Fechar modais com a tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCartModalFunc();
+                closeFavoritesModalFunc();
+                closeProductModalFunc();
+            }
+        });
+    </script>
+</body>
+</html>
